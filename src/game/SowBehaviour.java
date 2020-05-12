@@ -6,8 +6,17 @@ import edu.monash.fit2099.engine.GameMap;
 
 public class SowBehaviour implements Behaviour {
 
+	public SowBehaviour() {
+		
+	}
+	
+	public Action sow(Actor actor, GameMap map) {
+		
+		return null;
+	}
+
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		return null;
+		return sow(actor, map);
 	}
 }

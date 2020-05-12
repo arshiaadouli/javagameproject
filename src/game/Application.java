@@ -74,7 +74,12 @@ public class Application {
 		gameMap.at(10,  4).addActor(new Zombie("Uuuurgh"));
 		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));
 		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
-		gameMap.at(62, 12).addActor(new Zombie("Aaargh"));	
+		gameMap.at(62, 12).addActor(new Zombie("Aaargh"));
+		
+		// testing code for Farmer class
+		
+		gameMap.at(43,  15).addActor(new Farmer("Joseph", 'F', 100));
+		
 		world.run();
 	}
 }
