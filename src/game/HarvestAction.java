@@ -4,31 +4,31 @@ import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.Location;
 
 public class HarvestAction extends Action {
-	private Exit e;
+	private Location l;
 	
-	public HarvestAction(Exit e) {
-		this.e = e;
+	public HarvestAction(Location l) {
+		this.l = l;
 	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		String retVal = "";
-		List<Exit> exits = e.getDestination().getExits();
+		String retVal = actor + " harvested a Ripe Crop nearby.";
+		List<Item> itemList = l.getItems();
 		
-		for (Exit e : exits) {
-			if (e.getDestination().getDisplayChar() == 'C') { // if true add food to inventory and change displayChar to '.'
-				actor.addItemToInventory(new Food("Food", 'F'));
-				
-				for (Item i : e.getDestination().getItems()) {
-					if (i.getDisplayChar() == 'C') {
-						e.getDestination().removeItem(i);
-					}
+		for (Item item : itemList) {
+			if (item.getDisplayChar() == 'C') {
+				if (actor instanceof Player) {
+					actor.addItemToInventory(new Food("Food", 'F'));
 				}
+				else {
+					l.addItem(new Food("Food", 'F'));
+				}
+				l.removeItem(item);
 			}
 		}
 		

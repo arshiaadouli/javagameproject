@@ -13,20 +13,19 @@ public class SowBehaviour implements Behaviour {
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		// Is there a patch of dirt near me?
-		boolean atLeastOneAvailable = false; // Fail-Fast OOP principle
-		
+		// Is there a patch of dirt near me?		
 		List<Exit> exits = new ArrayList<Exit>(map.locationOf(actor).getExits());
+		List<Exit> availableExits = new ArrayList<Exit>();
 		
 		for (Exit e : exits) {
 			if (e.getDestination().getDisplayChar() == '.') {
-				atLeastOneAvailable = true;
+				availableExits.add(e);
 			}
 		}
 		
-		if (atLeastOneAvailable) {
-			Collections.shuffle(exits);
-			return new SowAction(exits.get(0));
+		if (availableExits.size() > 0) {
+			Collections.shuffle(availableExits);
+			return new SowAction(availableExits.get(0));
 		}
 		return null;
 	}
