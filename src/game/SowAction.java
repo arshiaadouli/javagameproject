@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.NumberRange;
 
 public class SowAction extends Action {
 	private Exit e;
@@ -19,13 +18,13 @@ public class SowAction extends Action {
 		UnripeCrop unripeCrop = new UnripeCrop(actor.toString());
 		
 		// put unripeCrop into map
-		
+		e.getDestination().addItem(unripeCrop);
 		
 		return retVal;
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " sow seeds on nearby patch of dirt.";
+		return actor + " sow seeds on a patch of dirt nearby.";
 	}
 }
