@@ -12,8 +12,12 @@ public class Farmer extends Human {
 			new HarvestBehaviour(), 
 			new EscapeBehaviour()
 	};
+	
+	public Farmer(String name) {
+		super(name);
+	}
 
-	public Farmer(String name, char displayChar, int hitPoints) {
+	protected Farmer(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 	}
 	
