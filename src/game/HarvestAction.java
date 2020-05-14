@@ -18,7 +18,11 @@ public class HarvestAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " harvested a Ripe Crop nearby.";
-		List<Item> itemList = l.getItems();
+		List<Item> itemList = null;
+		
+		if(l.getItems().size() != 0) {
+				itemList = l.getItems();
+		}
 		
 		for (Item item : itemList) {
 			if (item instanceof RipeCrop) {

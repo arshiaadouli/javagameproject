@@ -1,13 +1,18 @@
 package game;
 
+import java.util.ArrayList;
+
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.engine.DoNothingAction;
 
 public class Farmer extends Human {
+	ArrayList<Location> foodLocation = new ArrayList<>();
 	private Behaviour[] behaviours = {
+			new FertilizeBehaviour(),
 			new SowBehaviour(), 
 			new HarvestBehaviour(), 
 			new EscapeBehaviour()

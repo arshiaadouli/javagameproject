@@ -16,7 +16,10 @@ public class UnripeCrop extends Item {
 		age++;
 		
 		if (age == 20) {
-			// remove UnripeCrop and add RipeCrop
+			
+			// changing the display character
+			// changing the name 
+			
 		}
 	}
 }
