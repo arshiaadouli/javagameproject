@@ -1,11 +1,8 @@
 package game;
 
-import java.util.List;
-
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
 public class FertilizeAction extends Action {
@@ -18,15 +15,8 @@ public class FertilizeAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " fertlized an Unripe Crop.";
-		List<Item> itemList = l.getItems();
 		
-		for (Item item : itemList) {
-			if (item instanceof UnripeCrop) {
-				for (int i = 0; i < 10; i++) {
-					item.tick(l);
-				}
-			}
-		}
+		
 		
 		return retVal;
 	}

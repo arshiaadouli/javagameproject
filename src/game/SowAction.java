@@ -17,16 +17,15 @@ public class SowAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
+		String retVal = actor + " plants some crops on a patch of dirt.";
+		Crop newCrop = new Crop(actor.toString());
 		
-		if (rand.nextFloat() > 0.33) {
-			return null;
+		for (int i = 0; i < newCrop.getCropLocations().size(); i++) {
+			if (!newCrop.isInCropLocations(e.getDestination())) {
+				e.getDestination().addItem(newCrop);
+				newCrop.addToCropLocationsList(e.getDestination());
+			}
 		}
-		
-		String retVal = actor + " sow seeds on a patch of dirt nearby.";
-		UnripeCrop unripeCrop = new UnripeCrop(actor.toString());
-		
-		// put unripeCrop into map
-		e.getDestination().addItem(unripeCrop);
 		
 		return retVal;
 	}

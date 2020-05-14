@@ -1,11 +1,8 @@
 package game;
 
-import java.util.List;
-
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
 public class HarvestAction extends Action {
@@ -18,23 +15,8 @@ public class HarvestAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " harvested a Ripe Crop nearby.";
-		List<Item> itemList = null;
-		
-		if(l.getItems().size() != 0) {
-				itemList = l.getItems();
-		}
-		
-		for (Item item : itemList) {
-			if (item instanceof RipeCrop) {
-				if (actor instanceof Player) {
-					actor.addItemToInventory(new Food("Food", 'F'));
-				}
-				else {
-					l.addItem(new Food("Food", 'F'));
-				}
-				l.removeItem(item);
-			}
-		}
+		l.removeItem(new Crop(actor.toString()));
+		// check if actor is player or farmer
 		
 		return retVal;
 	}

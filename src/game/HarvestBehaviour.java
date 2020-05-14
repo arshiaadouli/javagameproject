@@ -8,36 +8,33 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
 public class HarvestBehaviour implements Behaviour {
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		// Is there a RipeCrop on or around me?		
-		List<Exit> exits = new ArrayList<Exit>(map.locationOf(actor).getExits());
+		Crop newCrop = new Crop(actor.toString());
+		List<Exit> exitsAvailable = map.locationOf(actor).getExits();
+		ArrayList<Exit> exitsWithRipeCrop = new ArrayList<Exit>();
 		
-		Location locationRipeCrop = null;
+		if (newCrop.isInCropLocations(map.locationOf(actor))) {
+			return new HarvestAction(map.locationOf(actor));
+		}
 		
-		for (Exit e : exits) {
-			List<Item> itemsOnLocation = e.getDestination().getItems();
-			for (Item i : itemsOnLocation) {
-				if (i instanceof RipeCrop) {
-					locationRipeCrop = e.getDestination();
-				}
+		for (int j = 0; j < exitsAvailable.size(); j++) {
+			Location l = exitsAvailable.get(j).getDestination();
+			if (newCrop.isInCropLocations(l) && newCrop.getIsRipe()) {
+				exitsWithRipeCrop.add(exitsAvailable.get(j));
 			}
 		}
 		
-		List<Item> itemsOnActor = map.locationOf(actor).getItems();
-		
-		for (Item i : itemsOnActor) {
-			if (i instanceof RipeCrop) {
-				locationRipeCrop = map.locationOf(actor);
-			}
+		if (exitsWithRipeCrop.size() > 0) {
+			Collections.shuffle(exitsWithRipeCrop);
+			return new HarvestAction(exitsWithRipeCrop.get(0).getDestination());
 		}
 		
-		return new HarvestAction(locationRipeCrop);
+		return null;
 	}
 
 }
