@@ -18,7 +18,7 @@ public class SowAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		
-		if (rand.nextFloat() >= 0.33) {
+		if (rand.nextFloat() > 0.33) {
 			return null;
 		}
 		
@@ -33,6 +33,6 @@ public class SowAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " sow seeds on a patch of dirt nearby.";
+		return actor + " plant crops on a patch of dirt nearby.";
 	}
 }

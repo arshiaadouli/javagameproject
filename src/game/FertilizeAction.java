@@ -22,7 +22,7 @@ public class FertilizeAction extends Action {
 		List<Item> itemList = l.getItems();
 		
 		for (Item item : itemList) {
-			if (item.getDisplayChar() == 'c') {
+			if (item instanceof UnripeCrop) {
 				for (int i = 0; i < 10; i++) {
 					item.tick(l);
 				}

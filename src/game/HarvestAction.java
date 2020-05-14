@@ -21,7 +21,7 @@ public class HarvestAction extends Action {
 		List<Item> itemList = l.getItems();
 		
 		for (Item item : itemList) {
-			if (item.getDisplayChar() == 'C') {
+			if (item instanceof RipeCrop) {
 				if (actor instanceof Player) {
 					actor.addItemToInventory(new Food("Food", 'F'));
 				}

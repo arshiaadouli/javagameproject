@@ -17,18 +17,22 @@ public class HarvestBehaviour implements Behaviour {
 	public Action getAction(Actor actor, GameMap map) {
 		// Is there a RipeCrop on or around me?		
 		List<Exit> exits = new ArrayList<Exit>(map.locationOf(actor).getExits());
+		
 		Location locationRipeCrop = null;
 		
 		for (Exit e : exits) {
-			if (e.getDestination().getDisplayChar() == 'C') {
-				locationRipeCrop = e.getDestination();
+			List<Item> itemsOnLocation = e.getDestination().getItems();
+			for (Item i : itemsOnLocation) {
+				if (i instanceof RipeCrop) {
+					locationRipeCrop = e.getDestination();
+				}
 			}
 		}
 		
 		List<Item> itemsOnActor = map.locationOf(actor).getItems();
 		
 		for (Item i : itemsOnActor) {
-			if (i.getDisplayChar() == 'C') {
+			if (i instanceof RipeCrop) {
 				locationRipeCrop = map.locationOf(actor);
 			}
 		}

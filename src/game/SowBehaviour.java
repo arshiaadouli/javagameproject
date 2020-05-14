@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Item;
 
 public class SowBehaviour implements Behaviour {
 
@@ -18,7 +19,16 @@ public class SowBehaviour implements Behaviour {
 		List<Exit> availableExits = new ArrayList<Exit>();
 		
 		for (Exit e : exits) {
-			if (e.getDestination().getDisplayChar() == '.') {
+			List<Item> itemsOnLocation = e.getDestination().getItems();
+			boolean hasCropItems = false;
+			
+			for (Item i : itemsOnLocation) {
+				if (i instanceof UnripeCrop || i instanceof RipeCrop) {
+					hasCropItems = true;
+				}
+			}
+			
+			if (!hasCropItems) {
 				availableExits.add(e);
 			}
 		}
