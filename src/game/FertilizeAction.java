@@ -10,9 +10,11 @@ import edu.monash.fit2099.engine.Location;
 
 public class FertilizeAction extends Action {
 	Location l;
+	Crop c;
 	
-	public FertilizeAction(Location l) {
+	public FertilizeAction(Location l, Crop c) {
 		this.l = l;
+		this.c = c;
 	}
 
 	@Override
@@ -20,14 +22,15 @@ public class FertilizeAction extends Action {
 		String retVal = actor + " fertlized an Unripe Crop.";
 		List<Item> itemsOnLocation = l.getItems();
 		
-		for (Item i : itemsOnLocation) {
-			if (i.getDisplayChar() == 'c') { // need to find another way to do this.
-				for (int a = 0; a < 20; a++) {
-					i.tick(l);
+		if (itemsOnLocation.size() > 0) {
+			for (Item i : itemsOnLocation) {
+				if (i.equals(c)) {
+					for (int a = 0; a < 20; a++) {
+						c.tick(l);
+					}
 				}
 			}
 		}
-		
 		return retVal;
 	}
 

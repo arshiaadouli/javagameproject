@@ -7,16 +7,18 @@ import edu.monash.fit2099.engine.Location;
 
 public class HarvestAction extends Action {
 	private Location l;
+	private Farmer f;
 	
-	public HarvestAction(Location l) {
+	public HarvestAction(Location l, Farmer f) {
 		this.l = l;
+		this.f = f;
 	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " harvested a Ripe Crop nearby.";
-		l.removeItem(new Crop(actor.toString()));
-		// check if actor is player or farmer
+		// remove crop item from the location
+		// check if actor is player or not
 		
 		return retVal;
 	}

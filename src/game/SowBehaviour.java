@@ -8,8 +8,16 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Location;
 
 public class SowBehaviour implements Behaviour {
+	private Farmer f;
+	private List<Location> cropLocations;
+	
+	public SowBehaviour(Farmer f) {
+		this.f = f;
+		this.cropLocations = f.getCropLocations();
+	}
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {	
@@ -24,7 +32,7 @@ public class SowBehaviour implements Behaviour {
 		
 		if (exitsAvailable.size() > 0) {
 			Collections.shuffle(exitsAvailable);
-			return new SowAction(exitsAvailable.get(0).getDestination());
+			return new SowAction(exitsAvailable.get(0).getDestination(), f);
 		}
 		return null;
 	}
