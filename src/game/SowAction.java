@@ -4,15 +4,15 @@ import java.util.Random;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Location;
 
 public class SowAction extends Action {
-	private Exit e;
+	private Location l;
 	protected Random rand = new Random();
 	
-	public SowAction(Exit e) {
-		this.e = e;
+	public SowAction(Location l) {
+		this.l = l;
 	}
 
 	@Override
@@ -21,9 +21,9 @@ public class SowAction extends Action {
 		Crop newCrop = new Crop(actor.toString());
 		
 		for (int i = 0; i < newCrop.getCropLocations().size(); i++) {
-			if (!newCrop.isInCropLocations(e.getDestination())) {
-				e.getDestination().addItem(newCrop);
-				newCrop.addToCropLocationsList(e.getDestination());
+			if (!newCrop.isInCropLocations(l)) {
+				l.addItem(newCrop);
+				newCrop.addToCropLocationsList(l);
 			}
 		}
 		

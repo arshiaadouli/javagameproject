@@ -20,7 +20,8 @@ public class Crop extends Item {
 		age++;
 		
 		if (age == 20) {
-			displayChar = 'C';	
+			displayChar = 'C';
+			setIsRipe(true);
 		}
 	}
 	

@@ -24,7 +24,7 @@ public class SowBehaviour implements Behaviour {
 		
 		if (exitsAvailable.size() > 0) {
 			Collections.shuffle(exitsAvailable);
-			return new SowAction(exitsAvailable.get(0));
+			return new SowAction(exitsAvailable.get(0).getDestination());
 		}
 		return null;
 	}
