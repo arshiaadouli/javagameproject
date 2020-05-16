@@ -7,6 +7,7 @@ public class Food extends Item {
 
 	public Food(String name, char displayChar) {
 		super(name, displayChar, true); // 3rd parameter is true because Food is always portable.
+		this.allowableActions.add(new EatFoodAction(this));
 	}
 	
 	public int getHealsFor() {

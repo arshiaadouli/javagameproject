@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.engine.DoNothingAction;
 
@@ -21,7 +20,7 @@ public class Farmer extends Human {
 			new FertilizeBehaviour(this),
 			new SowBehaviour(this, c),
 			new HarvestBehaviour(Player.class, cropLocations),
-			new EscapeBehaviour()
+			new WanderBehaviour()
 	};
 	
 	public Farmer(String name) {
@@ -86,6 +85,5 @@ public class Farmer extends Human {
 		}
 		return ripeCropObjs;
 	}
-	
 	
 }

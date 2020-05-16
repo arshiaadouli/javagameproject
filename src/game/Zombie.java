@@ -34,7 +34,7 @@ public class Zombie extends ZombieActor {
 		Random random = new Random();
 		boolean b = random.nextBoolean();
 		if(b)
-		return new IntrinsicWeapon(10, "punches");
+			return new IntrinsicWeapon(10, "punches");
 		else
 			return new IntrinsicWeapon(15, "bites");
 	}

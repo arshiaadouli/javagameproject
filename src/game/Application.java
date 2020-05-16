@@ -78,7 +78,7 @@ public class Application {
 		
 		// testing code for Farmer class
 		
-		gameMap.at(44,  15).addActor(new Farmer("Joseph", 'F', 100));
+		gameMap.at(44, 15).addActor(new Farmer("Joseph", 'F', 100));
 		
 		world.run();
 	}

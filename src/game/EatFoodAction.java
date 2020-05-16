@@ -3,25 +3,22 @@ package game;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Item;
 
 public class EatFoodAction extends Action {
-	private Item item;
+	private Food food;
 	
-	public EatFoodAction(Item item) {
-		this.item = item;
+	public EatFoodAction(Food food) {
+		this.food = food;
 	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		// copied line 18 from Item class under the method "public Weapon asWeapon()" since we're not allowed to change and add to Item class
-		Food f = item instanceof Food ? (Food) item : null;
 		String retVal = null;
 		
-		if (f != null) {
-			retVal = actor + " eats food and heals for " + f.getHealsFor();
-			actor.removeItemFromInventory(item);
-			actor.heal(f.getHealsFor());
+		if (food != null) {
+			retVal = actor + " eats " + food.toString() + " and heals for " + food.getHealsFor();
+			actor.removeItemFromInventory(food);
+			actor.heal(food.getHealsFor());
 		}
 		
 		return retVal;
@@ -29,6 +26,6 @@ public class EatFoodAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " eat food from inventory.";
+		return actor + " eat " + food.toString() + " from inventory";
 	}
 }

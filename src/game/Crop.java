@@ -19,6 +19,7 @@ public class Crop extends Item {
 		if (age == 20) {
 			displayChar = 'C';
 			setIsRipe(true);
+			this.allowableActions.add(new HarvestAction(location, Player.class));
 		}
 	}
 	
