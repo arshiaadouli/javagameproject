@@ -19,7 +19,7 @@ public class FertilizeAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		String retVal = actor + " fertlized an Unripe Crop.";
+		String retVal = actor + " fertlized an Unripe Crop";
 		List<Item> itemsOnLocation = l.getItems();
 		
 		if (itemsOnLocation.size() > 0) {
@@ -36,6 +36,6 @@ public class FertilizeAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " fertilizes an Unripe Crop.";
+		return actor + " fertilizes an Unripe Crop";
 	}
 }

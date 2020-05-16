@@ -17,11 +17,11 @@ public class EatFoodBehaviour implements Behaviour {
 	public Action getAction(Actor actor, GameMap map) {
 		// Is there a Food item in my inventory?
 		for (Item i : h.getInventory()) {
-			if (i.getClass().isInstance(Food.class)) {
-				f = (Food) i;
+			if (i.asFood(i) != null) {
+				f = i.asFood(i);
+				return new EatFoodAction(f);
 			}
 		}
-		
-		return new EatFoodAction(f);
+		return null;
 	}
 }

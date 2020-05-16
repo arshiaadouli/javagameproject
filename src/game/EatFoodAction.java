@@ -15,11 +15,9 @@ public class EatFoodAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 		String retVal = null;
 		
-		if (food != null) {
-			retVal = actor + " eats " + food.toString() + " and heals for " + food.getHealsFor();
-			actor.removeItemFromInventory(food);
-			actor.heal(food.getHealsFor());
-		}
+		retVal = actor + " eats " + food.toString() + " and heals for " + food.getHealsFor();
+		actor.removeItemFromInventory(food);
+		actor.heal(food.getHealsFor());
 		
 		return retVal;
 	}

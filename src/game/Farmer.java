@@ -19,7 +19,8 @@ public class Farmer extends Human {
 	private Behaviour[] behaviours = {
 			new FertilizeBehaviour(this),
 			new SowBehaviour(this, c),
-			new HarvestBehaviour(Player.class, cropLocations),
+			new HarvestBehaviour(cropLocations),
+			new EatFoodBehaviour(this), 
 			new WanderBehaviour()
 	};
 	
@@ -40,17 +41,6 @@ public class Farmer extends Human {
 			}
 		}
 		return new DoNothingAction();
-	}
-	
-	public boolean isInCropLocations(Location l) {
-		boolean retVal = false;
-		for (Location cropLocation : cropLocations) {
-			if (cropLocation.x() == l.x() && cropLocation.y() == l.y()) {
-				retVal = true;
-				break;
-			}
-		}
-		return retVal;
 	}
 	
 	public void addToCropLocations(Location l, Crop c) {
@@ -76,14 +66,4 @@ public class Farmer extends Human {
 	public List<Crop> getCropObjs() {
 		return cropObjs;
 	}
-	
-	public List<Crop> getRipeCropObjs() {
-		for (Crop c : cropObjs) {
-			if (c.getIsRipe()) {
-				ripeCropObjs.add(c);
-			}
-		}
-		return ripeCropObjs;
-	}
-	
 }

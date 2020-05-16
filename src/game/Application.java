@@ -62,7 +62,7 @@ public class Application {
 				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
 			} 
 			while (gameMap.at(x, y).containsAnActor());
-			gameMap.at(x,  y).addActor(new Human(name));	
+			gameMap.at(x,  y).addActor(new Human(name));
 		}
 		
 		// place a simple weapon
