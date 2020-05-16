@@ -9,6 +9,7 @@ public class Crop extends Item {
 
 	public Crop(String name) {
 		super(name, 'c', false); // 3rd parameter is false because Crop is always starts as not portable.
+		this.allowableActions.add(new FertilizeAction(this));
 	}
 	
 	@Override
@@ -21,10 +22,6 @@ public class Crop extends Item {
 			setIsRipe(true);
 			this.allowableActions.add(new HarvestAction(location));
 		}
-		
-		if (!getIsRipe()) {
-			this.allowableActions.add(new FertilizeAction(location, this));
-		}
 	}
 	
 	// getters
@@ -35,5 +32,10 @@ public class Crop extends Item {
 	// setters
 	public void setIsRipe(boolean isRipe) {
 		this.isRipe = isRipe;
+	}
+	
+	//others
+	public void fertilizeCrop() {
+		this.age += 10;
 	}
 }

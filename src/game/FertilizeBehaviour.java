@@ -19,14 +19,11 @@ public class FertilizeBehaviour implements Behaviour {
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		// Is there an UnripeCrop on me?
-		if (cropLocations != null) {
+		if (cropLocations != null && cropObjs != null) {
 			for (int i = 0; i < cropLocations.size(); i++) {
 				if (cropLocations.get(i).x() == map.locationOf(actor).x() && cropLocations.get(i).y() == map.locationOf(actor).y()) {
-					for (int j = 0; j < cropLocations.size(); j++) {
-						if (i == j) {
-							Crop c = cropObjs.get(j);
-							return new FertilizeAction(cropLocations.get(i), c);
-						}
+					if (cropObjs.get(i).getIsRipe()) {
+						return new FertilizeAction(cropObjs.get(i));
 					}
 				}
 			}

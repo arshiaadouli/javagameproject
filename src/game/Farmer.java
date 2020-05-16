@@ -14,7 +14,6 @@ public class Farmer extends Human {
 	static private ArrayList<Location> cropLocations = new ArrayList<Location>();
 	static private ArrayList<Location> ripeCropLocations = new ArrayList<Location>();
 	static private ArrayList<Crop> cropObjs = new ArrayList<Crop>();
-	static private ArrayList<Crop> ripeCropObjs = new ArrayList<Crop>();
 	private Crop c = new Crop(this.name);
 	private Behaviour[] behaviours = {
 			new FertilizeBehaviour(this),
@@ -48,7 +47,7 @@ public class Farmer extends Human {
 		cropObjs.add(c);
 	}
 	
-	// getters
+	//getters
 	
 	public List<Location> getCropLocations() {
 		return cropLocations;
