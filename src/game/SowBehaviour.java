@@ -13,9 +13,11 @@ import edu.monash.fit2099.engine.Location;
 public class SowBehaviour implements Behaviour {
 	private Farmer f;
 	private List<Location> cropLocations;
+	private Crop c;
 	
-	public SowBehaviour(Farmer f) {
+	public SowBehaviour(Farmer f, Crop c) {
 		this.f = f;
+		this.c = c;
 		this.cropLocations = f.getCropLocations();
 	}
 
@@ -32,7 +34,7 @@ public class SowBehaviour implements Behaviour {
 		
 		if (exitsAvailable.size() > 0) {
 			Collections.shuffle(exitsAvailable);
-			return new SowAction(exitsAvailable.get(0).getDestination(), f);
+			return new SowAction(exitsAvailable.get(0).getDestination(), f, c);
 		}
 		return null;
 	}

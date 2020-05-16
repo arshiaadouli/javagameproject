@@ -1,6 +1,5 @@
 package game;
 
-import java.util.List;
 import java.util.Random;
 
 import edu.monash.fit2099.engine.Action;
@@ -10,27 +9,26 @@ import edu.monash.fit2099.engine.Location;
 
 public class SowAction extends Action {
 	private Location l;
-	private List<Location> cropLocations;
 	private Farmer f;
+	private Crop c;
 	protected Random rand = new Random();
 	
-	public SowAction(Location l, Farmer f) {
+	public SowAction(Location l, Farmer f, Crop c) {
 		this.l = l;
-		this.cropLocations = f.getCropLocations();
 		this.f = f;
+		this.c = c;
 	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " plants some crops on a patch of dirt.";
 		
-		for (int i = 0; i < cropLocations.size(); i++) {
-			if (!f.isInCropLocations(l)) {
-				Crop c = new Crop(actor.toString());
-				
-				l.addItem(c);
-				f.addToCropLocations(l, c);
-			}
+		if (rand.nextFloat() <= 0.33) {
+			l.addItem(c);
+			f.addToCropLocations(l, c);
+		}
+		else {
+			retVal = actor + " tried to plant some crops on a patch of dirt but failed.";
 		}
 		
 		return retVal;

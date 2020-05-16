@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
@@ -11,14 +12,14 @@ import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.engine.DoNothingAction;
 
 public class Farmer extends Human {
-	static private List<Location> cropLocations;
-	static private List<Location> ripeCropLocations;
-	static private List<Crop> cropObjs;
-	static private List<Crop> ripeCropObjs;
+	static private ArrayList<Location> cropLocations = new ArrayList<Location>();
+	static private ArrayList<Location> ripeCropLocations = new ArrayList<Location>();
+	static private ArrayList<Crop> cropObjs = new ArrayList<Crop>();
+	static private ArrayList<Crop> ripeCropObjs = new ArrayList<Crop>();
 	private Crop c = new Crop(this.name);
 	private Behaviour[] behaviours = {
 			new FertilizeBehaviour(this),
-			new SowBehaviour(this),
+			new SowBehaviour(this, c),
 			new HarvestBehaviour(Player.class, cropLocations),
 			new EscapeBehaviour()
 	};
