@@ -1,5 +1,6 @@
 package edu.monash.fit2099.interfaces;
 
+import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Item;
 import game.Crop;
 import game.Food;
@@ -9,6 +10,14 @@ import game.Food;
  * or downcasting references in the game.   
  */
 public interface ItemInterface {
+
+	default public int craft(Actor actor, Item item){
+
+		return 0;
+	}
+
+
+
 	public default Food asFood(Item i) {
 		return i instanceof Food ? (Food) i : null;
 	}

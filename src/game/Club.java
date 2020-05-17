@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.WeaponItem;
 
 public class Club extends WeaponItem {
 
-	public Club(String name, char displayChar, int damage, String verb) {
-		super(name, displayChar, damage, verb);
+	public Club() {
+		super("Club", 'G', 25, "whacks");
 	}
 }

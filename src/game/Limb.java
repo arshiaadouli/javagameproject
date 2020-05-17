@@ -1,10 +1,10 @@
 package game;
 
+import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.WeaponItem;
 
-public class Limb extends WeaponItem {
+public interface Limb {
 
-	public Limb(String name, char displayChar, int damage, String verb) {
-		super(name, displayChar, damage, verb);
-	}
+	public int craft(Actor actor, Item item);
 }
