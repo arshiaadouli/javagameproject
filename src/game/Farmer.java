@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.engine.DoNothingAction;
 
@@ -17,8 +16,8 @@ public class Farmer extends Human {
 	private Behaviour[] behaviours = {
 			new FertilizeBehaviour(this),
 			new SowBehaviour(this),
-			new HarvestBehaviour(cropLocations),
-			new EatFoodBehaviour(this), 
+			new HarvestBehaviour(),
+			new EatFoodBehaviour(this),
 			new WanderBehaviour()
 	};
 	
@@ -52,18 +51,5 @@ public class Farmer extends Human {
 	
 	public List<Crop> getCropObjs() {
 		return cropObjs;
-	}
-	
-	public Crop getUnripeCropOnActor(List<Item> itemsOnActor) {
-		Crop retVal = null;
-		
-		for (Item i : itemsOnActor) {
-			if (i.asCrop(i) != null) {
-				if (!i.asCrop(i).getIsRipe()) {
-					retVal = i.asCrop(i);
-				}
-			}
-		}
-		return retVal;
 	}
 }

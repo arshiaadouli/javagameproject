@@ -19,8 +19,8 @@ public class FertilizeBehaviour implements Behaviour {
 		// Is there an UnripeCrop on me?
 		List<Item> itemsOnActor = map.locationOf(actor).getItems();
 		
-		if (f.getUnripeCropOnActor(itemsOnActor) != null) {
-			return new FertilizeAction(f.getUnripeCropOnActor(itemsOnActor));
+		if (f.getUnripeCrop(itemsOnActor) != null) {
+			return new FertilizeAction(f.getUnripeCrop(itemsOnActor));
 		}
 		return null;
 	}

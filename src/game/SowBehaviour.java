@@ -17,7 +17,7 @@ public class SowBehaviour implements Behaviour {
 	}
 
 	@Override
-	public Action getAction(Actor actor, GameMap map) {	
+	public Action getAction(Actor actor, GameMap map) {		
 		List<Exit> exits = map.locationOf(actor).getExits();
 		ArrayList<Exit> exitsAvailable = new ArrayList<Exit>();
 		Crop c = new Crop(actor.toString());
