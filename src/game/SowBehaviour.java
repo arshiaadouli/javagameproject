@@ -11,17 +11,16 @@ import edu.monash.fit2099.engine.GameMap;
 
 public class SowBehaviour implements Behaviour {
 	private Farmer f;
-	private Crop c;
 	
-	public SowBehaviour(Farmer f, Crop c) {
+	public SowBehaviour(Farmer f) {
 		this.f = f;
-		this.c = c;
 	}
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {	
 		List<Exit> exits = map.locationOf(actor).getExits();
 		ArrayList<Exit> exitsAvailable = new ArrayList<Exit>();
+		Crop c = new Crop(actor.toString());
 		
 		for (Exit e : exits) {
 			if (e.getDestination().canActorEnter(actor)) {

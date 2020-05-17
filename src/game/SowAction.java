@@ -21,14 +21,14 @@ public class SowAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		String retVal = actor + " plants some crops on a patch of dirt.";
+		String retVal = actor + " plants some crops on a patch of dirt";
 		
 		if (rand.nextFloat() <= 0.33) {
 			l.addItem(c);
 			f.addToCropLocations(l, c);
 		}
 		else {
-			retVal = actor + " tried to plant some crops on a patch of dirt but failed.";
+			retVal = actor + " tried to plant some crops on a patch of dirt but failed";
 		}
 		
 		return retVal;
@@ -36,6 +36,6 @@ public class SowAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " plant crops on a patch of dirt nearby.";
+		return actor + " plant crops on a patch of dirt nearby";
 	}
 }

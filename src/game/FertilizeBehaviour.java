@@ -5,28 +5,22 @@ import java.util.List;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Location;
+import edu.monash.fit2099.engine.Item;
 
 public class FertilizeBehaviour implements Behaviour {
-	private List<Location> cropLocations;
-	private List<Crop> cropObjs;
+	private Farmer f;
 	
 	public FertilizeBehaviour(Farmer f) {
-		this.cropObjs = f.getCropObjs();
-		this.cropLocations = f.getCropLocations();
+		this.f = f;
 	}
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		// Is there an UnripeCrop on me?
-		if (cropLocations != null && cropObjs != null) {
-			for (int i = 0; i < cropLocations.size(); i++) {
-				if (cropLocations.get(i).x() == map.locationOf(actor).x() && cropLocations.get(i).y() == map.locationOf(actor).y()) {
-					if (cropObjs.get(i).getIsRipe()) {
-						return new FertilizeAction(cropObjs.get(i));
-					}
-				}
-			}
+		List<Item> itemsOnActor = map.locationOf(actor).getItems();
+		
+		if (f.getUnripeCropOnActor(itemsOnActor) != null) {
+			return new FertilizeAction(f.getUnripeCropOnActor(itemsOnActor));
 		}
 		return null;
 	}

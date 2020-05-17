@@ -14,7 +14,7 @@ import game.Player;
  * or downcasting references in the game.   
  */
 
-public interface ActorInterface {
+public interface ActorInterface {	
 	public default void harvestCrop(Actor actor, GameMap map, Location l) {
 		if (actor.asPlayer(actor) != null) {
 			ArrayList<Item> itemsOnLocation = new ArrayList<>();
