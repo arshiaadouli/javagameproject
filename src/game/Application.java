@@ -10,7 +10,7 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.World;
 
 /**
- * The main class for the zombie apocalypse game.
+ * The main class for the zombie apocalypse game..
  *
  */
 public class Application {
@@ -49,7 +49,7 @@ public class Application {
 		GameMap gameMap = new GameMap(groundFactory, map );
 		world.addGameMap(gameMap);
 		
-		Actor player = new Player("Player", '@', 100);
+		Actor player = new Player("Player", '@', 500);
 		world.addPlayer(player, gameMap.at(42, 15));
 		
 	    // Place some random humans
@@ -66,10 +66,10 @@ public class Application {
 		}
 		
 		// place a simple weapon
-		gameMap.at(74, 20).addItem(new Plank());
+		gameMap.at(42, 15).addItem(new Plank());
 		
 		// FIXME: Add more zombies!
-		gameMap.at(30, 20).addActor(new Zombie("Groan"));
+		gameMap.at(74, 20).addActor(new Zombie("Groan"));
 		gameMap.at(30,  18).addActor(new Zombie("Boo"));
 		gameMap.at(10,  4).addActor(new Zombie("Uuuurgh"));
 		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));

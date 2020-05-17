@@ -41,25 +41,73 @@ public class AttackAction extends Action {
 			return actor + " misses " + target + ".";
 		}
 
+
+
 		int damage = weapon.damage();
+
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 
 		target.hurt(damage);
+
+		if(actor instanceof Zombie && weapon.verb().equals("bites")){
+			actor.heal(5);
+
+		}
+
+
+
+
+
+
 		if (!target.isConscious()) {
-			Item corpse = new PortableItem("dead " + target, '%');
-			map.locationOf(target).addItem(corpse);
-			
-			Actions dropActions = new Actions();
-			for (Item item : target.getInventory())
-				dropActions.add(item.getDropAction());
-			for (Action drop : dropActions)
-				drop.execute(target, map);
+			PortableItem corpse = null;
+
+			if(target.hasCapability(ZombieCapability.ALIVE)){
+				corpse = new PortableItem("dead " + target, '%');
+				Actions dropActions = new Actions();
+				for (Item item : target.getInventory())
+					dropActions.add(item.getDropAction());
+				for (Action drop : dropActions)
+					drop.execute(target, map);
+				map.locationOf(target).addItem(corpse);
+				corpse.setZombieCap(ZombieCapability.ALIVE);
+
+
+
+			}
+			else{
+				corpse = new PortableItem("dead " + target, '%');
+				Actions dropActions = new Actions();
+				for (Item item : target.getInventory())
+					dropActions.add(item.getDropAction());
+				for (Action drop : dropActions)
+					drop.execute(target, map);
+				map.locationOf(target).addItem(corpse);
+				corpse.setZombieCap(ZombieCapability.UNDEAD);
+
+
+			}
+
+
+
+
+//			map.locationOf(target).addItem(corpse);
 			map.removeActor(target);
-			
+
+
+
+//			if(target instanceof Human){
+//				corpse.addCapability(ZombieCapability.UNDEAD);
+//			}
+
 			result += System.lineSeparator() + target + " is killed.";
+
+
 		}
 
 		return result;
+
+
 	}
 
 	@Override

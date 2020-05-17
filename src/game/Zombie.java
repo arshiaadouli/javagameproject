@@ -1,13 +1,9 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actions;
-import edu.monash.fit2099.engine.Display;
-import edu.monash.fit2099.engine.DoNothingAction;
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.IntrinsicWeapon;
+import edu.monash.fit2099.engine.*;
 
 /**
  * A Zombie.
@@ -18,25 +14,63 @@ import edu.monash.fit2099.engine.IntrinsicWeapon;
  *
  */
 public class Zombie extends ZombieActor {
+	public double punchChance = 0.5;
+
+	public ArrayList<Limb> items = new ArrayList<>();
+	public int numArm;
+	public int numLeg;
+	public int turn = 0;
+
+
+
+
+
 	private Behaviour[] behaviours = {
 			new AttackBehaviour(ZombieCapability.ALIVE),
+			new PickUpBehaviour(),
 			new HuntBehaviour(Human.class, 10),
 			new WanderBehaviour()
 	};
 
 	public Zombie(String name) {
 		super(name, 'Z', 100, ZombieCapability.UNDEAD);
+
+		items.add(new Arm("left arm"));
+		items.add(new Arm("right arm"));
+		items.add(new Leg("left leg"));
+		items.add(new Leg("right leg"));
 	}
 	
 
 	@Override
 	public IntrinsicWeapon getIntrinsicWeapon() {
 		Random random = new Random();
-		boolean b = random.nextBoolean();
-		if(b)
+		double d = random.nextDouble();
+		if(d <= punchChance)
 			return new IntrinsicWeapon(10, "punches");
 		else
 			return new IntrinsicWeapon(15, "bites");
+	}
+
+	public Limb temp = null;
+	@Override
+	public void hurt(int points){
+
+		super.hurt(points);
+		if(items.size() >= 1) {
+			Random random1 = new Random();
+			if(random1.nextDouble() <= 0.25){
+
+				Random random2 = new Random();
+				int item =  random2.nextInt(items.size());
+				temp = items.remove(item);
+				System.out.println(temp.toString() + "  has been removed from "+ this.toString());
+
+			}
+
+
+		}
+
 	}
 
 	/**
@@ -50,6 +84,11 @@ public class Zombie extends ZombieActor {
 	 */
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+		turn += 1;
+		if (temp != null){
+			map.locationOf(this).addItem((Item)temp);
+			temp = null;
+		}
 		for (Behaviour behaviour : behaviours) {
 			Action action = behaviour.getAction(this, map);
 			if (action != null)

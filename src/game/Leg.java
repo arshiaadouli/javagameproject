@@ -1,8 +1,27 @@
 package game;
 
-public class Leg extends Limb {
+import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.WeaponItem;
 
-	public Leg(String name, char displayChar, int damage, String verb) {
-		super(name, displayChar, damage, verb);
+public class Leg extends WeaponItem implements Limb {
+
+	public Leg(String name) {
+		super(name, 'L', 18,  "blah");
+		addCapability(ZombieCapability.ALIVE);
+		allowableActions.add(new CraftAction());
+	}
+
+
+	@Override
+	public int craft(Actor actor, Item item) {
+
+		if(item instanceof Leg){
+			actor.removeItemFromInventory(item);
+			actor.addItemToInventory(new Mace());
+			System.out.println("craft action works");
+			return 1;
+		}
+	return 0;
 	}
 }
