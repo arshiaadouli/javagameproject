@@ -26,6 +26,7 @@ public class Crop extends Item {
 			if (h == null) {
 				h = new HarvestAction(location);
 				this.allowableActions.add(h);
+				
 			}
 		}
 	}
