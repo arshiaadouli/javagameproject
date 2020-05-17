@@ -1,6 +1,5 @@
 package edu.monash.fit2099.interfaces;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.Actor;
@@ -18,13 +17,7 @@ import game.Player;
 
 public interface ActorInterface {	
 	public default void harvestCrop(Actor actor, GameMap map, Location l) {
-		ArrayList<Item> itemsOnActorLocation = new ArrayList<>();
-		Crop c = new Crop(actor.toString());
-		c = actor.getRipeCrop(l.getItems());
-		
-		for (Item i : map.locationOf(actor).getItems()) {
-			itemsOnActorLocation.add(i);
-		}
+		Crop c = actor.getRipeCrop(l.getItems());
 		
 		if (actor.asPlayer(actor) != null) {
 			actor.addItemToInventory(new Food("Food", 'f'));
