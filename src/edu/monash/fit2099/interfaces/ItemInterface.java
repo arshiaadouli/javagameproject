@@ -1,6 +1,7 @@
 package edu.monash.fit2099.interfaces;
 
 import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import game.Crop;
 import game.Food;
@@ -11,13 +12,13 @@ import game.Food;
  */
 public interface ItemInterface {
 
-	default public int craft(Actor actor, Item item){
+	default public int craft(Actor actor, Item item, GameMap map){
 
 		return 0;
 	}
 
 
-
+	default public boolean isHasIt(){return false;}
 	public default Food asFood(Item i) {
 		return i instanceof Food ? (Food) i : null;
 	}

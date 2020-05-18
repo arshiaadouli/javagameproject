@@ -17,8 +17,8 @@ public class Zombie extends ZombieActor {
 	public double punchChance = 0.5;
 
 	public ArrayList<Limb> items = new ArrayList<>();
-	public int numArm;
-	public int numLeg;
+	public int numArm = getNumArm();
+	public int numLeg = getNumLeg();
 	public int turn = 0;
 
 
@@ -35,10 +35,10 @@ public class Zombie extends ZombieActor {
 	public Zombie(String name) {
 		super(name, 'Z', 100, ZombieCapability.UNDEAD);
 
-		items.add(new Arm("left arm"));
-		items.add(new Arm("right arm"));
-		items.add(new Leg("left leg"));
-		items.add(new Leg("right leg"));
+		items.add(new Arm("left arm", false));
+		items.add(new Arm("right arm", false));
+		items.add(new Leg("left leg", false));
+		items.add(new Leg("right leg", false));
 	}
 	
 
@@ -50,6 +50,28 @@ public class Zombie extends ZombieActor {
 			return new IntrinsicWeapon(10, "punches");
 		else
 			return new IntrinsicWeapon(15, "bites");
+	}
+
+	public int getNumArm() {
+		int temp = 0;
+		for(Limb i : items){
+			if(i instanceof Arm){
+				temp +=1;
+
+			}
+		}
+		return temp;
+	}
+
+	public int getNumLeg() {
+		int temp = 0;
+		for(Limb i : items){
+			if(i instanceof Leg){
+				temp +=1;
+
+			}
+		}
+		return temp;
 	}
 
 	public Limb temp = null;
@@ -84,16 +106,24 @@ public class Zombie extends ZombieActor {
 	 */
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+
+		System.out.println(getNumLeg());
+		System.out.println(getNumArm());
 		turn += 1;
+		System.out.println();
+
 		if (temp != null){
 			map.locationOf(this).addItem((Item)temp);
 			temp = null;
 		}
+
+
 		for (Behaviour behaviour : behaviours) {
 			Action action = behaviour.getAction(this, map);
 			if (action != null)
 				return action;
 		}
+
 		return new DoNothingAction();	
 	}
 }

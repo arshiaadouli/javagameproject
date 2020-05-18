@@ -1,28 +1,46 @@
 package game;
 
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Item;
-import edu.monash.fit2099.engine.WeaponItem;
+import edu.monash.fit2099.engine.*;
 
 public class Arm extends WeaponItem implements Limb {
 
-	public Arm(String name) {
-		super(name, 'A', 18, "blah");
+	boolean hasIt = false;
+	public Arm(String name, boolean b) {
+		super(name, 'A', 18,  "blah");
 		addCapability(ZombieCapability.ALIVE);
-		allowableActions.add(new CraftAction());
+		this.hasIt = b;
+		if(isHasIt())
+			allowableActions.add(new CraftAction());
+//		allowableActions.add(new SpecialAction());
+	}
+
+	public boolean isHasIt() {
+		return hasIt;
+	}
+
+	public void setHasIt(boolean hasIt) {
+		this.hasIt = hasIt;
 	}
 
 	@Override
-	public int craft(Actor actor, Item item) {
+	public PickUpItemAction getPickUpAction(){
+
+		this.setHasIt(true);
+		System.out.println("the boolean is " + isHasIt());
+		Arm arm = this;
+		arm.setHasIt(true);
+		return new PickUpItemAction(arm);
+	}
+	@Override
+	public int craft(Actor actor, Item item, GameMap map) {
+
 		if(item instanceof Arm){
 
 			actor.removeItemFromInventory(item);
 			actor.addItemToInventory(new Club());
 			System.out.println("craft action works");
 			return 1;
-
 		}
-
 		return 0;
 	}
 }
