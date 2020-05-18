@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.Location;
 public class Crop extends Item {
 	private int age = 0;
 	private boolean isRipe = false;
-	private HarvestAction h = null;
 	private FertilizeAction f = new FertilizeAction(this);
 
 	public Crop(String name) {
@@ -22,11 +21,6 @@ public class Crop extends Item {
 		if (age >= 20) {
 			displayChar = 'C';
 			setIsRipe(true);
-			
-			if (h == null) {
-				h = new HarvestAction(location);
-				this.allowableActions.add(h);
-			}
 		}
 	}
 	

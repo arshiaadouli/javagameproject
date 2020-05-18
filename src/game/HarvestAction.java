@@ -16,7 +16,19 @@ public class HarvestAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " harvested a Ripe Crop nearby";
 		
-		actor.harvestCrop(actor, map, l);
+		Crop c = actor.getRipeCrop(l.getItems());
+		
+		if (actor.asPlayer(actor) != null) {
+			actor.addItemToInventory(new Food("Food", 'f'));
+			
+			if (c != null) {
+				l.removeItem(c);
+			}
+		}
+		else {
+			l.addItem(new Food("Food", 'f'));
+			l.removeItem(c);
+		}
 		
 		return retVal;
 	}

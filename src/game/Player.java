@@ -27,8 +27,6 @@ public class Player extends Human {
 		}
 	}
 	
-	
-	
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		System.out.println("items in player's inventory");

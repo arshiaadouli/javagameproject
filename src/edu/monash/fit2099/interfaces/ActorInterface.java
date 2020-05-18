@@ -7,9 +7,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
-import edu.monash.fit2099.engine.Location;
 import game.Crop;
-import game.Food;
 import game.HarvestAction;
 import game.Player;
 
@@ -19,21 +17,6 @@ import game.Player;
  */
 
 public interface ActorInterface {
-	public default void harvestCrop(Actor actor, GameMap map, Location l) {
-		Crop c = actor.getRipeCrop(l.getItems());
-		
-		if (actor.asPlayer(actor) != null) {
-			actor.addItemToInventory(new Food("Food", 'f'));
-			
-			if (c != null) {
-				l.removeItem(c);
-			}
-		}
-		else {
-			l.addItem(new Food("Food", 'f'));
-			l.removeItem(c);
-		}
-	}
 	
 	public default Player asPlayer(Actor a) {
 		return a instanceof Player ? (Player) a : null;
@@ -67,6 +50,7 @@ public interface ActorInterface {
 	
 	public default void addHarvestAction(Actions actions, Actor actor, GameMap map) {
 		List<Exit> actorExits = map.locationOf(actor).getExits();
+		List<Item> itemsOnActor = map.locationOf(actor).getItems();
 		boolean harvestActionAdded = false;
 		
 		for (Exit e : actorExits) {
@@ -78,6 +62,15 @@ public interface ActorInterface {
 						actions.add(new HarvestAction(e.getDestination()));
 						harvestActionAdded = true;
 					}
+				}
+			}
+		}
+		
+		for (Item i : itemsOnActor) {
+			if (i.asCrop(i) != null) {
+				if (i.asCrop(i).getIsRipe() && !harvestActionAdded) {
+					actions.add(new HarvestAction(map.locationOf(actor)));
+					harvestActionAdded = true;
 				}
 			}
 		}
