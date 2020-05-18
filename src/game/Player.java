@@ -2,18 +2,10 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-import java.security.spec.RSAOtherPrimeInfo;
-
 /**
  * Class representing the Player.
  */
 public class Player extends Human {
-
-
-
-
-
-
 	private Menu menu = new Menu();
 
 	/**
@@ -26,6 +18,7 @@ public class Player extends Human {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 	}
+	
 	private void addCraftAction(Actions actions) {
 		for (Item i : inventory) {
 			if (i.isHasIt()) {
@@ -33,6 +26,9 @@ public class Player extends Human {
 			}
 		}
 	}
+	
+	
+	
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		System.out.println("items in player's inventory");
@@ -41,7 +37,6 @@ public class Player extends Human {
 			if(i instanceof Leg){
 				System.out.println(((Leg) i).hasIt);
 			}
-
 		}
 
 //		for(Item i : inventory){
@@ -66,10 +61,8 @@ public class Player extends Human {
 //				}
 //			}
 
+		this.addHarvestAction(actions, this, map);
 		addCraftAction(actions);
-
-
-
 
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();

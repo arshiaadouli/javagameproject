@@ -2,12 +2,15 @@ package edu.monash.fit2099.interfaces;
 
 import java.util.List;
 
+import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 import game.Crop;
 import game.Food;
+import game.HarvestAction;
 import game.Player;
 
 /**
@@ -15,7 +18,7 @@ import game.Player;
  * or downcasting references in the game.   
  */
 
-public interface ActorInterface {	
+public interface ActorInterface {
 	public default void harvestCrop(Actor actor, GameMap map, Location l) {
 		Crop c = actor.getRipeCrop(l.getItems());
 		
@@ -60,5 +63,23 @@ public interface ActorInterface {
 			}
 		}
 		return retVal;
+	}
+	
+	public default void addHarvestAction(Actions actions, Actor actor, GameMap map) {
+		List<Exit> actorExits = map.locationOf(actor).getExits();
+		boolean harvestActionAdded = false;
+		
+		for (Exit e : actorExits) {
+			List<Item> itemsOnLocation = e.getDestination().getItems();
+			
+			for (Item i : itemsOnLocation) {
+				if (i.asCrop(i) != null && !harvestActionAdded) { // if i is a crop (ripe and unripe)
+					if (i.asCrop(i).getIsRipe()) { // if i is a ripe crop
+						actions.add(new HarvestAction(e.getDestination()));
+						harvestActionAdded = true;
+					}
+				}
+			}
+		}
 	}
 }

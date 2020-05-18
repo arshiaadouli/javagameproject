@@ -35,7 +35,6 @@ public class Arm extends WeaponItem implements Limb {
 	public int craft(Actor actor, Item item, GameMap map) {
 
 		if(item instanceof Arm){
-
 			actor.removeItemFromInventory(item);
 			actor.addItemToInventory(new Club());
 			System.out.println("craft action works");

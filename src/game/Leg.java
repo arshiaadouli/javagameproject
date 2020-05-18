@@ -36,12 +36,11 @@ public class Leg extends WeaponItem implements Limb {
 	public int craft(Actor actor, Item item, GameMap map) {
 
 		if(item instanceof Leg){
-
 			actor.removeItemFromInventory(item);
 			actor.addItemToInventory(new Mace());
 			System.out.println("craft action works");
 			return 1;
 		}
-	return 0;
+		return 0;
 	}
 }

@@ -21,15 +21,14 @@ public class CraftAction extends Action {
 		for(Item i : actor.getInventory()){
 			items.add(i);
 		}
+		
 		for(Item i : items) {
-
 			if (i.craft(actor, i, map) == 1) {
 //				item = i.toString();
 //				craftedItem = actor.getInventory().get(actor.getInventory().size() - 1).toString();
 				return "a " + actor.getInventory().get(actor.getInventory().size() - 1).toString() + " has been added to " + actor.toString() + " inventory.";
 			}
 		}
-
 		return null;
 	}
 
