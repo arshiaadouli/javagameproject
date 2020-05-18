@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Item;
 
 public class SowBehaviour implements Behaviour {
 	private Farmer f;
@@ -17,13 +18,15 @@ public class SowBehaviour implements Behaviour {
 	}
 
 	@Override
-	public Action getAction(Actor actor, GameMap map) {	
+	public Action getAction(Actor actor, GameMap map) {		
 		List<Exit> exits = map.locationOf(actor).getExits();
 		ArrayList<Exit> exitsAvailable = new ArrayList<Exit>();
 		Crop c = new Crop(actor.toString());
 		
 		for (Exit e : exits) {
-			if (e.getDestination().canActorEnter(actor)) {
+			List<Item> itemsOnLocation = e.getDestination().getItems();
+			
+			if (actor.getRipeCrop(itemsOnLocation) == null && actor.getUnripeCrop(itemsOnLocation) == null) {
 				exitsAvailable.add(e);
 			}
 		}

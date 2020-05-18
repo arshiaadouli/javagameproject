@@ -2,7 +2,6 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
@@ -11,30 +10,29 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
 public class HarvestBehaviour implements Behaviour {
-	private List<Location> ripeCropLocations;
-	
-	public HarvestBehaviour(List<Location> ripeCropLocations) {
-		this.ripeCropLocations = ripeCropLocations;
-	}
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		List<Exit> exitsAvailable = map.locationOf(actor).getExits();
-		ArrayList<Exit> exitsWithRipeCrop = new ArrayList<Exit>();
+		// Is there a Ripe Crop around me?
+		ArrayList<Exit> exitsAvailable = new ArrayList<>();
+		ArrayList<Location> locationsWithRipeCrop = new ArrayList<>();
+		
+		for (Exit e : map.locationOf(actor).getExits()) {
+			exitsAvailable.add(e);
+		}
 		
 		for (Exit e : exitsAvailable) {
-			for (Location l : ripeCropLocations) {
-				if (e.getDestination().x() == l.x() && e.getDestination().y() == l.y()) {
-					exitsWithRipeCrop.add(e);
+			if (e.getDestination().getGround().hasRipeCrop(e.getDestination())) {
+				if (actor.getRipeCrop(e.getDestination().getItems()) != null) {
+					locationsWithRipeCrop.add(e.getDestination());
 				}
 			}
 		}
 		
-		if (exitsWithRipeCrop.size() > 0) {
-			Collections.shuffle(exitsWithRipeCrop);
-			return new HarvestAction(exitsWithRipeCrop.get(0).getDestination());
+		if (locationsWithRipeCrop.size() > 0) {
+			Collections.shuffle(locationsWithRipeCrop);
+			return new HarvestAction(locationsWithRipeCrop.get(0));
 		}
-		
 		return null;
 	}
 }

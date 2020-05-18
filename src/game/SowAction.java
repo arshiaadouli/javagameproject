@@ -24,13 +24,12 @@ public class SowAction extends Action {
 		String retVal = actor + " plants some crops on a patch of dirt";
 		
 		if (rand.nextFloat() <= 0.33) {
-			l.addItem(c);
-			f.addToCropLocations(l, c);
+			this.l.addItem(this.c);
+			f.addToCropLocations(this.l, this.c);
 		}
 		else {
 			retVal = actor + " tried to plant some crops on a patch of dirt but failed";
 		}
-		
 		return retVal;
 	}
 
