@@ -21,25 +21,20 @@ public class DropBehaviour implements Behaviour {
             }
         }
 
-
         if(actor.getNumArm() == 1) {
             if (!(actor.getWeapon() instanceof IntrinsicWeapon)) {
 //                return new DropItemAction((Item)actor.getWeapon());
                 Random random = new Random();
-                if(random.nextDouble()<=0.5) {
+                if(random.nextDouble() <= 0.5) {
                     item = (Item) actor.getWeapon();
                 }
             }
         }
 
-
-
-
-
-
         if (item != null) {
             for (Exit exit : map.locationOf(actor).getExits()) {
                 Location destination = exit.getDestination();
+                
                 if (destination.canActorEnter(actor)) {
                     destination.addItem(item);
                     actor.removeItemFromInventory(item);
@@ -47,8 +42,6 @@ public class DropBehaviour implements Behaviour {
                 }
             }
         }
-
         return null;
     }
-
 }

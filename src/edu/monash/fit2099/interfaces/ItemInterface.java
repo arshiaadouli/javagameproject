@@ -13,12 +13,14 @@ import game.Food;
 public interface ItemInterface {
 
 	default public int craft(Actor actor, Item item, GameMap map){
-
 		return 0;
 	}
 
 
-	default public boolean isHasIt(){return false;}
+	default public boolean isHasIt() {
+		return false;
+	}
+	
 	public default Food asFood(Item i) {
 		return i instanceof Food ? (Food) i : null;
 	}

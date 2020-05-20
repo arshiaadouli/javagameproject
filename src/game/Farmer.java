@@ -39,12 +39,11 @@ public class Farmer extends Human {
 	/**
 	 * Protected constructor can be used to create subtypes of farmers, such as different types of farmers that sow different types of crop that heals for different amount.
 	 * @param name the farmer's display name.
-	 * @param displayChar character that will represent the farmer in the map.
 	 * @param hitPoints amount of damage that the farmer can take before it dies.
 	 */
 
-	protected Farmer(String name, char displayChar, int hitPoints) {
-		super(name, displayChar, hitPoints);
+	protected Farmer(String name, int hitPoints) {
+		super(name, 'F', hitPoints);
 	}
 	
 	@Override
@@ -53,6 +52,7 @@ public class Farmer extends Human {
 		
 		for (Behaviour behaviour : behaviours) {
 			Action action = behaviour.getAction(this, map);
+			
 			if (action != null) {
 				return action;
 			}
@@ -64,11 +64,17 @@ public class Farmer extends Human {
 	 * Adds to 2 ArrayLists one containing location and another crop objects.
 	 * @param l location object to add.
 	 * @param c crop object to add.
+	 * @throws Exception 
 	 */
 	
-	public void addToCropLocations(Location l, Crop c) {
-		cropLocations.add(l);
-		cropObjs.add(c);
+	public void addToCropLocations(Location l, Crop c) throws Exception {
+		if (l != null && c != null) {
+			cropLocations.add(l);
+			cropObjs.add(c);
+		}
+		else {
+			throw new Exception("Location object and Crop object cannot be null");
+		}
 	}
 	
 	/**

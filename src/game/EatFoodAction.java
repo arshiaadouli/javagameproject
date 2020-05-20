@@ -2,6 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.DropItemAction;
 import edu.monash.fit2099.engine.GameMap;
 
 /**
@@ -24,7 +25,10 @@ public class EatFoodAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " eats " + food.toString() + " and heals for " + food.getHealsFor();
 		
-		actor.removeItemFromInventory(food);
+		DropItemAction dia = new DropItemAction(food);
+		dia.execute(actor, map);
+		map.locationOf(actor).removeItem(food);
+		
 		actor.heal(food.getHealsFor());
 		
 		return retVal;

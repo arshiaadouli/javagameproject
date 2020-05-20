@@ -40,7 +40,12 @@ public class SowAction extends Action {
 		
 		if (rand.nextFloat() <= 0.33) {
 			this.l.addItem(this.c);
-			f.addToCropLocations(this.l, this.c);
+			
+			try {
+				f.addToCropLocations(this.l, this.c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		else {
 			retVal = null;

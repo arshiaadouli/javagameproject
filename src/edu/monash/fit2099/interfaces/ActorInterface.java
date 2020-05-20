@@ -40,8 +40,6 @@ public interface ActorInterface {
 		}
 	}
 
-
-
 	public default Player asPlayer(Actor a) {
 		return a instanceof Player ? (Player) a : null;
 	}

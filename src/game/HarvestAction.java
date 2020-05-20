@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
+import edu.monash.fit2099.engine.PickUpItemAction;
 
 /**
  * Action for humans to harvest crop objects adjacent to them.
@@ -15,8 +16,8 @@ public class HarvestAction extends Action {
 	/**
 	 * Container for the location of the ripe crop that is to be harvested by the human.
 	 */
-	
 	private Location l;
+	private static int foodNum = 0;
 	
 	public HarvestAction(Location l) {
 		this.l = l;
@@ -29,14 +30,20 @@ public class HarvestAction extends Action {
 		Crop c = actor.getRipeCrop(l.getItems());
 		
 		if (actor.asPlayer(actor) != null) {
-			actor.addItemToInventory(new Food("Food"));
+			foodNum++;
+			Food food = new Food("Food " + foodNum);
+			map.locationOf(actor).addItem(food);
+			PickUpItemAction puia = new PickUpItemAction(food);
+			puia.execute(actor, map);
+			
 			
 			if (c != null) {
 				l.removeItem(c);
 			}
 		}
 		else {
-			l.addItem(new Food("Food"));
+			foodNum++;
+			l.addItem(new Food("Food " + foodNum));
 			l.removeItem(c);
 		}
 		return retVal;

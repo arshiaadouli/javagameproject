@@ -21,7 +21,6 @@ public class Food extends Item {
 	
 	public Food(String name) {
 		super(name, 'f', true); // 3rd parameter is true because Food is always portable.
-		this.allowableActions.add(new EatFoodAction(this));
 	}
 	
 	/**
