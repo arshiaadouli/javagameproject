@@ -121,10 +121,8 @@ public class Zombie extends ZombieActor {
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
-		System.out.println(getNumLeg());
-		System.out.println(getNumArm());
 		turn += 1;
-		System.out.println();
+
 
 		if (temp != null){
 			map.locationOf(this).addItem((Item)temp);
