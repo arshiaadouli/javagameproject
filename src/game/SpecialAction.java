@@ -9,7 +9,7 @@ public class SpecialAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         for(Item i : actor.getInventory()){
-            if (i.isHasIt()) {
+            if (i.craftable()) {
                 new CraftAction(i).execute(actor, map);
             }
         }

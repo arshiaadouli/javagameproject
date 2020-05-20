@@ -17,7 +17,7 @@ public interface ItemInterface {
 	}
 
 
-	public default boolean isHasIt() {
+	public default boolean craftable() {
 		return false;
 	}
 	

@@ -26,7 +26,7 @@ public interface ActorInterface {
 
 	default public void addCraftAction(Actions actions, Actor actor) {
 		for (Item i : actor.getInventory()) {
-			if (i.isHasIt()) {
+			if (i.craftable()) {
 				actions.add(new CraftAction(i));
 			}
 		}

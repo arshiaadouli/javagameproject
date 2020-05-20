@@ -13,7 +13,7 @@ public class Leg extends WeaponItem implements Limb {
 //		allowableActions.add(new SpecialAction());
 	}
 
-	public boolean isHasIt() {
+	public boolean craftable() {
 		return hasIt;
 	}
 
@@ -25,7 +25,7 @@ public class Leg extends WeaponItem implements Limb {
 	public PickUpItemAction getPickUpAction(){
 
 		this.setHasIt(true);
-		System.out.println("the boolean is " + isHasIt());
+		System.out.println("the boolean is " + craftable());
 		Leg leg = this;
 		leg.setHasIt(true);
 		return new PickUpItemAction(leg);

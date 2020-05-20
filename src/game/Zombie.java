@@ -14,12 +14,12 @@ import edu.monash.fit2099.engine.*;
  *
  */
 public class Zombie extends ZombieActor {
-	public double punchChance = 0.5;
+	private double punchChance = 0.5;
 
-	public ArrayList<Limb> items = new ArrayList<>();
-	public int numArm = getNumArm();
-	public int numLeg = getNumLeg();
-	public int turn = 0;
+	private ArrayList<Limb> items = new ArrayList<>();
+	private int numArm = getNumArm();
+	private int numLeg = getNumLeg();
+	private int turn = 0;
 
 
 
@@ -86,7 +86,7 @@ public class Zombie extends ZombieActor {
 
 
 
-	public Limb temp = null;
+	public Limb tempLimb = null;
 
 	@Override
 	public void hurt(int points){
@@ -98,9 +98,9 @@ public class Zombie extends ZombieActor {
 
 				Random random2 = new Random();
 				int item =  random2.nextInt(items.size());
-				temp = items.remove(item);
+				tempLimb = items.remove(item);
 				System.out.println("zombie limbs detached: ");
-				System.out.println(temp.toString() + "  has been removed from "+ this.toString());
+				System.out.println(tempLimb.toString() + "  has been removed from "+ this.toString());
 
 			}
 
@@ -124,9 +124,16 @@ public class Zombie extends ZombieActor {
 		turn += 1;
 
 
-		if (temp != null){
-			map.locationOf(this).addItem((Item)temp);
-			temp = null;
+		if (tempLimb != null){
+			map.locationOf(this).addItem((Item)tempLimb);
+			tempLimb = null;
+		}
+
+		if(numArm==1){
+			punchChance=0.25;
+		}
+		if(numArm==0){
+			punchChance=0;
 		}
 
 

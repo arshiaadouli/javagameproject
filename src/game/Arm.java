@@ -13,7 +13,7 @@ public class Arm extends WeaponItem implements Limb {
 //		allowableActions.add(new SpecialAction());
 	}
 
-	public boolean isHasIt() {
+	public boolean craftable() {
 		return hasIt;
 	}
 
@@ -24,7 +24,7 @@ public class Arm extends WeaponItem implements Limb {
 	@Override
 	public PickUpItemAction getPickUpAction() {
 		this.setHasIt(true);
-		System.out.println("the boolean is " + isHasIt());
+		System.out.println("the boolean is " + craftable());
 		Arm arm = this;
 		arm.setHasIt(true);
 		return new PickUpItemAction(arm);

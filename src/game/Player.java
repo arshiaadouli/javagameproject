@@ -19,14 +19,18 @@ public class Player extends Human {
 		super(name, displayChar, hitPoints);
 	}
 
+
+
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+
 
 
 
 		this.addHarvestAction(actions, this, map);
 		this.addCraftAction(actions, this);
 		this.addEatFoodAction(actions, this);
+
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 		return menu.showMenu(this, actions, display);
