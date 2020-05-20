@@ -12,12 +12,12 @@ import game.Food;
  */
 public interface ItemInterface {
 
-	default public int craft(Actor actor, Item item, GameMap map){
+	public default int craft(Actor actor, Item item, GameMap map) {
 		return 0;
 	}
 
 
-	default public boolean isHasIt() {
+	public default boolean isHasIt() {
 		return false;
 	}
 	
