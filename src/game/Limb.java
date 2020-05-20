@@ -6,5 +6,5 @@ import edu.monash.fit2099.engine.Item;
 
 public interface Limb {
 
-	public int craft(Actor actor, Item item, GameMap map);
+//	public int craft(Actor actor, Item item, GameMap map);
 }

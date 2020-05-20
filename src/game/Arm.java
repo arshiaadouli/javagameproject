@@ -22,8 +22,7 @@ public class Arm extends WeaponItem implements Limb {
 	}
 
 	@Override
-	public PickUpItemAction getPickUpAction(){
-
+	public PickUpItemAction getPickUpAction() {
 		this.setHasIt(true);
 		System.out.println("the boolean is " + isHasIt());
 		Arm arm = this;
