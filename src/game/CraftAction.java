@@ -29,7 +29,7 @@ public class CraftAction extends Action {
 			if (i.craft(actor, i, map) == 1) {
 //				item = i.toString();
 //				craftedItem = actor.getInventory().get(actor.getInventory().size() - 1).toString();
-				return "a " + actor.getInventory().get(actor.getInventory().size() - 1).toString() + " has been added to " + actor.toString() + " inventory.";
+				return "a " + actor.getInventory().get(actor.getInventory().size() - 1).toString() + " has been added to " + actor.toString() + "'s inventory";
 			}
 		}
 		return null;
@@ -37,6 +37,6 @@ public class CraftAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return "craft " + item.toString();
+		return actor + " crafted a " + item.toString();
 	}
 }
