@@ -26,6 +26,7 @@ public class Zombie extends ZombieActor {
 
 
 	private Behaviour[] behaviours = {
+			new ZombieExpressionBehaviour(),
 			new DropBehaviour(),
 			new AttackBehaviour(ZombieCapability.ALIVE),
 			new PickUpBehaviour(),

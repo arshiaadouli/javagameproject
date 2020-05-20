@@ -2,15 +2,8 @@ package edu.monash.fit2099.interfaces;
 
 import java.util.List;
 
-import edu.monash.fit2099.engine.Actions;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Exit;
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Item;
-import game.CraftAction;
-import game.Crop;
-import game.HarvestAction;
-import game.Player;
+import edu.monash.fit2099.engine.*;
+import game.*;
 
 /**
  * This interface provides the ability to add methods to Actor, without modifying code in the engine,
@@ -38,6 +31,15 @@ public interface ActorInterface {
 				actions.add(new CraftAction(i));
 			}
 		}
+	}
+	default public Action eatFoodAction(Actions actions, Actor actor) {
+		// Is there a Food item in my inventory?
+		for (Item i : actor.getInventory()) {
+			if (i.asFood(i) != null) {
+				actions.add( new EatFoodAction(i.asFood(i)));
+			}
+		}
+		return null;
 	}
 
 	public default Player asPlayer(Actor a) {
