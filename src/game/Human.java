@@ -23,7 +23,6 @@ public class Human extends ZombieActor {
 	 * The default constructor creates default Humans
 	 * 
 	 * @param name the human's display name
-	 * @param string 
 	 */
 	public Human(String name) {
 		super(name, 'H', 50, ZombieCapability.ALIVE);

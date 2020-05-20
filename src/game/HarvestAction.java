@@ -5,7 +5,17 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
+/**
+ * Action for humans to harvest crop objects adjacent to them.
+ * @author Joseph Yu
+ *
+ */
+
 public class HarvestAction extends Action {
+	/**
+	 * Container for the location of the ripe crop that is to be harvested by the human.
+	 */
+	
 	private Location l;
 	
 	public HarvestAction(Location l) {
@@ -19,17 +29,16 @@ public class HarvestAction extends Action {
 		Crop c = actor.getRipeCrop(l.getItems());
 		
 		if (actor.asPlayer(actor) != null) {
-			actor.addItemToInventory(new Food("Food", 'f'));
+			actor.addItemToInventory(new Food("Food"));
 			
 			if (c != null) {
 				l.removeItem(c);
 			}
 		}
 		else {
-			l.addItem(new Food("Food", 'f'));
+			l.addItem(new Food("Food"));
 			l.removeItem(c);
 		}
-		
 		return retVal;
 	}
 

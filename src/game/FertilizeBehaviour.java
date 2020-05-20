@@ -7,12 +7,22 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 
+/**
+ * A class that generates FertilizeAction if there is a crop object on the human's location that is also unripe.
+ * @author josep
+ *
+ */
+
 public class FertilizeBehaviour implements Behaviour {
 	private Farmer f;
 	
 	public FertilizeBehaviour(Farmer f) {
 		this.f = f;
 	}
+	
+	/**
+	 * Returns a FertilizeAction that fertilizes a crop on the actor's location in the GameMap.
+	 */
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {

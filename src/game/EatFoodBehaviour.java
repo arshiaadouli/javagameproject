@@ -5,6 +5,12 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 
+/**
+ * A class that generates EatFoodAction if there is a food object in human's inventory.
+ * @author Joseph Yu
+ *
+ */
+
 public class EatFoodBehaviour implements Behaviour {
 	private Human h;
 	private Food f;
@@ -12,6 +18,10 @@ public class EatFoodBehaviour implements Behaviour {
 	public EatFoodBehaviour(Human h) {
 		this.h = h;
 	}
+	
+	/**
+	 * Returns an EatFoodAction that removes the food object from human's inventory and heals the human by the amount that the food heals by.
+	 */
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {

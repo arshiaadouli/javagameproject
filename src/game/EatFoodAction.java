@@ -4,7 +4,16 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
+/**
+ * Action for human to eat food from their inventory.
+ * @author Joseph Yu
+ *
+ */
+
 public class EatFoodAction extends Action {
+	/**
+	 * Container for the food object that is to be eaten (removed from inventory).
+	 */
 	private Food food;
 	
 	public EatFoodAction(Food food) {
@@ -13,9 +22,8 @@ public class EatFoodAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		String retVal = null;
+		String retVal = actor + " eats " + food.toString() + " and heals for " + food.getHealsFor();
 		
-		retVal = actor + " eats " + food.toString() + " and heals for " + food.getHealsFor();
 		actor.removeItemFromInventory(food);
 		actor.heal(food.getHealsFor());
 		

@@ -9,8 +9,18 @@ import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
-public class HarvestBehaviour implements Behaviour {
+/**
+ * A class that generates HarvestAction if there is a crop object adjacent to the human and that is also ripe.
+ * @author Joseph Yu
+ *
+ */
 
+public class HarvestBehaviour implements Behaviour {
+	
+	/**
+	 * Returns a HarvestAction that removes the crop object from the GameMap and either drops a new food object onto the ground or adds the food object into the player's inventory.
+	 */
+	
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		// Is there a Ripe Crop around me?

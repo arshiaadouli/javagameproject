@@ -7,9 +7,24 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
+/**
+ * Action for farmers to sow a new crop object onto a patch of dirt near the farmer.
+ * @author Joseph Yu
+ *
+ */
+
 public class SowAction extends Action {
+	/**
+	 * Container for the location of where the farmer is going to sow the crop on.
+	 */
 	private Location l;
+	/**
+	 * Container for the farmer that is sowing.
+	 */
 	private Farmer f;
+	/**
+	 * Container for the crop that will be on the GameMap.
+	 */
 	private Crop c;
 	protected Random rand = new Random();
 	
@@ -28,7 +43,7 @@ public class SowAction extends Action {
 			f.addToCropLocations(this.l, this.c);
 		}
 		else {
-			retVal = actor + " tried to plant some crops on a patch of dirt but failed";
+			retVal = null;
 		}
 		return retVal;
 	}
