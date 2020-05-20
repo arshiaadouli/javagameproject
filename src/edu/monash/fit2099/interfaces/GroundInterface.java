@@ -14,6 +14,9 @@ public interface GroundInterface {
 		
 		for (Item i : l.getItems()) {
 			if (i.asCrop(i) == null) {
+				continue;
+			}
+			else {
 				if (i.asCrop(i).getIsRipe()) {
 					retVal = true;
 				}
@@ -28,6 +31,9 @@ public interface GroundInterface {
 		
 		for (Item i : l.getItems()) {
 			if (i.asCrop(i) == null) {
+				continue;
+			}
+			else {
 				if (!i.asCrop(i).getIsRipe()) {
 					retVal = true;
 				}
