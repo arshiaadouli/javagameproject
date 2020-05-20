@@ -30,9 +30,9 @@ public class Leg extends WeaponItem implements Limb {
 		leg.setHasIt(true);
 		return new PickUpItemAction(leg);
 	}
+	
 	@Override
 	public int craft(Actor actor, Item item, GameMap map) {
-
 		if(item instanceof Leg){
 			actor.removeItemFromInventory(item);
 			actor.addItemToInventory(new Mace());
