@@ -24,7 +24,6 @@ public interface ActorInterface {
 		return 0;
 	}
 
-
 	default public void addCraftAction(Actions actions, Actor actor) {
 		for (Item i : actor.getInventory()) {
 			if (i.isHasIt()) {
@@ -32,11 +31,12 @@ public interface ActorInterface {
 			}
 		}
 	}
-	default public Action eatFoodAction(Actions actions, Actor actor) {
+	
+	default public Action addEatFoodAction(Actions actions, Actor actor) {
 		// Is there a Food item in my inventory?
 		for (Item i : actor.getInventory()) {
 			if (i.asFood(i) != null) {
-				actions.add( new EatFoodAction(i.asFood(i)));
+				actions.add(new EatFoodAction(i.asFood(i)));
 			}
 		}
 		return null;

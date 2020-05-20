@@ -61,7 +61,7 @@ public class Player extends Human {
 
 		this.addHarvestAction(actions, this, map);
 		this.addCraftAction(actions, this);
-		this.eatFoodAction(actions, this);
+		this.addEatFoodAction(actions, this);
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 		return menu.showMenu(this, actions, display);
