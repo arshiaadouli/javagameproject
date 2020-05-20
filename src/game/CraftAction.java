@@ -9,9 +9,12 @@ import java.util.ArrayList;
 
 public class CraftAction extends Action {
 
-	String item;
+	Item item;
 	String craftedItem;
 
+	public CraftAction(Item i){
+		item = i;
+	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
@@ -34,6 +37,6 @@ public class CraftAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return "craft limb";
+		return "craft " + item.toString();
 	}
 }

@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
+import game.CraftAction;
 import game.Crop;
 import game.HarvestAction;
 import game.Player;
@@ -17,7 +18,30 @@ import game.Player;
  */
 
 public interface ActorInterface {
-	
+
+	default public int getNumArm() {
+		return 2;
+	}
+
+	default public int getNumLeg() {
+		return 2;
+	}
+
+	default public int getNumTurn() {
+		return 0;
+	}
+
+
+	default public void addCraftAction(Actions actions, Actor actor) {
+		for (Item i : actor.getInventory()) {
+			if (i.isHasIt()) {
+				actions.add(new CraftAction(i));
+			}
+		}
+	}
+
+
+
 	public default Player asPlayer(Actor a) {
 		return a instanceof Player ? (Player) a : null;
 	}

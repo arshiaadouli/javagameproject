@@ -7,9 +7,9 @@ import edu.monash.fit2099.engine.*;
 
 /**
  * A Zombie.
- * 
+ *
  * This Zombie is pretty boring.  It needs to be made more interesting.
- * 
+ *
  * @author ram
  *
  */
@@ -26,6 +26,7 @@ public class Zombie extends ZombieActor {
 
 
 	private Behaviour[] behaviours = {
+			new DropBehaviour(),
 			new AttackBehaviour(ZombieCapability.ALIVE),
 			new PickUpBehaviour(),
 			new HuntBehaviour(Human.class, 10),
@@ -35,12 +36,13 @@ public class Zombie extends ZombieActor {
 	public Zombie(String name) {
 		super(name, 'Z', 100, ZombieCapability.UNDEAD);
 
-		items.add(new Arm("left arm", false));
-		items.add(new Arm("right arm", false));
 		items.add(new Leg("left leg", false));
 		items.add(new Leg("right leg", false));
+
+		items.add(new Arm("left arm", false));
+		items.add(new Arm("right arm", false));
 	}
-	
+
 
 	@Override
 	public IntrinsicWeapon getIntrinsicWeapon() {
@@ -51,6 +53,7 @@ public class Zombie extends ZombieActor {
 		else
 			return new IntrinsicWeapon(15, "bites");
 	}
+	@Override
 
 	public int getNumArm() {
 		int temp = 0;
@@ -63,6 +66,7 @@ public class Zombie extends ZombieActor {
 		return temp;
 	}
 
+	@Override
 	public int getNumLeg() {
 		int temp = 0;
 		for(Limb i : items){
@@ -74,7 +78,15 @@ public class Zombie extends ZombieActor {
 		return temp;
 	}
 
+	@Override
+	public int getNumTurn(){
+		return turn;
+	}
+
+
+
 	public Limb temp = null;
+
 	@Override
 	public void hurt(int points){
 
@@ -86,6 +98,7 @@ public class Zombie extends ZombieActor {
 				Random random2 = new Random();
 				int item =  random2.nextInt(items.size());
 				temp = items.remove(item);
+				System.out.println("zombie limbs detached: ");
 				System.out.println(temp.toString() + "  has been removed from "+ this.toString());
 
 			}
@@ -96,9 +109,9 @@ public class Zombie extends ZombieActor {
 	}
 
 	/**
-	 * If a Zombie can attack, it will.  If not, it will chase any human within 10 spaces.  
+	 * If a Zombie can attack, it will.  If not, it will chase any human within 10 spaces.
 	 * If no humans are close enough it will wander randomly.
-	 * 
+	 *
 	 * @param actions list of possible Actions
 	 * @param lastAction previous Action, if it was a multiturn action
 	 * @param map the map where the current Zombie is
@@ -118,12 +131,14 @@ public class Zombie extends ZombieActor {
 		}
 
 
+
+
 		for (Behaviour behaviour : behaviours) {
 			Action action = behaviour.getAction(this, map);
 			if (action != null)
 				return action;
 		}
 
-		return new DoNothingAction();	
+		return new DoNothingAction();
 	}
 }

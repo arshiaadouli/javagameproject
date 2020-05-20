@@ -9,8 +9,7 @@ public class Arm extends WeaponItem implements Limb {
 		super(name, 'A', 18,  "blah");
 		addCapability(ZombieCapability.ALIVE);
 		this.hasIt = b;
-		if(isHasIt())
-			allowableActions.add(new CraftAction());
+
 //		allowableActions.add(new SpecialAction());
 	}
 

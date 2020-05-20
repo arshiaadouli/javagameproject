@@ -10,7 +10,7 @@ public class SpecialAction extends Action {
     public String execute(Actor actor, GameMap map) {
         for(Item i : actor.getInventory()){
             if (i.isHasIt()) {
-                new CraftAction().execute(actor, map);
+                new CraftAction(i).execute(actor, map);
             }
         }
         return null;

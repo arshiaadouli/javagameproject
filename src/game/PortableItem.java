@@ -28,10 +28,13 @@ public class PortableItem extends Item {
 			age += 1;
 			if (age >= 5) {
 
-
-				currentLocation.removeItem(this);
-				currentLocation.addActor(new Zombie(name));
-
+				try {
+					currentLocation.removeItem(this);
+					currentLocation.addActor(new Zombie(name));
+				}
+				catch (IllegalArgumentException e){
+					System.out.println("actor in dead actor position");
+				}
 			}
 
 

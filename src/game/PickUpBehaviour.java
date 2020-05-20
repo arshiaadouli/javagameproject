@@ -35,17 +35,20 @@ public class PickUpBehaviour implements Behaviour {
 //            }
 //        }
 
-		ArrayList<Item> items = new ArrayList<>();
-		for(Item i : map.locationOf(actor).getItems()){
-			items.add(i);
-		}
+		if(actor.getNumArm() > 0) {
+			ArrayList<Item> items = new ArrayList<>();
+			for (Item i : map.locationOf(actor).getItems()) {
+				items.add(i);
+			}
 
-		for(Item i : items) {
-			if ((i.hasCapability(ZombieCapability.ALIVE) == actor.hasCapability(ZombieCapability.ALIVE)) || (i.hasCapability(ZombieCapability.UNDEAD)) == (i.hasCapability(ZombieCapability.ALIVE)) ) {
-				map.locationOf(actor).removeItem(i);
-				actor.addItemToInventory(i);
+			for (Item i : items) {
+
+				if (i instanceof WeaponItem) {
+					return new PickUpItemAction(i);
+				}
 			}
 		}
+
 
 //        }
 

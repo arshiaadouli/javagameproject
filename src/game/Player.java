@@ -19,13 +19,13 @@ public class Player extends Human {
 		super(name, displayChar, hitPoints);
 	}
 	
-	private void addCraftAction(Actions actions) {
-		for (Item i : inventory) {
-			if (i.isHasIt()) {
-				actions.add(new CraftAction());
-			}
-		}
-	}
+//	private void addCraftAction(Actions actions) {
+//		for (Item i : inventory) {
+//			if (i.isHasIt()) {
+//				actions.add(new CraftAction(i));
+//			}
+//		}
+//	}
 	
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
@@ -60,7 +60,7 @@ public class Player extends Human {
 //			}
 
 		this.addHarvestAction(actions, this, map);
-		addCraftAction(actions);
+		this.addCraftAction(actions, this);
 
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
