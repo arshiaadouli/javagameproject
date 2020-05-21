@@ -32,22 +32,12 @@ public interface ActorInterface {
 //		}
 //	}
 
-	default public boolean crafter(){
+	public default boolean crafter() {
 		return true;
 	}
 
-	public default  Actions AllowableActions(){
+	public default  Actions AllowableActions() {
 		return  null;
-	}
-
-	default public Action addEatFoodAction(Actions actions, Actor actor) {
-		// Is there a Food item in my inventory?
-		for (Item i : actor.getInventory()) {
-			if (i.asFood(i) != null) {
-				actions.add(new EatFoodAction(i.asFood(i)));
-			}
-		}
-		return null;
 	}
 
 	public default Player asPlayer(Actor a) {
@@ -79,34 +69,9 @@ public interface ActorInterface {
 		}
 		return retVal;
 	}
-	
-	public default void addHarvestAction(Actions actions, Actor actor, GameMap map) {
-		List<Exit> actorExits = map.locationOf(actor).getExits();
-		List<Item> itemsOnActor = map.locationOf(actor).getItems();
-		boolean harvestActionAdded = false;
-		
-		// check if there are any ripe crop in actor's exits first.
-		for (Exit e : actorExits) {
-			List<Item> itemsOnLocation = e.getDestination().getItems();
-			
-			for (Item i : itemsOnLocation) {
-				if (i.asCrop(i) != null && !harvestActionAdded) { // if i is a crop (ripe and unripe)
-					if (i.asCrop(i).getIsRipe()) { // if i is a ripe crop
-						actions.add(new HarvestAction(e.getDestination()));
-						harvestActionAdded = true;
-					}
-				}
-			}
-		}
-		
-		// then check if actor is standing on any ripe crop.
-		for (Item i : itemsOnActor) {
-			if (i.asCrop(i) != null) {
-				if (i.asCrop(i).getIsRipe() && !harvestActionAdded) {
-					actions.add(new HarvestAction(map.locationOf(actor)));
-					harvestActionAdded = true;
-				}
-			}
-		}
+
+	public default Actions AllowableActions(GameMap map) {
+		return null;
 	}
+	
 }

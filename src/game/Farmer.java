@@ -48,7 +48,7 @@ public class Farmer extends Human {
 	
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-		this.addHarvestAction(actions, this, map);
+		this.addHarvestAction(map);
 		
 		for (Behaviour behaviour : behaviours) {
 			Action action = behaviour.getAction(this, map);
