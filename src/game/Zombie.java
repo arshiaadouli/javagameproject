@@ -16,8 +16,9 @@ import edu.monash.fit2099.engine.*;
 public class Zombie extends ZombieActor {
 	private double punchChance = 0.5;
 
-	private ArrayList<Limb> items = new ArrayList<>();
+	private ArrayList<Limb> items = super.items;
 	private int numArm = getNumArm();
+	private int numLeg = getNumLeg();
 	private int turn = 0;
 
 
@@ -36,11 +37,6 @@ public class Zombie extends ZombieActor {
 	public Zombie(String name) {
 		super(name, 'Z', 100, ZombieCapability.UNDEAD);
 
-		items.add(new Leg("left leg", false));
-		items.add(new Leg("right leg", false));
-//
-		items.add(new Arm("left arm", false));
-		items.add(new Arm("right arm", false));
 	}
 
 
@@ -52,30 +48,6 @@ public class Zombie extends ZombieActor {
 			return new IntrinsicWeapon(10, "punches");
 		else
 			return new IntrinsicWeapon(15, "bites");
-	}
-	@Override
-
-	public int getNumArm() {
-		int temp = 0;
-		for(Limb i : items){
-			if(i instanceof Arm){
-				temp +=1;
-
-			}
-		}
-		return temp;
-	}
-
-	@Override
-	public int getNumLeg() {
-		int temp = 0;
-		for(Limb i : items){
-			if(i instanceof Leg){
-				temp +=1;
-
-			}
-		}
-		return temp;
 	}
 
 	@Override

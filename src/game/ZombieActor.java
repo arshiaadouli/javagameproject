@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
@@ -10,10 +11,51 @@ import edu.monash.fit2099.engine.*;
  *
  */
 public abstract class ZombieActor extends Actor {
-	
+
+	protected ArrayList<Limb> items = new ArrayList<>();
+
+	protected int turn = 0;
+
+	@Override
+	public int getNumTurn(){
+		return turn;
+	}
+
+	@Override
+
+	public int getNumArm() {
+		int temp = 0;
+		for(Limb i : items){
+			if(i instanceof Arm){
+				temp +=1;
+
+			}
+		}
+		return temp;
+	}
+
+	@Override
+	public int getNumLeg() {
+		int temp = 0;
+		for(Limb i : items){
+			if(i instanceof Leg){
+				temp +=1;
+
+			}
+		}
+		return temp;
+	}
+
+
 	public ZombieActor(String name, char displayChar, int hitPoints, ZombieCapability team) {
 		super(name, displayChar, hitPoints);
 		addCapability(team);
+
+		items.add(new Leg("left leg", false));
+		items.add(new Leg("right leg", false));
+
+		items.add(new Arm("left arm", false));
+		items.add(new Arm("right arm", false));
 	}
 
 	public Actions hasCraftAction() {
