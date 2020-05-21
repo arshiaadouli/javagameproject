@@ -12,10 +12,21 @@ public class CraftAction extends Action {
 	Item item;
 	String craftedItem;
 
+	/**@Author Arshia Adouli
+	 * @param i: item which the actor crafts
+	 **/
+
 	public CraftAction(Item i){
 		item = i;
 	}
 
+	/**
+	 * this action allows an actor to craft item to another item(weapon) if the item is
+	 * craftable.
+	 * @param actor The actor performing the action.
+	 * @param map The map the actor is on.
+	 * @return the expression which says an item is crafted to ...
+	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		ArrayList<Item> items = new ArrayList<>();
