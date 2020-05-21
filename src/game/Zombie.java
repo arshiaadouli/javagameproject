@@ -87,16 +87,19 @@ public class Zombie extends ZombieActor {
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		turn += 1;
-		
+
+		// drop a limb of the zombie
 		if (tempLimb != null){
 			map.locationOf(this).addItem((Item)tempLimb);
 			tempLimb = null;
 		}
 
+		// halves the punch chance if the zombie has one arm
 		if(numArm==1){
 			punchChance=0.25;
 		}
-		
+
+		//no chance of punching if the zombie doesn't have any arm
 		if(numArm==0){
 			punchChance=0;
 		}
