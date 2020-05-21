@@ -19,7 +19,7 @@ public class Zombie extends ZombieActor {
 	private ArrayList<Limb> items = super.items;
 	private int numArm = getNumArm();
 	private int numLeg = getNumLeg();
-	private int turn = 0;
+
 
 
 
@@ -29,8 +29,9 @@ public class Zombie extends ZombieActor {
 			new ZombieExpressionBehaviour(),
 			new DropBehaviour(),
 			new AttackBehaviour(ZombieCapability.ALIVE),
-			new PickUpBehaviour(),
 			new HuntBehaviour(Human.class, 10),
+			new PickUpBehaviour(),
+
 			new WanderBehaviour()
 	};
 

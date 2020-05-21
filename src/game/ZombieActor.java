@@ -16,13 +16,20 @@ public abstract class ZombieActor extends Actor {
 
 	protected int turn = 0;
 
+	/**
+	 * returns the number of turns which a actor played
+	 * @return turn
+	 */
 	@Override
 	public int getNumTurn(){
 		return turn;
 	}
 
+	/**
+	 * returns the number of actor's Arms
+	 * @return number of Arms
+	 */
 	@Override
-
 	public int getNumArm() {
 		int temp = 0;
 		for(Limb i : items){
@@ -34,6 +41,10 @@ public abstract class ZombieActor extends Actor {
 		return temp;
 	}
 
+	/**
+	 * returns number of Actor's leg
+	 * @return number of legs
+	 */
 	@Override
 	public int getNumLeg() {
 		int temp = 0;
@@ -47,6 +58,13 @@ public abstract class ZombieActor extends Actor {
 	}
 
 
+	/**
+	 *  this method creates 2 legs and 2 arms for an actor
+	 * @param name actor name
+	 * @param displayChar character of actor
+	 * @param hitPoints hitpoint of actor
+	 * @param team ZombieCapability of the actor
+	 */
 	public ZombieActor(String name, char displayChar, int hitPoints, ZombieCapability team) {
 		super(name, displayChar, hitPoints);
 		addCapability(team);
@@ -58,6 +76,11 @@ public abstract class ZombieActor extends Actor {
 		items.add(new Arm("right arm", false));
 	}
 
+	/**
+	 * get all of the actions which includes crafting items from actor's inventory
+	 *
+	 * @return the actions which contains CraftAction
+	 */
 	public Actions hasCraftAction() {
 		Actions actionsCraft = new Actions();
 		for (Item i : this.getInventory()) {

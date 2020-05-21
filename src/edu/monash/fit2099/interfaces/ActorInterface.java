@@ -12,18 +12,34 @@ import game.*;
 
 public interface ActorInterface {
 
+	/**
+	 * return a default value of getNumArm() for each actor
+	 * @return 2 as a default
+	 */
 	default public int getNumArm() {
 		return 2;
 	}
 
+	/**
+	 * return a default value of getNumLeg() for each actor
+	 * @return 2 as a default
+	 */
 	default public int getNumLeg() {
 		return 2;
 	}
 
+	/**
+	 * return a default value of getNumTurn() for each actor
+	 * @return 0 as a default
+	 */
 	default public int getNumTurn() {
 		return 0;
 	}
 
+	/**
+	 * for determining which player can craft
+	 * @return true
+	 */
 	public default boolean crafter() {
 		return true;
 	}

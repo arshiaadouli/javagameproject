@@ -32,6 +32,9 @@ public class Player extends Human implements Crafter {
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
+		turn++;
+
+
 
 		actions.add(super.AllowableActions(map));
 
