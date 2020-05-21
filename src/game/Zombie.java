@@ -19,10 +19,7 @@ public class Zombie extends ZombieActor {
 	private ArrayList<Limb> items = new ArrayList<>();
 	private int numArm = getNumArm();
 	private int turn = 0;
-
-
-
-
+	public Limb tempLimb = null;
 
 	private Behaviour[] behaviours = {
 			new ZombieExpressionBehaviour(),
@@ -38,11 +35,10 @@ public class Zombie extends ZombieActor {
 
 		items.add(new Leg("left leg", false));
 		items.add(new Leg("right leg", false));
-//
+
 		items.add(new Arm("left arm", false));
 		items.add(new Arm("right arm", false));
 	}
-
 
 	@Override
 	public IntrinsicWeapon getIntrinsicWeapon() {
@@ -53,16 +49,16 @@ public class Zombie extends ZombieActor {
 		else
 			return new IntrinsicWeapon(15, "bites");
 	}
+	
 	@Override
-
 	public int getNumArm() {
 		int temp = 0;
 		for(Limb i : items){
 			if(i instanceof Arm){
 				temp +=1;
-
 			}
 		}
+		
 		return temp;
 	}
 
@@ -72,9 +68,9 @@ public class Zombie extends ZombieActor {
 		for(Limb i : items){
 			if(i instanceof Leg){
 				temp +=1;
-
 			}
 		}
+		
 		return temp;
 	}
 
@@ -83,19 +79,17 @@ public class Zombie extends ZombieActor {
 		return turn;
 	}
 
-
-
-	public Limb tempLimb = null;
-
 	@Override
 	public void hurt(int points){
 		super.hurt(points);
-		if(items.size() >= 1) {
+		
+		if (items.size() >= 1) {
 			Random random1 = new Random();
-			if(random1.nextDouble() <= 0.25){
+			if (random1.nextDouble() <= 0.25) {
 				Random random2 = new Random();
 				int item =  random2.nextInt(items.size());
 				tempLimb = items.remove(item);
+				
 				System.out.println("zombie limbs detached: ");
 				System.out.println(tempLimb.toString() + "  has been removed from "+ this.toString());
 			}
