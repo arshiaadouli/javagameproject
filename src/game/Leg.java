@@ -53,14 +53,13 @@ public class Leg extends WeaponItem implements Limb {
 	}
 
 	/**
-	 *
+	 *it uses override craft action for the item to craft current item to new item
 	 * @param actor the actor who picks the item
-	 * @param item item which actor picks it up
 	 * @return return 1 if actor can craft
 	 */
 	@Override
-	public int craft(Actor actor, Item item, GameMap map) {
-		actor.removeItemFromInventory(item);
+	public int craft(Actor actor) {
+		actor.removeItemFromInventory(this);
 		actor.addItemToInventory(new Mace());
 		System.out.println("craft action works");
 		return 1;

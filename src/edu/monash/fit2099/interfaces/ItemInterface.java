@@ -16,10 +16,9 @@ public interface ItemInterface {
 	/**
 	 *
 	 * @param actor the actor who crafts
-	 * @param item the item that is crafted from player
 	 * @return 0 which means it is not craftable as default
 	 */
-	public default int craft(Actor actor, Item item, GameMap map) {
+	public default int craft(Actor actor) {
 		return 0;
 	}
 

@@ -36,7 +36,7 @@ public class CraftAction extends Action {
 		}
 		
 		for(Item i : items) {
-			if (i.craft(actor, i, map) == 1) {
+			if (i.craft(actor) == 1) {
 				return "a " + actor.getInventory().get(actor.getInventory().size() - 1).toString() + " has been added to " + actor.toString() + "'s inventory";
 			}
 		}
