@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.*;
 public class Arm extends WeaponItem implements Limb {
 
 	boolean hasIt = false;
+	
 	public Arm(String name, boolean b) {
 		super(name, 'A', 18,  "blah");
 		addCapability(ZombieCapability.ALIVE);
