@@ -85,6 +85,7 @@ public interface ActorInterface {
 		List<Item> itemsOnActor = map.locationOf(actor).getItems();
 		boolean harvestActionAdded = false;
 		
+		// check if there are any ripe crop in actor's exits first.
 		for (Exit e : actorExits) {
 			List<Item> itemsOnLocation = e.getDestination().getItems();
 			
@@ -98,6 +99,7 @@ public interface ActorInterface {
 			}
 		}
 		
+		// then check if actor is standing on any ripe crop.
 		for (Item i : itemsOnActor) {
 			if (i.asCrop(i) != null) {
 				if (i.asCrop(i).getIsRipe() && !harvestActionAdded) {
