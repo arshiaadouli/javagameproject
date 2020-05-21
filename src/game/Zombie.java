@@ -90,23 +90,17 @@ public class Zombie extends ZombieActor {
 
 	@Override
 	public void hurt(int points){
-
 		super.hurt(points);
 		if(items.size() >= 1) {
 			Random random1 = new Random();
 			if(random1.nextDouble() <= 0.25){
-
 				Random random2 = new Random();
 				int item =  random2.nextInt(items.size());
 				tempLimb = items.remove(item);
 				System.out.println("zombie limbs detached: ");
 				System.out.println(tempLimb.toString() + "  has been removed from "+ this.toString());
-
 			}
-
-
 		}
-
 	}
 
 	/**
