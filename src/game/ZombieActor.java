@@ -36,7 +36,7 @@ public abstract class ZombieActor extends Actor {
 	}
 
 
-	
+
 
 
 	@Override
