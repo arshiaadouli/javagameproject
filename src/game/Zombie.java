@@ -40,7 +40,7 @@ public class Zombie extends ZombieActor {
 		items.add(new Leg("left leg", false));
 		items.add(new Leg("right leg", false));
 //
-//		items.add(new Arm("left arm", false));
+		items.add(new Arm("left arm", false));
 		items.add(new Arm("right arm", false));
 	}
 

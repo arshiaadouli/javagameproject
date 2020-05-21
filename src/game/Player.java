@@ -1,11 +1,12 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
+import edu.monash.fit2099.interfaces.Crafter;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Human {
+public class Player extends Human implements Crafter {
 	private Menu menu = new Menu();
 
 	/**
@@ -21,18 +22,28 @@ public class Player extends Human {
 
 
 
+
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
 
 
 
-		this.addHarvestAction(actions, this, map);
-		this.addCraftAction(actions, this);
-		this.addEatFoodAction(actions, this);
+//		this.addHarvestAction(actions, this, map);
+//		this.addCraftAction(actions, this);
+//		this.addEatFoodAction(actions, this);
+
+
+		actions.add(super.AllowableActions());
+
 
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 		return menu.showMenu(this, actions, display);
+	}
+
+	@Override
+	public boolean crafter() {
+		return true;
 	}
 }

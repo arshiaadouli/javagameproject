@@ -24,14 +24,22 @@ public interface ActorInterface {
 		return 0;
 	}
 
-	default public void addCraftAction(Actions actions, Actor actor) {
-		for (Item i : actor.getInventory()) {
-			if (i.craftable()) {
-				actions.add(new CraftAction(i));
-			}
-		}
+//	default public void addCraftAction(Actions actions, Actor actor) {
+//		for (Item i : actor.getInventory()) {
+//			if (i.craftable()) {
+//				actions.add(new CraftAction(i));
+//			}
+//		}
+//	}
+
+	default public boolean crafter(){
+		return true;
 	}
-	
+
+	public default  Actions AllowableActions(){
+		return  null;
+	}
+
 	default public Action addEatFoodAction(Actions actions, Actor actor) {
 		// Is there a Food item in my inventory?
 		for (Item i : actor.getInventory()) {

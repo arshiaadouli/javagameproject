@@ -66,19 +66,19 @@ public class Application {
 		}
 		
 		// place a simple weapon
-		gameMap.at(74, 20).addItem(new Plank());
+		gameMap.at(42, 15).addItem(new Plank());
 		
 		// FIXME: Add more zombies!
 		gameMap.at(74, 20).addActor(new Zombie("Groan"));
 		gameMap.at(30,  18).addActor(new Zombie("Boo"));
 		gameMap.at(10,  4).addActor(new Zombie("Uuuurgh"));
-		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));
+//		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));
 		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
 		gameMap.at(62, 12).addActor(new Zombie("Aaargh"));
 		
 		// testing code for Farmer class
 		
-		gameMap.at(44, 15).addActor(new Farmer("Joseph", 100));
+		gameMap.at(1, 24).addActor(new Farmer("Joseph", 100));
 		
 		world.run();
 	}
