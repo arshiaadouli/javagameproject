@@ -48,7 +48,7 @@ public class SowAction extends Action {
 			}
 		}
 		else {
-			retVal = null;
+			retVal = "";
 		}
 		return retVal;
 	}
