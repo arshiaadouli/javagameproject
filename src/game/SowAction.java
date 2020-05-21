@@ -48,7 +48,7 @@ public class SowAction extends Action {
 			}
 		}
 		else {
-			retVal = "";
+			retVal = actor + " tried to plant some crops on a patch of dirt but failed";
 		}
 		return retVal;
 	}
