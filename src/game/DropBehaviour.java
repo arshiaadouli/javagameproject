@@ -29,15 +29,8 @@ public class DropBehaviour implements Behaviour {
         }
 
         if (item != null) {
-            for (Exit exit : map.locationOf(actor).getExits()) {
-                Location destination = exit.getDestination();
-                
-                if (destination.canActorEnter(actor)) {
-                    destination.addItem(item);
-                    actor.removeItemFromInventory(item);
-                    return new DoNothingAction();
-                }
-            }
+
+            return new DropAction(item);
         }
         return null;
     }
