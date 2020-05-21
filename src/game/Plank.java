@@ -12,7 +12,6 @@ public class Plank extends WeaponItem {
 
 	public Plank() {
 		super("plank", ')', 12, "whacks");
-		// TODO Auto-generated constructor stub
 	}
 
 }

@@ -34,16 +34,12 @@ public class AttackAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-
 		Weapon weapon = actor.getWeapon();
+		int damage = weapon.damage();
 
 		if (rand.nextBoolean()) {
 			return actor + " misses " + target + ".";
 		}
-
-
-
-		int damage = weapon.damage();
 
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage";
 
@@ -53,61 +49,41 @@ public class AttackAction extends Action {
 			actor.heal(5);
 
 		}
-
-
-
-
-
-
+		
 		if (!target.isConscious()) {
 			PortableItem corpse = null;
 
-			if(target.hasCapability(ZombieCapability.ALIVE)){
+			if (target.hasCapability(ZombieCapability.ALIVE)) {
 				corpse = new PortableItem("dead " + target, '%');
 				Actions dropActions = new Actions();
+				
 				for (Item item : target.getInventory())
 					dropActions.add(item.getDropAction());
+				
 				for (Action drop : dropActions)
 					drop.execute(target, map);
+				
 				map.locationOf(target).addItem(corpse);
 				corpse.setZombieCap(ZombieCapability.ALIVE);
-
-
-
 			}
-			else{
+			else {
 				corpse = new PortableItem("dead " + target, '%');
 				Actions dropActions = new Actions();
+				
 				for (Item item : target.getInventory())
 					dropActions.add(item.getDropAction());
+				
 				for (Action drop : dropActions)
 					drop.execute(target, map);
+				
 				map.locationOf(target).addItem(corpse);
 				corpse.setZombieCap(ZombieCapability.UNDEAD);
-
-
 			}
-
-
-
-
-//			map.locationOf(target).addItem(corpse);
 			map.removeActor(target);
-
-
-
-//			if(target instanceof Human){
-//				corpse.addCapability(ZombieCapability.UNDEAD);
-//			}
-
 			result += System.lineSeparator() + target + " is killed.";
-
-
 		}
-
+		
 		return result;
-
-
 	}
 
 	@Override

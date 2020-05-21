@@ -10,8 +10,6 @@ public class Leg extends WeaponItem implements Limb {
 		super(name, 'L', 18, "blah");
 		addCapability(ZombieCapability.ALIVE);
 		this.hasIt = b;
-
-//		allowableActions.add(new SpecialAction());
 	}
 
 	public boolean craftable() {
@@ -34,11 +32,9 @@ public class Leg extends WeaponItem implements Limb {
 
 	@Override
 	public int craft(Actor actor, Item item, GameMap map) {
-
-			actor.removeItemFromInventory(item);
-			actor.addItemToInventory(new Mace());
-			System.out.println("craft action works");
-			return 1;
-
+		actor.removeItemFromInventory(item);
+		actor.addItemToInventory(new Mace());
+		System.out.println("craft action works");
+		return 1;
 	}
 }

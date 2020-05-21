@@ -32,6 +32,7 @@ public class EatFoodBehaviour implements Behaviour {
 				return new EatFoodAction(f);
 			}
 		}
+		
 		return null;
 	}
 }

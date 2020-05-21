@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 
 public class SpecialAction extends Action {
+	
     @Override
     public String execute(Actor actor, GameMap map) {
         for(Item i : actor.getInventory()){
@@ -13,11 +14,12 @@ public class SpecialAction extends Action {
                 new CraftAction(i).execute(actor, map);
             }
         }
+        
         return null;
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return "craft limb";
+        return actor + " craft limb";
     }
 }

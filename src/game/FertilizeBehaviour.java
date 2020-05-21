@@ -32,6 +32,7 @@ public class FertilizeBehaviour implements Behaviour {
 		if (f.getUnripeCrop(itemsOnActor) != null) {
 			return new FertilizeAction(f.getUnripeCrop(itemsOnActor));
 		}
+		
 		return null;
 	}
 }

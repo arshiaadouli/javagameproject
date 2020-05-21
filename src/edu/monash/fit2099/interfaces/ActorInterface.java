@@ -24,14 +24,6 @@ public interface ActorInterface {
 		return 0;
 	}
 
-//	default public void addCraftAction(Actions actions, Actor actor) {
-//		for (Item i : actor.getInventory()) {
-//			if (i.craftable()) {
-//				actions.add(new CraftAction(i));
-//			}
-//		}
-//	}
-
 	public default boolean crafter() {
 		return true;
 	}
@@ -42,6 +34,10 @@ public interface ActorInterface {
 
 	public default Player asPlayer(Actor a) {
 		return a instanceof Player ? (Player) a : null;
+	}
+
+	public default Actions AllowableActions(GameMap map) {
+		return null;
 	}
 	
 	public default Crop getUnripeCrop(List<Item> itemList) {
@@ -68,10 +64,6 @@ public interface ActorInterface {
 			}
 		}
 		return retVal;
-	}
-
-	public default Actions AllowableActions(GameMap map) {
-		return null;
 	}
 	
 }

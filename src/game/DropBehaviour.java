@@ -13,14 +13,12 @@ public class DropBehaviour implements Behaviour {
         Item item = null;
         if(actor.getNumArm() == 0) {
             if (!(actor.getWeapon() instanceof IntrinsicWeapon)) {
-//                return new DropItemAction((Item)actor.getWeapon());
                 item = (Item) actor.getWeapon();
             }
         }
 
         if(actor.getNumArm() == 1) {
             if (!(actor.getWeapon() instanceof IntrinsicWeapon)) {
-//                return new DropItemAction((Item)actor.getWeapon());
                 Random random = new Random();
                 if(random.nextDouble() <= 0.5) {
                     item = (Item) actor.getWeapon();
@@ -29,9 +27,9 @@ public class DropBehaviour implements Behaviour {
         }
 
         if (item != null) {
-
             return new DropAction(item);
         }
+        
         return null;
     }
 }

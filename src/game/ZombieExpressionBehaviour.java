@@ -10,9 +10,11 @@ public class ZombieExpressionBehaviour implements Behaviour {
     @Override
     public Action getAction(Actor actor, GameMap map) {
         Random random = new Random();
+        
         if(random.nextDouble() <= 0.1){
             return new ZombieExpressionAction();
         }
+        
         return null;
     }
 }

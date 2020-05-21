@@ -74,6 +74,7 @@ public class HuntBehaviour implements Behaviour {
 				return path.get(1);
 			}
 		}
+		
 		return null;
 	}
 
@@ -88,8 +89,8 @@ public class HuntBehaviour implements Behaviour {
 		if (actor.getNumLeg() == 2 || (actor.getNumLeg() == 1 && actor.getNumTurn() % 2 == 0)) {
 			return hunt(actor, map.locationOf(actor));
 		}
+		
 		return new DoNothingAction();
-
 	}
 }
 

@@ -6,8 +6,6 @@ import java.util.Random;
 import edu.monash.fit2099.engine.*;
 import edu.monash.fit2099.engine.Action;
 
-import javax.swing.*;
-
 /**
  * Allows an Actor to wander around at random.
  *
@@ -48,7 +46,5 @@ public class WanderBehaviour implements Behaviour {
 		}
 		else
 			return new DoNothingAction();
-
-
 	}
 }

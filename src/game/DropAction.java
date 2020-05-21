@@ -18,9 +18,10 @@ public class DropAction extends Action {
             if (destination.canActorEnter(actor)) {
                 destination.addItem(item);
                 actor.removeItemFromInventory(item);
-                return actor.toString() + " has dropped "+item.toString();
+                return actor.toString() + " has dropped " + item.toString();
             }
         }
+        
         return null;
     }
 

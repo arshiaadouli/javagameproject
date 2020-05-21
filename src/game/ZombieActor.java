@@ -23,6 +23,7 @@ public abstract class ZombieActor extends Actor {
 				actionsCraft.add(new CraftAction(i));
 			}
 		}
+		
 		return actionsCraft;
 	}
 	
@@ -32,9 +33,9 @@ public abstract class ZombieActor extends Actor {
 		for (Item i : this.getInventory()) {
 			if (i.asFood(i) != null) {
 				actions.add(new EatFoodAction(i.asFood(i)));
-				
 			}
 		}
+		
 		return actions;
 	}
 	
@@ -69,6 +70,7 @@ public abstract class ZombieActor extends Actor {
 				}
 			}
 		}
+		
 		return actions;
 	}
 
@@ -76,7 +78,7 @@ public abstract class ZombieActor extends Actor {
 	public Actions AllowableActions(GameMap map) {
 		Actions actions = new Actions();
 		
-		if(this.crafter()){
+		if (this.crafter()) {
 			actions.add(hasCraftAction());
 		}
 		

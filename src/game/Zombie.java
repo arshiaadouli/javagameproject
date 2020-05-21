@@ -18,7 +18,6 @@ public class Zombie extends ZombieActor {
 
 	private ArrayList<Limb> items = new ArrayList<>();
 	private int numArm = getNumArm();
-	private int numLeg = getNumLeg();
 	private int turn = 0;
 
 
@@ -114,10 +113,8 @@ public class Zombie extends ZombieActor {
 	 */
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-
 		turn += 1;
-
-
+		
 		if (tempLimb != null){
 			map.locationOf(this).addItem((Item)tempLimb);
 			tempLimb = null;
@@ -126,13 +123,11 @@ public class Zombie extends ZombieActor {
 		if(numArm==1){
 			punchChance=0.25;
 		}
+		
 		if(numArm==0){
 			punchChance=0;
 		}
-
-
-
-
+		
 		for (Behaviour behaviour : behaviours) {
 			Action action = behaviour.getAction(this, map);
 			if (action != null)

@@ -49,6 +49,7 @@ public class Human extends ZombieActor {
 				return action;
 			}
 		}
+		
 		return new DoNothingAction();
 	}
 }

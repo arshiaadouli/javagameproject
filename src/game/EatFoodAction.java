@@ -26,9 +26,9 @@ public class EatFoodAction extends Action {
 		String retVal = actor + " eats " + food.toString() + " and heals for " + food.getHealsFor();
 		
 		DropItemAction dia = new DropItemAction(food);
+		
 		dia.execute(actor, map);
 		map.locationOf(actor).removeItem(food);
-		
 		actor.heal(food.getHealsFor());
 		
 		return retVal;

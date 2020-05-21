@@ -18,7 +18,6 @@ public class CraftAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-
 		ArrayList<Item> items = new ArrayList<>();
 
 		for(Item i : actor.getInventory()){
@@ -27,8 +26,6 @@ public class CraftAction extends Action {
 		
 		for(Item i : items) {
 			if (i.craft(actor, i, map) == 1) {
-//				item = i.toString();
-//				craftedItem = actor.getInventory().get(actor.getInventory().size() - 1).toString();
 				return "a " + actor.getInventory().get(actor.getInventory().size() - 1).toString() + " has been added to " + actor.toString() + "'s inventory";
 			}
 		}

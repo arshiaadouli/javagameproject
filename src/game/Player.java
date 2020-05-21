@@ -25,19 +25,12 @@ public class Player extends Human implements Crafter {
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-
-
-
-
-//		this.addHarvestAction(actions, this, map);
-//		this.addCraftAction(actions, this);
-//		this.addEatFoodAction(actions, this);
-
-
 		actions.add(super.AllowableActions(map));
 
-		if (lastAction.getNextAction() != null)
+		if (lastAction.getNextAction() != null) {
 			return lastAction.getNextAction();
+		}
+		
 		return menu.showMenu(this, actions, display);
 	}
 

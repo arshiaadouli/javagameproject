@@ -22,6 +22,8 @@ public class HarvestAction extends Action {
 	public HarvestAction(Location l) {
 		this.l = l;
 	}
+	
+	
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
@@ -36,7 +38,6 @@ public class HarvestAction extends Action {
 			PickUpItemAction puia = new PickUpItemAction(food);
 			puia.execute(actor, map);
 			
-			
 			if (c != null) {
 				l.removeItem(c);
 			}
@@ -46,6 +47,7 @@ public class HarvestAction extends Action {
 			l.addItem(new Food("Food " + foodNum));
 			l.removeItem(c);
 		}
+		
 		return retVal;
 	}
 

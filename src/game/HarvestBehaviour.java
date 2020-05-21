@@ -43,6 +43,7 @@ public class HarvestBehaviour implements Behaviour {
 			Collections.shuffle(locationsWithRipeCrop);
 			return new HarvestAction(locationsWithRipeCrop.get(0));
 		}
+		
 		return null;
 	}
 }
