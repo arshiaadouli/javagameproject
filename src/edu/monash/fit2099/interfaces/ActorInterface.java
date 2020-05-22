@@ -41,7 +41,7 @@ public interface ActorInterface {
 	 * @return true
 	 */
 	public default boolean crafter() {
-		return true;
+		return false;
 	}
 	
 	public default boolean harvester() {
