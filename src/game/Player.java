@@ -26,7 +26,7 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 	public boolean crafter() {
 		return true;
 	}
-	
+
 	@Override
 	public boolean harvester() {
 		return true;

@@ -1,8 +1,8 @@
 package edu.monash.fit2099.interfaces;
 
 public interface Harvester {
-	
-	public default boolean harvester() {
+
+    default public boolean harvester() {
         return true;
     }
 }

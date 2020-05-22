@@ -6,7 +6,7 @@ public interface Crafter {
      * make a actor to be a crafter
      * @return true
      */
-    public default boolean crafter(){
+    default public boolean crafter(){
         return true;
     }
 }
