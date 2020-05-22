@@ -43,6 +43,14 @@ public interface ActorInterface {
 	public default boolean crafter() {
 		return true;
 	}
+	
+	public default boolean harvester() {
+		return true;
+	}
+	
+	public default boolean personThatEatFood() {
+		return true;
+	}
 
 	public default  Actions AllowableActions() {
 		return  null;

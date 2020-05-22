@@ -32,12 +32,13 @@ public abstract class ZombieActor extends Actor {
 	@Override
 	public int getNumArm() {
 		int temp = 0;
+		
 		for(Limb i : items){
 			if(i instanceof Arm){
 				temp +=1;
-
 			}
 		}
+		
 		return temp;
 	}
 
@@ -48,12 +49,13 @@ public abstract class ZombieActor extends Actor {
 	@Override
 	public int getNumLeg() {
 		int temp = 0;
+		
 		for(Limb i : items){
 			if(i instanceof Leg){
 				temp +=1;
-
 			}
 		}
+		
 		return temp;
 	}
 
@@ -147,8 +149,13 @@ public abstract class ZombieActor extends Actor {
 			actions.add(hasCraftAction());
 		}
 		
-		actions.add(addHarvestAction(map));
-		actions.add(addEatFoodAction());
+		if (this.harvester()) {
+			actions.add(addHarvestAction(map));
+		}
+		
+		if (this.personThatEatFood()) {
+			actions.add(addEatFoodAction());
+		}
 		
 		return actions;
 	}
