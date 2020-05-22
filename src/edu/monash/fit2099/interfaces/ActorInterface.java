@@ -52,10 +52,6 @@ public interface ActorInterface {
 		return true;
 	}
 
-	public default  Actions AllowableActions() {
-		return  null;
-	}
-
 	public default Player asPlayer(Actor a) {
 		return a instanceof Player ? (Player) a : null;
 	}

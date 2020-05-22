@@ -21,7 +21,6 @@ public interface ItemInterface {
 		return 0;
 	}
 
-
 	/**
 	 * knowing whether an item is craftable or not
 	 * @return false as default
@@ -29,8 +28,6 @@ public interface ItemInterface {
 	public default boolean craftable() {
 		return false;
 	}
-
-
 	
 	public default Food asFood(Item i) {
 		return i instanceof Food ? (Food) i : null;
