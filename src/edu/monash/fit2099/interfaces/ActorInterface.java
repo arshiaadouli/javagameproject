@@ -45,11 +45,11 @@ public interface ActorInterface {
 	}
 	
 	public default boolean harvester() {
-		return true;
+		return false;
 	}
 	
 	public default boolean personThatEatFood() {
-		return true;
+		return false;
 	}
 
 	public default Player asPlayer(Actor a) {

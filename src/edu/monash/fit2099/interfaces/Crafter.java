@@ -8,6 +8,5 @@ public interface Crafter {
      */
     public default boolean crafter(){
         return true;
-
     }
 }
