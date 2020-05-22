@@ -4,7 +4,8 @@ import edu.monash.fit2099.engine.*;
 /**
  * arms are part of limbs ArrayList for every actor
  */
-public class Arm extends WeaponItem implements Limb {
+public class
+Arm extends WeaponItem implements Limb {
 
 	boolean hasIt = false;
 	/**
