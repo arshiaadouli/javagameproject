@@ -20,7 +20,7 @@ public class Zombie extends ZombieActor {
 	private int numArm = getNumArm();
 
 	private int turn = 0;
-	public Limb tempLimb = null;
+	private Limb tempLimb = null;
 
 	private Behaviour[] behaviours = {
 			new ZombieExpressionBehaviour(),
@@ -35,11 +35,6 @@ public class Zombie extends ZombieActor {
 	public Zombie(String name) {
 		super(name, 'Z', 100, ZombieCapability.UNDEAD);
 
-		items.add(new Leg("left leg", false));
-		items.add(new Leg("right leg", false));
-
-		items.add(new Arm("left arm", false));
-		items.add(new Arm("right arm", false));
 	}
 
 	@Override
