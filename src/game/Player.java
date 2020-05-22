@@ -22,9 +22,20 @@ public class Player extends Human implements Crafter {
 
 
 
+	@Override
+	public boolean crafter() {
+		return true;
+	}
+
+
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+
+		turn++;
+
+
+
 		actions.add(super.AllowableActions(map));
 
 		if (lastAction.getNextAction() != null) {
@@ -34,8 +45,4 @@ public class Player extends Human implements Crafter {
 		return menu.showMenu(this, actions, display);
 	}
 
-	@Override
-	public boolean crafter() {
-		return true;
-	}
 }

@@ -16,8 +16,9 @@ import edu.monash.fit2099.engine.*;
 public class Zombie extends ZombieActor {
 	private double punchChance = 0.5;
 
-	private ArrayList<Limb> items = new ArrayList<>();
+	private ArrayList<Limb> items = super.items;
 	private int numArm = getNumArm();
+
 	private int turn = 0;
 	public Limb tempLimb = null;
 
@@ -25,8 +26,9 @@ public class Zombie extends ZombieActor {
 			new ZombieExpressionBehaviour(),
 			new DropBehaviour(),
 			new AttackBehaviour(ZombieCapability.ALIVE),
-			new PickUpBehaviour(),
 			new HuntBehaviour(Human.class, 10),
+			new PickUpBehaviour(),
+
 			new WanderBehaviour()
 	};
 
@@ -108,16 +110,19 @@ public class Zombie extends ZombieActor {
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		turn += 1;
-		
+
+		// drop a limb of the zombie
 		if (tempLimb != null){
 			map.locationOf(this).addItem((Item)tempLimb);
 			tempLimb = null;
 		}
 
+		// halves the punch chance if the zombie has one arm
 		if(numArm==1){
 			punchChance=0.25;
 		}
-		
+
+		//no chance of punching if the zombie doesn't have any arm
 		if(numArm==0){
 			punchChance=0;
 		}

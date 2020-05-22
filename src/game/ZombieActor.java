@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
@@ -10,12 +11,76 @@ import edu.monash.fit2099.engine.*;
  *
  */
 public abstract class ZombieActor extends Actor {
-	
+
+	protected ArrayList<Limb> items = new ArrayList<>();
+
+	protected int turn = 0;
+
+	/**
+	 * returns the number of turns which a actor played
+	 * @return turn
+	 */
+	@Override
+	public int getNumTurn(){
+		return turn;
+	}
+
+	/**
+	 * returns the number of actor's Arms
+	 * @return number of Arms
+	 */
+	@Override
+	public int getNumArm() {
+		int temp = 0;
+		for(Limb i : items){
+			if(i instanceof Arm){
+				temp +=1;
+
+			}
+		}
+		return temp;
+	}
+
+	/**
+	 * returns number of Actor's leg
+	 * @return number of legs
+	 */
+	@Override
+	public int getNumLeg() {
+		int temp = 0;
+		for(Limb i : items){
+			if(i instanceof Leg){
+				temp +=1;
+
+			}
+		}
+		return temp;
+	}
+
+
+	/**
+	 *  this method creates 2 legs and 2 arms for an actor
+	 * @param name actor name
+	 * @param displayChar character of actor
+	 * @param hitPoints hitpoint of actor
+	 * @param team ZombieCapability of the actor
+	 */
 	public ZombieActor(String name, char displayChar, int hitPoints, ZombieCapability team) {
 		super(name, displayChar, hitPoints);
 		addCapability(team);
+
+		items.add(new Leg("left leg", false));
+		items.add(new Leg("right leg", false));
+
+		items.add(new Arm("left arm", false));
+		items.add(new Arm("right arm", false));
 	}
 
+	/**
+	 * get all of the actions which includes crafting items from actor's inventory
+	 *
+	 * @return the actions which contains CraftAction
+	 */
 	public Actions hasCraftAction() {
 		Actions actionsCraft = new Actions();
 		for (Item i : this.getInventory()) {
