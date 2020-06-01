@@ -39,11 +39,7 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-
 		turn++;
-
-
-
 		actions.add(super.AllowableActions(map));
 
 		if (lastAction.getNextAction() != null) {
@@ -52,9 +48,4 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 		
 		return menu.showMenu(this, actions, display);
 	}
-
-
-
-	
-
 }
