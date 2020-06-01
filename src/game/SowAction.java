@@ -38,7 +38,7 @@ public class SowAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " plants some crops on a patch of dirt";
 		
-		if (rand.nextDouble() <= 0.33) {
+		if (rand.nextDouble() <= 1) {
 			this.l.addItem(this.c);
 			
 			try {

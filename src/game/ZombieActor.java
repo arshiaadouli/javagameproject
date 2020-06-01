@@ -96,6 +96,7 @@ public abstract class ZombieActor extends Actor {
 	
 	public Actions addEatFoodAction() {
 		Actions actions = new Actions();
+		
 		// Is there a Food item in my inventory?
 		for (Item i : this.getInventory()) {
 			if (i.asFood(i) != null) {
@@ -106,21 +107,36 @@ public abstract class ZombieActor extends Actor {
 		return actions;
 	}
 	
+	public Actions addFertilizeAction(GameMap map) {
+		Actions actions = new Actions();
+		List<Item> itemsOnActor = map.locationOf(this).getItems();
+		
+		// Is there an unripe crop on me?
+		for (Item i : itemsOnActor) {
+			if (i.asCrop(i) != null) {
+				if (!i.asCrop(i).getIsRipe()) {
+					actions.add(new FertilizeAction(i.asCrop(i)));
+					return actions;
+				}
+			}
+		}
+		
+		return actions;
+	}
+	
 	public Actions addHarvestAction(GameMap map) {
 		Actions actions = new Actions();
 		List<Exit> actorExits = map.locationOf(this).getExits();
 		List<Item> itemsOnActor = map.locationOf(this).getItems();
-		boolean harvestActionAdded = false;
 		
 		// check if there are any ripe crop in actor's exits first.
 		for (Exit e : actorExits) {
 			List<Item> itemsOnLocation = e.getDestination().getItems();
 			
 			for (Item i : itemsOnLocation) {
-				if (i.asCrop(i) != null && !harvestActionAdded) { // if i is a crop (ripe and unripe)
+				if (i.asCrop(i) != null) { // if i is a crop (ripe and unripe)
 					if (i.asCrop(i).getIsRipe()) { // if i is a ripe crop
 						actions.add(new HarvestAction(e.getDestination()));
-						harvestActionAdded = true;
 						return actions;
 					}
 				}
@@ -130,9 +146,8 @@ public abstract class ZombieActor extends Actor {
 		// then check if actor is standing on any ripe crop.
 		for (Item i : itemsOnActor) {
 			if (i.asCrop(i) != null) {
-				if (i.asCrop(i).getIsRipe() && !harvestActionAdded) {
+				if (i.asCrop(i).getIsRipe()) {
 					actions.add(new HarvestAction(map.locationOf(this)));
-					harvestActionAdded = true;
 					return actions;
 				}
 			}
@@ -155,6 +170,10 @@ public abstract class ZombieActor extends Actor {
 		
 		if (this.personThatEatFood()) {
 			actions.add(addEatFoodAction());
+		}
+		
+		if (this.fertilizer()) {
+			actions.add(addFertilizeAction(map));
 		}
 		
 		return actions;

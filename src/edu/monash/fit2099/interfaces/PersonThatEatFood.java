@@ -2,7 +2,7 @@ package edu.monash.fit2099.interfaces;
 
 public interface PersonThatEatFood {
 	
-	default public boolean personThatEatFood() {
+	public default boolean personThatEatFood() {
         return true;
     }
 }

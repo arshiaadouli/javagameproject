@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
+import edu.monash.fit2099.interfaces.Fertilizer;
 import edu.monash.fit2099.interfaces.Harvester;
 import edu.monash.fit2099.interfaces.PersonThatEatFood;
 import edu.monash.fit2099.engine.DoNothingAction;
@@ -18,7 +19,7 @@ import edu.monash.fit2099.engine.DoNothingAction;
  *
  */
 
-public class Farmer extends Human implements Harvester, PersonThatEatFood {
+public class Farmer extends Human implements Harvester, PersonThatEatFood, Fertilizer {
 	static private ArrayList<Location> cropLocations = new ArrayList<Location>();
 	static private ArrayList<Crop> cropObjs = new ArrayList<Crop>();
 	private Behaviour[] behaviours = {
@@ -60,6 +61,11 @@ public class Farmer extends Human implements Harvester, PersonThatEatFood {
 			}
 		}
 		return new DoNothingAction();
+	}
+	
+	@Override
+	public boolean fertilizer() {
+		return true;
 	}
 	
 	/**
