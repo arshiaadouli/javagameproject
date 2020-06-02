@@ -19,6 +19,7 @@ public class Human extends ZombieActor {
 			new EatFoodBehaviour(this)
 	};
 
+
 	/**
 	 * The default constructor creates default Humans
 	 * 
@@ -26,6 +27,7 @@ public class Human extends ZombieActor {
 	 */
 	public Human(String name) {
 		super(name, 'H', 50, ZombieCapability.ALIVE);
+		this.isAppear=true;
 	}
 	
 	/**

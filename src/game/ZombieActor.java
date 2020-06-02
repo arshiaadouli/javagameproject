@@ -13,13 +13,13 @@ import edu.monash.fit2099.interfaces.ActorInterface;
  *
  */
 public abstract class ZombieActor extends Actor{
-//	protected boolean appearance = true;
+
 
 	protected ArrayList<Limb> items = new ArrayList<>();
 
 	protected int turn = 0;
 
-	boolean appearance = true;
+	public boolean isAppear;
 	/**
 	 * returns the number of turns which a actor played
 	 * @return turn
@@ -167,8 +167,10 @@ public abstract class ZombieActor extends Actor{
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions list = super.getAllowableActions(otherActor, direction, map);
+		System.out.println("mambo appearence" + this.isAppear);
 
-		if ((otherActor.hasCapability(ZombieCapability.UNDEAD) != this.hasCapability(ZombieCapability.UNDEAD))&&(this.appearance)) {
+
+		if ((otherActor.hasCapability(ZombieCapability.UNDEAD) != this.hasCapability(ZombieCapability.UNDEAD))&&(this.isAppear)) {
 
 
 				list.add(new AttackAction(this));

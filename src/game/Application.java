@@ -101,7 +101,7 @@ public class Application {
 		car2.addAction(new TransfterAction(gameMap));
 
 		gameMap.at(42, 14).addItem(car1);
-		gameMap.at(0, 0).addItem(new Car("car3"));
+//		gameMap.at(0, 0).addItem(new Car("car3"));
 
 		gameMap1.at(1, 1).addItem(car2);
 
@@ -121,6 +121,7 @@ public class Application {
 
 
 //		getGameMap = gameMap;
+
 
 
 

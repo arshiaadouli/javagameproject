@@ -34,14 +34,16 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
+        isAppear=false;
         turn++;
 
 
+
         Random random = new Random();
-        if(random.nextDouble() <= 0.25){
+        if(random.nextDouble() <= 0.05){
             this.displayChar= 'X' ;
 
-            appearance=true;
+            isAppear=true;
         }
 
 
@@ -60,22 +62,22 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
         if(turn % 30 == 0){
             this.displayChar='*';
-            appearance = false;
+            isAppear = false;
         }
 
 
         if(this.displayChar=='*'){
-            appearance =false;
+            isAppear =false;
         }
         if(this.displayChar=='X'){
-            appearance=true;
+            isAppear=true;
         }
 
 
 
 
         if(map.contains(this)){
-            System.out.println("mambo "+isAppear());
+
             for (Behaviour behaviour : behaviours) {
                 Action action = behaviour.getAction(this, map);
                 if (action != null)

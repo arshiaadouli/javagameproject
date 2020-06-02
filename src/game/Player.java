@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Player extends Human implements Crafter, Harvester, PersonThatEatFood {
 	private Menu menu = new Menu();
 
+
 	/**
 	 * Constructor.
 	 *
@@ -44,7 +45,7 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 
 		turn++;
 
-		System.out.println("player " + appearance);
+
 
 
 
