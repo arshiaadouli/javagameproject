@@ -62,7 +62,7 @@ public class Application {
 //		player1 = player;
 		world.addPlayer(player, gameMap.at(42, 13));
 		gameMap.at(42, 13).addItem(new SniperRifle());
-		world.addPlayer(player, gameMap.at(1, 0));
+//		world.addPlayer(player, gameMap.at(50, 20));
 
 
 	    // Place some random humans
