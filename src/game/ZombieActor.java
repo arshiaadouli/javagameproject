@@ -144,6 +144,22 @@ public abstract class ZombieActor extends Actor{
 		
 		return actions;
 	}
+	
+	public Actions addRangeAttackAction(GameMap map) {
+		Actions actions = new Actions();
+		ArrayList<Actor> listOfActors = new ArrayList<>();
+		
+		
+		
+		for (Item i : this.getInventory()) {
+			if (i.isRanged()) {
+				actions.add(new RangeAttackAction(listOfActors));
+				break;
+			}
+		}
+		
+		return actions;		
+	}
 
 	@Override
 	public Actions AllowableActions(GameMap map) {
@@ -159,6 +175,10 @@ public abstract class ZombieActor extends Actor{
 		
 		if (this.personThatEatFood()) {
 			actions.add(addEatFoodAction());
+		}
+		
+		if (this.sheriff()) {
+			actions.add(addRangeAttackAction(map));
 		}
 		
 		return actions;

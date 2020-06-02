@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
@@ -8,8 +10,8 @@ import edu.monash.fit2099.engine.Weapon;
 public class RangeAttackAction extends Action {
 	private Actor target;
 	
-	public RangeAttackAction(Actor target) {
-		this.target = target;
+	public RangeAttackAction(ArrayList<Actor> listOfTargets) {
+		
 	}
 
 	@Override

@@ -4,13 +4,14 @@ import edu.monash.fit2099.engine.*;
 import edu.monash.fit2099.interfaces.Crafter;
 import edu.monash.fit2099.interfaces.Harvester;
 import edu.monash.fit2099.interfaces.PersonThatEatFood;
+import edu.monash.fit2099.interfaces.Sheriff;
 
 import java.util.ArrayList;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Human implements Crafter, Harvester, PersonThatEatFood {
+public class Player extends Human implements Crafter, Harvester, PersonThatEatFood, Sheriff {
 	private Menu menu = new Menu();
 
 
@@ -37,6 +38,11 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 
 	@Override
 	public boolean personThatEatFood() {
+		return true;
+	}
+	
+	@Override
+	public boolean sheriff() {
 		return true;
 	}
 
