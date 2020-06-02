@@ -45,44 +45,49 @@ public class AttackAction extends Action {
 
 		target.hurt(damage);
 
-		if(actor instanceof Zombie && weapon.verb().equals("bites")) {
-			actor.heal(5);
-		}
-		
-		if (!target.isConscious()) {
-			PortableItem corpse = null;
 
-			if (target.hasCapability(ZombieCapability.ALIVE)) {
-				corpse = new PortableItem("dead " + target, '%');
-				Actions dropActions = new Actions();
-				
-				for (Item item : target.getInventory())
-					dropActions.add(item.getDropAction());
-				
-				for (Action drop : dropActions)
-					drop.execute(target, map);
-				
-				map.locationOf(target).addItem(corpse);
-				corpse.setZombieCap(ZombieCapability.ALIVE);
-			}
-			else {
-				corpse = new PortableItem("dead " + target, '%');
-				Actions dropActions = new Actions();
-				
-				for (Item item : target.getInventory())
-					dropActions.add(item.getDropAction());
-				
-				for (Action drop : dropActions)
-					drop.execute(target, map);
-				
-				map.locationOf(target).addItem(corpse);
-				corpse.setZombieCap(ZombieCapability.UNDEAD);
-			}
-			map.removeActor(target);
-			result += System.lineSeparator() + target + " is killed.";
+
+		if(actor instanceof Zombie && weapon.verb().equals("bites")){
+			actor.heal(5);
+
 		}
 		
-		return result;
+//		if (!target.isConscious()) {
+//			PortableItem corpse = null;
+//
+//			if (target.hasCapability(ZombieCapability.ALIVE)) {
+//				corpse = new PortableItem("dead " + target, '%');
+//				Actions dropActions = new Actions();
+//
+//				for (Item item : target.getInventory())
+//					dropActions.add(item.getDropAction());
+//
+//				for (Action drop : dropActions)
+//					drop.execute(target, map);
+//
+//				map.locationOf(target).addItem(corpse);
+//				corpse.setZombieCap(ZombieCapability.ALIVE);
+//			}
+//			else {
+//				corpse = new PortableItem("dead " + target, '%');
+//				Actions dropActions = new Actions();
+//
+//				for (Item item : target.getInventory())
+//					dropActions.add(item.getDropAction());
+//
+//				for (Action drop : dropActions)
+//					drop.execute(target, map);
+//
+//				map.locationOf(target).addItem(corpse);
+//				corpse.setZombieCap(ZombieCapability.UNDEAD);
+//			}
+//			map.removeActor(target);
+//			result += System.lineSeparator() + target + " is killed.";
+//		}
+//
+//		return result;
+		Corpse corpse = new Corpse();
+		return corpse.execute(map, target);
 	}
 
 	@Override

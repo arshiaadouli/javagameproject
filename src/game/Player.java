@@ -5,6 +5,8 @@ import edu.monash.fit2099.interfaces.Crafter;
 import edu.monash.fit2099.interfaces.Harvester;
 import edu.monash.fit2099.interfaces.PersonThatEatFood;
 
+import java.util.ArrayList;
+
 /**
  * Class representing the Player.
  */
@@ -39,8 +41,22 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+
 		turn++;
+
+		System.out.println("player " + appearance);
+
+
+
+
 		actions.add(super.AllowableActions(map));
+
+
+		actions.add(new DieAction());
+
+
+
+
 
 		if (lastAction.getNextAction() != null) {
 			return lastAction.getNextAction();
@@ -48,4 +64,9 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 		
 		return menu.showMenu(this, actions, display);
 	}
+
+
+
+	
+
 }

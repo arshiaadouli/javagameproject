@@ -11,7 +11,7 @@ import edu.monash.fit2099.engine.WeaponItem;
 public class Plank extends WeaponItem {
 
 	public Plank() {
-		super("plank", ')', 15, "whacks");
+		super("plank", ')', 80, "whacks");
 	}
 
 }

@@ -10,6 +10,7 @@ import java.util.Objects;
  * player, and the playing grid.
  */
 public class World {
+
 	protected Display display;
 	protected ArrayList<GameMap> gameMaps = new ArrayList<GameMap>();
 	protected ActorLocations actorLocations = new ActorLocations();

@@ -24,9 +24,7 @@ public class FertilizeAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " fertilized an Unripe Crop";
 		
-		if (!c.getIsRipe()) {
-			c.fertilizeCrop();
-		}
+		c.fertilizeCrop();
 		
 		return retVal;
 	}

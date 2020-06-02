@@ -178,6 +178,7 @@ public abstract class Actor implements ActorInterface, Capable, Printable {
 	 */
 	public void addCapability(Enum<?> capability) {
 		capabilities.addCapability(capability);
+
 	}
 
 	/** Remove a capability from this Actor.

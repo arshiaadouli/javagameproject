@@ -42,8 +42,9 @@ public class PortableItem extends Item {
 				try {
 					currentLocation.removeItem(this);
 					currentLocation.addActor(new Zombie(name));
+					
 				}
-				catch (IllegalArgumentException e) {
+				catch (IllegalArgumentException e){
 					System.out.println("actor in dead actor position");
 				}
 			}

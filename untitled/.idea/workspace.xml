@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58c018f2-2f20-4203-be79-1f2f25169ce0" name="Default Changelist" comment="" />
+    <list default="true" id="b55177fe-634a-4fa9-a13d-7225077adca6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +10,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1ckLIFCu9ogaGA4KQOcGM7YoouK" />
+  <component name="ProjectId" id="1ckLGquRiZDKumP0dxuOZctVC8D" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,22 +25,22 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="58c018f2-2f20-4203-be79-1f2f25169ce0" name="Default Changelist" comment="" />
-      <created>1591067563010</created>
+      <changelist id="b55177fe-634a-4fa9-a13d-7225077adca6" name="Default Changelist" comment="" />
+      <created>1591067551969</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1591067563010</updated>
+      <updated>1591067551969</updated>
     </task>
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="63" key="FileChooserDialogImpl" timestamp="1591067570663">
+    <state x="421" y="63" key="FileChooserDialogImpl" timestamp="1591067560655">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="421" y="63" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1591067570663" />
-    <state x="91" y="0" key="new project wizard" timestamp="1591067576119">
+    <state x="421" y="63" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1591067560655" />
+    <state x="316" y="44" width="663" height="601" key="NewModule_or_Project.wizard" timestamp="1591067562957">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="91" y="0" key="new project wizard/0.0.1280.689@0.0.1280.689" timestamp="1591067576119" />
+    <state x="316" y="44" width="663" height="601" key="NewModule_or_Project.wizard/0.0.1280.689@0.0.1280.689" timestamp="1591067562957" />
   </component>
 </project>

@@ -22,17 +22,17 @@ public class DropBehaviour implements Behaviour {
     public Action getAction(Actor actor, GameMap map) {
 
         Item item = null;
-        if (actor.getNumArm() == 0) {
+        if(actor.getNumArm() == 0) {
             if (!(actor.getWeapon() instanceof IntrinsicWeapon)) {
                 item = (Item) actor.getWeapon();
             }
         }
 
-        if (actor.getNumArm() == 1) {
+        if(actor.getNumArm() == 1) {
             if (!(actor.getWeapon() instanceof IntrinsicWeapon)) {
                 Random random = new Random();
-                if (random.nextDouble() <= 0.5) {
-                	item = (Item) actor.getWeapon();
+                if(random.nextDouble() <= 0.5) {
+                    item = (Item) actor.getWeapon();
                 }
             }
         }

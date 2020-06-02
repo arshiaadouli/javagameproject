@@ -42,6 +42,7 @@ public class WanderBehaviour implements Behaviour {
 			} else {
 				return null;
 			}
+
 		}
 		else
 			return new DoNothingAction();
