@@ -89,6 +89,8 @@ public class Application {
 //		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));
 //		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
 		gameMap.at(30, 10).addActor(new Zombie("Aaargh"));
+		gameMap.at(31, 10).addActor(new Zombie("Aaargh"));
+
 
 //		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
 		
