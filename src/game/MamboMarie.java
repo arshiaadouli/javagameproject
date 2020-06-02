@@ -18,18 +18,16 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
     private ArrayList<Behaviour> behaviours = new ArrayList<>();
+    boolean temp=true;
 
 
     public MamboMarie(String name) {
-        super(name, '*', 50, ZombieCapability.UNDEAD);
+        super(name, '.', 50, ZombieCapability.UNDEAD);
         behaviours.add(new WanderBehaviour());
 
 
+
     }
-
-
-
-
 
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
@@ -40,11 +38,19 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
         Random random = new Random();
+
+
         if(random.nextDouble() <= 0.05){
             this.displayChar= 'X' ;
+            temp=false;
 
             isAppear=true;
         }
+
+
+
+
+
 
 
         if(turn % 8 == 0){
@@ -61,12 +67,15 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
         if(turn % 30 == 0){
-            this.displayChar='*';
+
+
+            this.displayChar = '.';
+
             isAppear = false;
         }
 
 
-        if(this.displayChar=='*'){
+        if(this.displayChar!='X'){
             isAppear =false;
         }
         if(this.displayChar=='X'){
@@ -77,6 +86,15 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
         if(map.contains(this)){
+
+
+            if(temp){
+                if(map.locationOf(this).getItems().size()>0){
+
+                    this.displayChar = map.locationOf(this).getItems().get(0).getDisplayChar();
+
+                }
+            }
 
             for (Behaviour behaviour : behaviours) {
                 Action action = behaviour.getAction(this, map);

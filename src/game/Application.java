@@ -60,20 +60,23 @@ public class Application {
 		
 		Actor player = new Player("Player", '@', 3000);
 //		player1 = player;
+		world.addPlayer(player, gameMap.at(42, 13));
+		gameMap.at(42, 13).addItem(new SniperRifle());
 		world.addPlayer(player, gameMap.at(1, 0));
 
+
 	    // Place some random humans
-		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
+//		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
 //		String[] humans = {"arshia"};
-		int x, y;
-		for (String name : humans) {
-			do {
-				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
-				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
-			}
-			while (gameMap.at(x, y).containsAnActor());
-			gameMap.at(x,  y).addActor(new Human(name));
-		}
+//		int x, y;
+//		for (String name : humans) {
+//			do {
+//				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
+//				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
+//			}
+//			while (gameMap.at(x, y).containsAnActor());
+//			gameMap.at(x,  y).addActor(new Human(name));
+//		}
 
 		// place a simple weapon
 			gameMap.at(42, 13).addItem(new Plank());
@@ -87,11 +90,11 @@ public class Application {
 //		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
 		gameMap.at(30, 10).addActor(new Zombie("Aaargh"));
 
-		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
+//		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
 		
 		// testing code for Farmer class
 		gameMap.at(44, 15).addActor(new Farmer("Joseph", 100));
-		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
+//		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
 		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
 
 		Car car1 = new Car("car1");
@@ -101,7 +104,9 @@ public class Application {
 		car2.addAction(new TransfterAction(gameMap));
 
 		gameMap.at(42, 14).addItem(car1);
-//		gameMap.at(0, 0).addItem(new Car("car3"));
+//		gameMap.at(0, 1).addItem(new Car("car3"));
+//		gameMap.at(1, 1).addItem(new Car("car3"));
+//		gameMap.at(1, 0).addItem(new Car("car3"));
 
 		gameMap1.at(1, 1).addItem(car2);
 
