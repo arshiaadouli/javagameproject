@@ -20,6 +20,10 @@ public abstract class ZombieActor extends Actor{
 	protected int turn = 0;
 
 	public boolean isAppear;
+
+	public void setDisplayChar(char displayChar) {
+		this.displayChar = displayChar;
+	}
 	/**
 	 * returns the number of turns which a actor played
 	 * @return turn

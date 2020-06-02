@@ -15,7 +15,9 @@ public abstract class Actor implements ActorInterface, Capable, Printable {
 	protected int maxHitPoints;
 	protected int hitPoints;
 
+///////
 
+///////
 	/**
 	 * Constructor.
 	 * @param name the name of the Actor

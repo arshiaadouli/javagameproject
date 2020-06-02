@@ -60,26 +60,28 @@ public class Application {
 		
 		Actor player = new Player("Player", '@', 3000);
 //		player1 = player;
-		world.addPlayer(player, gameMap.at(42, 13));
+		player.addItemToInventory(new Plank());
+		world.addPlayer(player, gameMap.at(42, 14));
 		gameMap.at(42, 13).addItem(new SniperRifle());
-//		world.addPlayer(player, gameMap.at(50, 20));
+
+
 
 
 	    // Place some random humans
-//		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
+		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
 //		String[] humans = {"arshia"};
-//		int x, y;
-//		for (String name : humans) {
-//			do {
-//				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
-//				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
-//			}
-//			while (gameMap.at(x, y).containsAnActor());
-//			gameMap.at(x,  y).addActor(new Human(name));
-//		}
+		int x, y;
+		for (String name : humans) {
+			do {
+				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
+				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
+			}
+			while (gameMap.at(x, y).containsAnActor());
+			gameMap.at(x,  y).addActor(new Human(name));
+		}
 
 		// place a simple weapon
-			gameMap.at(42, 13).addItem(new Plank());
+//			gameMap.at(1, 0).addItem(new Plank());
 //		gameMap.at(30, 18).addItem(new Plank());
 		
 		// FIXME: Add more zombies!
@@ -88,8 +90,8 @@ public class Application {
 //		gameMap.at(10,  4).addActor(new Zombie("Uuuurgh"));
 //		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));
 //		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
-		gameMap.at(30, 10).addActor(new Zombie("Aaargh"));
-		gameMap.at(31, 10).addActor(new Zombie("Aaargh"));
+		gameMap.at(20, 10).addActor(new Zombie("Aaargh"));
+		gameMap.at(21, 10).addActor(new Zombie("Aaargh"));
 
 
 //		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
@@ -97,7 +99,7 @@ public class Application {
 		// testing code for Farmer class
 		gameMap.at(44, 15).addActor(new Farmer("Joseph", 100));
 		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
-		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
+//		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
 
 		Car car1 = new Car("car1");
 		Car car2 = new Car("car2");
@@ -109,6 +111,9 @@ public class Application {
 		gameMap1.at(1, 1).addItem(car2);
 
 
+		gameMap.at(1, 0).addItem(car2);
+		gameMap.at(1, 1).addItem(car2);
+		gameMap.at(0, 1).addItem(car2);
 
 		allGameMaps.add(gameMap);
 		allGameMaps.add(gameMap1);

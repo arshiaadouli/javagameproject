@@ -22,7 +22,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
     public MamboMarie(String name) {
-        super(name, '.', 50, ZombieCapability.UNDEAD);
+        super(name, '*', 50, ZombieCapability.UNDEAD);
         behaviours.add(new WanderBehaviour());
 
 
@@ -40,7 +40,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         Random random = new Random();
 
 
-        if(random.nextDouble() <= 0.05){
+        if(random.nextDouble() <= 0.15){
             this.displayChar= 'X' ;
             temp=false;
 
@@ -69,7 +69,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         if(turn % 30 == 0){
 
 
-            this.displayChar = '.';
+            this.displayChar = '*';
 
             isAppear = false;
         }
