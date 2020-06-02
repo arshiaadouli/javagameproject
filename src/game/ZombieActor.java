@@ -1,22 +1,25 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
+import edu.monash.fit2099.interfaces.ActorInterface;
 
 /**
  * Base class for Actors in the Zombie World
  * @author ram
  *
  */
-public abstract class ZombieActor extends Actor {
-	protected boolean appearance = true;
+public abstract class ZombieActor extends Actor{
+
 
 	protected ArrayList<Limb> items = new ArrayList<>();
 
 	protected int turn = 0;
 
+	public boolean isAppear;
 	/**
 	 * returns the number of turns which a actor played
 	 * @return turn
@@ -164,9 +167,20 @@ public abstract class ZombieActor extends Actor {
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions list = super.getAllowableActions(otherActor, direction, map);
-		if (otherActor.hasCapability(ZombieCapability.UNDEAD) != this.hasCapability(ZombieCapability.UNDEAD))
-			list.add(new AttackAction(this));
+		System.out.println("mambo appearence" + this.isAppear);
 
-		return list;
+
+		if ((otherActor.hasCapability(ZombieCapability.UNDEAD) != this.hasCapability(ZombieCapability.UNDEAD))&&(this.isAppear)) {
+
+
+				list.add(new AttackAction(this));
+
+			}
+
+
+			return list;
+		}
+
 	}
-}
+
+

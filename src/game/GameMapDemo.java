@@ -1,8 +1,6 @@
 package game;
 
-import edu.monash.fit2099.engine.ActorLocations;
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.GroundFactory;
+import edu.monash.fit2099.engine.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +12,20 @@ public class GameMapDemo extends GameMap {
         super(groundFactory, lines);
     }
 
-    public ActorLocations getAllLocations(){
-        return actorLocations;
+
+    @Override
+    public boolean isAnActorAt(Location location) {
+//        if(actorLocations.isAnActorAt(location)){
+//            Actor actor = getActorAt(location);
+//            if(!((ZombieActor) actor).isAppear && actor instanceof MamboMarie){
+//                return false;
+//
+//            }
+//        }
+        return actorLocations.isAnActorAt(location);
     }
+
+
+
+
 }

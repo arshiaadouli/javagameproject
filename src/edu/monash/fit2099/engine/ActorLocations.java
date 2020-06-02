@@ -95,6 +95,7 @@ public class ActorLocations implements Iterable<Actor> {
 	 */
 	public boolean isAnActorAt(Location location) {
 		return locationToActor.containsKey(location);
+
 	}
 
 	/**

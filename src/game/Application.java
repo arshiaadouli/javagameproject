@@ -20,6 +20,7 @@ public class Application {
 //	public static ArrayList<GameMap> temp;
 	public static void main(String[] args) throws IOException {
 		ArrayList<GameMap> allGameMaps = new ArrayList<>();
+
 		WorldSub world = new WorldSub(new Display());
 
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Fence(), new Tree());
@@ -61,6 +62,7 @@ public class Application {
 //		player1 = player;
 		world.addPlayer(player, gameMap.at(42, 13));
 		gameMap.at(42, 13).addItem(new SniperRifle());
+		world.addPlayer(player, gameMap.at(1, 0));
 
 	    // Place some random humans
 		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
@@ -96,10 +98,12 @@ public class Application {
 
 		Car car1 = new Car("car1");
 		Car car2 = new Car("car2");
+
 		car1.addAction(new TransfterAction(gameMap1));
 		car2.addAction(new TransfterAction(gameMap));
 
 		gameMap.at(42, 14).addItem(car1);
+//		gameMap.at(0, 0).addItem(new Car("car3"));
 
 		gameMap1.at(1, 1).addItem(car2);
 
@@ -119,6 +123,7 @@ public class Application {
 
 
 //		getGameMap = gameMap;
+
 
 
 
