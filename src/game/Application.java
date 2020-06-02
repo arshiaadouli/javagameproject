@@ -60,7 +60,8 @@ public class Application {
 		
 		Actor player = new Player("Player", '@', 100);
 //		player1 = player;
-		world.addPlayer(player, gameMap.at(42, 13));
+		player.addItemToInventory(new Plank());
+		world.addPlayer(player, gameMap.at(10, 0));
 		gameMap.at(42, 13).addItem(new SniperRifle());
 
 	    // Place some random humans
@@ -77,7 +78,7 @@ public class Application {
 		}
 
 		// place a simple weapon
-			gameMap.at(42, 13).addItem(new Plank());
+//			gameMap.at(1, 0).addItem(new Plank());
 //		gameMap.at(30, 18).addItem(new Plank());
 		
 		// FIXME: Add more zombies!
@@ -86,14 +87,16 @@ public class Application {
 //		gameMap.at(10,  4).addActor(new Zombie("Uuuurgh"));
 //		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));
 //		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
-		gameMap.at(30, 10).addActor(new Zombie("Aaargh"));
+		gameMap.at(20, 10).addActor(new Zombie("Aaargh"));
+		gameMap.at(21, 10).addActor(new Zombie("Aaargh"));
 
-		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
+
+//		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
 		
 		// testing code for Farmer class
 		gameMap.at(44, 15).addActor(new Farmer("Joseph", 100));
 		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
-		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
+//		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
 
 		Car car1 = new Car("car1");
 		Car car2 = new Car("car2");
@@ -102,27 +105,20 @@ public class Application {
 		car2.addAction(new TransfterAction(gameMap));
 
 		gameMap.at(42, 14).addItem(car1);
-//		gameMap.at(0, 0).addItem(new Car("car3"));
-
 		gameMap1.at(1, 1).addItem(car2);
 
 
+		gameMap.at(1, 0).addItem(car2);
+		gameMap.at(1, 1).addItem(car2);
+		gameMap.at(0, 1).addItem(car2);
+
+
+		gameMap.at(1, 0).addItem(new Plank());
+		gameMap.at(1, 1).addItem(new Plank());
+		gameMap.at(0, 1).addItem(new Plank());
 
 		allGameMaps.add(gameMap);
 		allGameMaps.add(gameMap1);
-
-//		temp = world.getAllActors();
-//		actors = new ArrayList<>();
-
-
-//		for(Actor actor : gameMap1.getAllLocations()){
-//			actors.add(actor);
-//			System.out.println(actor.toString());
-//		}
-
-
-//		getGameMap = gameMap;
-
 
 
 

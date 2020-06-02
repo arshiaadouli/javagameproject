@@ -15,13 +15,7 @@ public class GameMapDemo extends GameMap {
 
     @Override
     public boolean isAnActorAt(Location location) {
-//        if(actorLocations.isAnActorAt(location)){
-//            Actor actor = getActorAt(location);
-//            if(!((ZombieActor) actor).isAppear && actor instanceof MamboMarie){
-//                return false;
-//
-//            }
-//        }
+
         return actorLocations.isAnActorAt(location);
     }
 

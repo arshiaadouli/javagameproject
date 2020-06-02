@@ -19,6 +19,8 @@ public class WorldSub extends World {
     public ArrayList<GameMap> getAllActors(){
         return super.gameMaps;
     }
+    boolean playerWins=false;
+    boolean playerLoses=false;
 
 
     @Override
@@ -47,9 +49,30 @@ public class WorldSub extends World {
             }
 
         }
+        if(aliveNum==1){
+            playerLoses=true;
+        }
+        if(unDeadNum==0){
+            playerWins=true;
+        }
 
         return (actorLocations.contains(player)&& aliveNum!=1 && unDeadNum != 0);
 
+    }
+
+
+
+    @Override
+
+    protected String endGameMessage() {
+
+        if(playerLoses)
+        return "player loses";
+        if(playerWins)
+            return "player Wins";
+        if(actorLocations.contains(player))
+            return "player loses";
+        return "";
     }
 
 }

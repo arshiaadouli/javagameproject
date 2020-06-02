@@ -51,42 +51,42 @@ public class AttackAction extends Action {
 
 		}
 		
-//		if (!target.isConscious()) {
-//			PortableItem corpse = null;
-//
-//			if (target.hasCapability(ZombieCapability.ALIVE)) {
-//				corpse = new PortableItem("dead " + target, '%');
-//				Actions dropActions = new Actions();
-//
-//				for (Item item : target.getInventory())
-//					dropActions.add(item.getDropAction());
-//
-//				for (Action drop : dropActions)
-//					drop.execute(target, map);
-//
-//				map.locationOf(target).addItem(corpse);
-//				corpse.setZombieCap(ZombieCapability.ALIVE);
-//			}
-//			else {
-//				corpse = new PortableItem("dead " + target, '%');
-//				Actions dropActions = new Actions();
-//
-//				for (Item item : target.getInventory())
-//					dropActions.add(item.getDropAction());
-//
-//				for (Action drop : dropActions)
-//					drop.execute(target, map);
-//
-//				map.locationOf(target).addItem(corpse);
-//				corpse.setZombieCap(ZombieCapability.UNDEAD);
-//			}
-//			map.removeActor(target);
-//			result += System.lineSeparator() + target + " is killed.";
-//		}
-//
-//		return result;
-		Corpse corpse = new Corpse();
-		return corpse.execute(map, target);
+		if (!target.isConscious()) {
+			PortableItem corpse = null;
+
+			if (target.hasCapability(ZombieCapability.ALIVE)) {
+				corpse = new PortableItem("dead " + target, '%');
+				Actions dropActions = new Actions();
+
+				for (Item item : target.getInventory())
+					dropActions.add(item.getDropAction());
+
+				for (Action drop : dropActions)
+					drop.execute(target, map);
+
+				map.locationOf(target).addItem(corpse);
+				corpse.setZombieCap(ZombieCapability.ALIVE);
+			}
+			else {
+				corpse = new PortableItem("dead " + target, '%');
+				Actions dropActions = new Actions();
+
+				for (Item item : target.getInventory())
+					dropActions.add(item.getDropAction());
+
+				for (Action drop : dropActions)
+					drop.execute(target, map);
+
+				map.locationOf(target).addItem(corpse);
+				corpse.setZombieCap(ZombieCapability.UNDEAD);
+			}
+			map.removeActor(target);
+			result += System.lineSeparator() + target + " is killed.";
+		}
+
+		return result;
+//		Corpse corpse = new Corpse();
+//		return corpse.execute(map, target);
 	}
 
 	@Override
