@@ -96,7 +96,7 @@ public class Application {
 		
 		// testing code for Farmer class
 		gameMap.at(44, 15).addActor(new Farmer("Joseph", 100));
-//		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
+		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
 		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
 
 		Car car1 = new Car("car1");
@@ -106,29 +106,12 @@ public class Application {
 		car2.addAction(new TransfterAction(gameMap));
 
 		gameMap.at(42, 14).addItem(car1);
-//		gameMap.at(0, 1).addItem(new Car("car3"));
-//		gameMap.at(1, 1).addItem(new Car("car3"));
-//		gameMap.at(1, 0).addItem(new Car("car3"));
-
 		gameMap1.at(1, 1).addItem(car2);
 
 
 
 		allGameMaps.add(gameMap);
 		allGameMaps.add(gameMap1);
-
-//		temp = world.getAllActors();
-//		actors = new ArrayList<>();
-
-
-//		for(Actor actor : gameMap1.getAllLocations()){
-//			actors.add(actor);
-//			System.out.println(actor.toString());
-//		}
-
-
-//		getGameMap = gameMap;
-
 
 
 
