@@ -36,7 +36,7 @@ public class AttackAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 		Weapon weapon = actor.getWeapon();
 		int damage = weapon.damage();
-
+		
 		if (rand.nextBoolean()) {
 			return actor + " misses " + target + ".";
 		}
