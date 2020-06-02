@@ -15,6 +15,6 @@ public class DieAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return "SUICIDE";
+        return "quit game";
     }
 }

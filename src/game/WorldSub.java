@@ -41,7 +41,7 @@ public class WorldSub extends World {
 
         }
 
-        return actorLocations.contains(player)&& aliveNum!=1 && unDeadNum != 0;
+        return (actorLocations.contains(player)&& aliveNum!=1 && unDeadNum != 0) || (PortableItem.getHumanCorpse());
 
     }
 

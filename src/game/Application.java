@@ -62,8 +62,8 @@ public class Application {
 		world.addPlayer(player, gameMap.at(42, 13));
 
 	    // Place some random humans
-//		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
-		String[] humans = {"arshia"};
+		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
+//		String[] humans = {"arshia"};
 		int x, y;
 		for (String name : humans) {
 			do {
