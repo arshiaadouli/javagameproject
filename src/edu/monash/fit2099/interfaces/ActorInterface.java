@@ -12,6 +12,11 @@ import game.*;
 
 public interface ActorInterface {
 
+	boolean appearence = true;
+	public default boolean isAppear(){
+		return appearence;
+	}
+
 	/**
 	 * return a default value of getNumArm() for each actor
 	 * @return 2 as a default
