@@ -46,7 +46,6 @@ public class AttackAction extends Action {
 		target.hurt(damage);
 
 
-
 		if(actor instanceof Zombie && weapon.verb().equals("bites")){
 			actor.heal(5);
 

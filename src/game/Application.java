@@ -60,6 +60,7 @@ public class Application {
 		Actor player = new Player("Player", '@', 3000);
 //		player1 = player;
 		world.addPlayer(player, gameMap.at(42, 13));
+		gameMap.at(42, 13).addItem(new SniperRifle());
 
 	    // Place some random humans
 		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};

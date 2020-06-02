@@ -29,6 +29,10 @@ public interface ItemInterface {
 		return false;
 	}
 	
+	public default boolean isRanged() {
+		return false;
+	}
+	
 	public default Food asFood(Item i) {
 		return i instanceof Food ? (Food) i : null;
 	}
@@ -36,4 +40,5 @@ public interface ItemInterface {
 	public default Crop asCrop(Item i) {
 		return i instanceof Crop ? (Crop) i : null;
 	}
+
 }
