@@ -38,7 +38,7 @@ public class WanderBehaviour implements Behaviour {
 					actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
 
 					if(exit.getDestination().getItems().size()>0)
-					chars.add(exit.getDestination().getItems().get(0).getDisplayChar());
+					chars.add(exit.getDestination().getItems().get(exit.getDestination().getItems().size()-1).getDisplayChar());
 					else
 						chars.add('*');
 					b = true;

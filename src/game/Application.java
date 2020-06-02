@@ -61,7 +61,7 @@ public class Application {
 		Actor player = new Player("Player", '@', 3000);
 //		player1 = player;
 		player.addItemToInventory(new Plank());
-		world.addPlayer(player, gameMap.at(1, 0));
+		world.addPlayer(player, gameMap.at(10, 0));
 		gameMap.at(42, 13).addItem(new SniperRifle());
 
 
@@ -114,6 +114,11 @@ public class Application {
 		gameMap.at(1, 0).addItem(car2);
 		gameMap.at(1, 1).addItem(car2);
 		gameMap.at(0, 1).addItem(car2);
+
+
+		gameMap.at(1, 0).addItem(new Plank());
+		gameMap.at(1, 1).addItem(new Plank());
+		gameMap.at(0, 1).addItem(new Plank());
 
 		allGameMaps.add(gameMap);
 		allGameMaps.add(gameMap1);
