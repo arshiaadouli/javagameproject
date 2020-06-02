@@ -61,7 +61,7 @@ public class Application {
 		Actor player = new Player("Player", '@', 3000);
 //		player1 = player;
 		player.addItemToInventory(new Plank());
-		world.addPlayer(player, gameMap.at(42, 14));
+		world.addPlayer(player, gameMap.at(1, 0));
 		gameMap.at(42, 13).addItem(new SniperRifle());
 
 

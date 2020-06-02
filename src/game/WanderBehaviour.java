@@ -54,6 +54,7 @@ public class WanderBehaviour implements Behaviour {
 						else
 							((ZombieActor)actor).setDisplayChar('*');
 					}
+
 					b=false;
 
 
