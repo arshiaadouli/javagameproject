@@ -27,8 +27,20 @@ public class WorldSub extends World {
 
         int aliveNum = 0;
         int unDeadNum = 0;
+        ArrayList<Actor> compoundActors = new ArrayList<>();
+
+
 
         for(Actor actor : actorLocations) {
+
+            compoundActors.add(actor);
+
+        }
+
+
+
+        for(Actor actor : actorLocations) {
+        for()
 
             if(actor.hasCapability(ZombieCapability.UNDEAD)){
                 unDeadNum += 1;
