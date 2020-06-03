@@ -143,11 +143,11 @@ public class WorldSub extends World {
             playerLoses=true;
         }
         System.out.println(unDeadNum);
-        if(unDeadNum==0){
+        if(unDeadNum==0 && !MamboMarie.getIsAlive()){
             playerWins=true;
         }
 
-        return (actorLocations.contains(player)&& aliveNum!=1 && unDeadNum != 0);
+        return (actorLocations.contains(player)&& aliveNum!=1 && unDeadNum != 0 && MamboMarie.getIsAlive());
 
     }
 
@@ -163,6 +163,7 @@ public class WorldSub extends World {
             return "player Wins";
         if(actorLocations.contains(player))
             return "player loses";
+
         return "";
     }
 
