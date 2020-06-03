@@ -29,7 +29,7 @@ public class WanderBehaviour implements Behaviour {
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		ArrayList<Action> actions = new ArrayList<Action>();
-		ArrayList<Character> chars = new ArrayList<>();
+
 
 		if (actor.getNumLeg() == 2 || (actor.getNumLeg() == 1 && actor.getNumTurn() % 2 == 0)) {
 			for (Exit exit : map.locationOf(actor).getExits()) {
@@ -37,28 +37,12 @@ public class WanderBehaviour implements Behaviour {
 				if (destination.canActorEnter(actor)) {
 					actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
 
-					if(exit.getDestination().getItems().size()>0)
-					chars.add(exit.getDestination().getItems().get(exit.getDestination().getItems().size()-1).getDisplayChar());
-					else
-						chars.add('*');
-					b = true;
+
 				}
 			}
 
 			if (!actions.isEmpty()) {
-				int select = random.nextInt(actions.size());
-
-					if (!((ZombieActor) actor).isAppear) {
-						if(b)
-							((ZombieActor)actor).setDisplayChar(chars.get(select));
-						else
-							((ZombieActor)actor).setDisplayChar('*');
-					}
-
-					b=false;
-
-
-				return actions.get(select);
+				return actions.get(random.nextInt(actions.size()));
 			} else {
 				return null;
 			}
