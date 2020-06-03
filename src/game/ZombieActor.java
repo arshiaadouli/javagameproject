@@ -165,6 +165,7 @@ public abstract class ZombieActor extends Actor{
 			if (i.asSniperRifle(i) != null && i.asSniperRifle(i).hasAmmo()) {
 				for (Actor a : listOfActors) {
 					actions.add(new RangeAttackAction(a));
+					
 				}
 				
 				break;
