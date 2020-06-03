@@ -174,8 +174,16 @@ public abstract class ZombieActor extends Actor{
 				}
 				
 				if (i.asSniperRifle(i).hasAmmo()) {
-					for (Actor a : listOfTargets) {
-						actions.add(new RangeAttackAction(a));
+					SniperRifle sniper = i.asSniperRifle(i);
+					
+					if (sniper != null) {
+						for (Actor a : listOfTargets) {
+							actions.add(new RangeAttackAction(a, sniper));
+							
+							if (sniper.getAim() < 2) {
+								actions.add(new AimAction(a, sniper));
+							}
+						}
 					}
 				}
 				
@@ -193,7 +201,7 @@ public abstract class ZombieActor extends Actor{
 				
 				if (i.asShotgun(i).hasAmmo()) {
 					for (Actor a : listOfTargets) {
-						actions.add(new RangeAttackAction(a));
+						actions.add(new RangeAttackAction(a, i.asShotgun(i)));
 					}
 				}
 				
