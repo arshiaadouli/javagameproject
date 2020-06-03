@@ -162,7 +162,8 @@ public abstract class ZombieActor extends Actor{
 		
 		for (Item i : this.getInventory()) {
 			// code for SniperRifles
-			if (i.asSniperRifle(i) != null) {
+			SniperRifle sniper = i.asSniperRifle(i);
+			if (sniper != null) {
 				// set target for sniper rifles first
 				for (int x = 0; x < 80; x++) {
 					for (int y = 0; y < 25; y++) {
@@ -172,23 +173,19 @@ public abstract class ZombieActor extends Actor{
 						}
 					}
 				}
-				
-				if (i.asSniperRifle(i).hasAmmo()) {
-					SniperRifle sniper = i.asSniperRifle(i);
-					
-					if (sniper != null) {
-						for (Actor a : listOfTargets) {
-							actions.add(new RangeAttackAction(a, sniper));
-							
-							if (sniper.getAim() < 2) {
-								actions.add(new AimAction(a, sniper));
-							}
+				// if sniper has ammo, allow actor to choose to shoot or aim the sniper
+				if (sniper.hasAmmo()) {
+					for (Actor a : listOfTargets) {
+						actions.add(new RangeAttackAction(a, sniper));
+						// while sniper has less than 2 times aimed, it can be aimed again
+						if (sniper.getAim() < 2) {
+							actions.add(new AimAction(a, sniper));
 						}
 					}
 				}
-				
-				if (listOfSniperRifleAmmo.size() > 0 && !i.asSniperRifle(i).hasAmmo()) {
-					actions.add(new ReloadAction(i.asSniperRifle(i), listOfSniperRifleAmmo.get(0)));
+				// while actor has ammo in their inventory and there is no ammo in sniper, the actor can choose to reload
+				if (listOfSniperRifleAmmo.size() > 0 && !sniper.hasAmmo()) {
+					actions.add(new ReloadAction(sniper, listOfSniperRifleAmmo.get(0)));
 				}
 			}
 			

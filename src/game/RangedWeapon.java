@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.Weapon;
 public class RangedWeapon extends Item implements Weapon {
 	protected ArrayList<Ammo> ammo = new ArrayList<>();
 	private int damage = 0;
-	private String verb = "";
+	private String verb;
 	
 	public RangedWeapon(String name, char displayChar, int damage, String verb) {
 		super(name, displayChar, true);

@@ -1,7 +1,5 @@
 package edu.monash.fit2099.engine;
 
-import game.ZombieActor;
-
 import java.util.*;
 
 

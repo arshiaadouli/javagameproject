@@ -1,8 +1,11 @@
 package game;
 
+import edu.monash.fit2099.engine.Location;
+
 public class SniperRifle extends RangedWeapon {
 	private static int num = 1;
 	private int aim = 0;
+	
 
 	public SniperRifle() {
 		super("Sniper Rifle " + num, '-', 45, "shoots");
@@ -10,6 +13,11 @@ public class SniperRifle extends RangedWeapon {
 	
 	public boolean hasAmmo() {		
 		return !super.ammo.isEmpty();
+	}
+	
+	@Override
+	public void tick(Location location) {
+		super.tick(location);
 	}
 
 	@Override
@@ -27,6 +35,13 @@ public class SniperRifle extends RangedWeapon {
 	public void incAim() {
 		if (this.aim < 2) {
 			this.aim++;
+		}
+		
+		if (this.aim == 1) {
+			this.setDamage(this.damage() * 2);
+		}
+		if (this.aim == 2) {
+			this.setDamage(1000);
 		}
 	}
 	
