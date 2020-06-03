@@ -64,7 +64,7 @@ public class Application {
 		world.addPlayer(player, gameMap.at(10, 0));
 		gameMap.at(10, 0).addItem(new SniperRifle());
 		gameMap.at(10, 0).addItem(new SniperRifleAmmo());
-//>>>>>>> bc4970770a7f8f2aca934657ebd5a0d73147f38a
+
 
 	    // Place some random humans
 		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
@@ -89,7 +89,7 @@ public class Application {
 //		gameMap.at(10,  4).addActor(new Zombie("Uuuurgh"));
 //		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));
 //		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
-		gameMap.at(20, 10).addActor(new Zombie("Aaargh"));
+//		gameMap.at(20, 10).addActor(new Zombie("Aaargh"));
 //		gameMap.at(21, 10).addActor(new Zombie("Aaargh"));
 
 

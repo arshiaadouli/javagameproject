@@ -70,7 +70,7 @@ public class WorldSub extends World {
 
 
             if(isDead) {
-                if (chance <= 0.25) {
+                if (chance <= 0.05) {
 
 
                     Random random1 = new Random();
