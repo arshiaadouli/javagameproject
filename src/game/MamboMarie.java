@@ -16,6 +16,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
      */
 
 
+    private static boolean isAlive=true;
 
     private ArrayList<Behaviour> behaviours = new ArrayList<>();
 
@@ -36,7 +37,23 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
     }
+    public static boolean getIsAlive(){
+        return isAlive;
+    }
 
+    @Override
+    public boolean isConscious(){
+        if(hitPoints  > 0){
+            return true;
+        }
+        else{
+
+            isAlive=false;
+            return false;
+
+        }
+
+    }
 
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
@@ -48,7 +65,8 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
 
-        if(Player.turns % 10 == 0){
+
+        if(this.turn % 10 == 0){
             behaviours.add(0, new ChantingBehaviour());
         }
 
