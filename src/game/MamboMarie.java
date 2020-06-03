@@ -62,7 +62,8 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         turn++;
 
 
-
+        if(!isAlive)
+        System.out.println("mambo is dead");
 
 
 
@@ -101,21 +102,6 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
         if(map.contains(this)){
-
-
-//            if(temp){
-//                if(map.locationOf(this).getItems().size()>0){
-//
-//                    this.displayChar = map.locationOf(this).getItems().get(0).getDisplayChar();
-//
-//                }
-//            }
-
-
-
-
-
-
 
             for (Behaviour behaviour : behaviours) {
                 Action action = behaviour.getAction(this, map);

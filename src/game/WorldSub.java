@@ -79,7 +79,7 @@ public class WorldSub extends World {
                     int x = xChoices[random1.nextInt(2)];
                     int y = yChoices[random1.nextInt(2)];
 
-                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(x, y));
+                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(0, 0));
                     isDead=false;
                     temp=true;
 
@@ -147,7 +147,7 @@ public class WorldSub extends World {
             playerWins=true;
         }
 
-        return (actorLocations.contains(player)&& aliveNum!=1 && unDeadNum != 0 && MamboMarie.getIsAlive());
+        return (actorLocations.contains(player)&& aliveNum!=1 && (unDeadNum != 0 || MamboMarie.getIsAlive()));
 
     }
 
