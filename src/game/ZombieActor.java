@@ -1,11 +1,9 @@
 package game;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
-import edu.monash.fit2099.interfaces.ActorInterface;
 
 /**
  * Base class for Actors in the Zombie World
@@ -154,12 +152,26 @@ public abstract class ZombieActor extends Actor{
 		Actions actions = new Actions();
 		ArrayList<Actor> listOfActors = new ArrayList<>();
 		
-		
+		for (int x = 0; x < 80; x++) {
+			for (int y = 0; y < 25; y++) {
+				if (map.at(x, y).getActor() != null) {
+					listOfActors.add(map.at(x, y).getActor());
+					break;
+				}
+			}
+		}
 		
 		for (Item i : this.getInventory()) {
-			if (i.isRanged()) {
-				actions.add(new RangeAttackAction(listOfActors));
+			if (i.asSniperRifle(i) != null && i.asSniperRifle(i).hasAmmo()) {
+				for (Actor a : listOfActors) {
+					actions.add(new RangeAttackAction(a));
+				}
+				
 				break;
+			}
+			
+			if (i.asShotgun(i) != null && i.asShotgun(i).hasAmmo()) {
+				
 			}
 		}
 		
@@ -183,7 +195,9 @@ public abstract class ZombieActor extends Actor{
 		}
 		
 		if (this.sheriff()) {
-			actions.add(addRangeAttackAction(map));
+			for (Item i : this.getInventory()) {
+				actions.add(addRangeAttackAction(map));
+			}
 		}
 		
 		return actions;

@@ -4,6 +4,8 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Item;
 import game.Crop;
 import game.Food;
+import game.Shotgun;
+import game.SniperRifle;
 
 /**
  * This interface provides the ability to add methods to Ground, without modifying code in the engine,
@@ -31,6 +33,14 @@ public interface ItemInterface {
 	
 	public default boolean isRanged() {
 		return false;
+	}
+	
+	public default SniperRifle asSniperRifle(Item i) {
+		return i instanceof SniperRifle ? (SniperRifle) i : null;
+	}
+	
+	public default Shotgun asShotgun(Item i) {
+		return i instanceof Shotgun ? (Shotgun) i : null;
 	}
 	
 	public default Food asFood(Item i) {

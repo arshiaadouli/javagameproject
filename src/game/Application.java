@@ -62,7 +62,7 @@ public class Application {
 //		player1 = player;
 		player.addItemToInventory(new Plank());
 		world.addPlayer(player, gameMap.at(10, 0));
-		gameMap.at(42, 13).addItem(new SniperRifle());
+		gameMap.at(10, 0).addItem(new SniperRifle());
 
 	    // Place some random humans
 		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
@@ -74,7 +74,7 @@ public class Application {
 				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
 			}
 			while (gameMap.at(x, y).containsAnActor());
-			gameMap.at(x,  y).addActor(new Human(name));
+			gameMap.at(x, y).addActor(new Human(name));
 		}
 
 		// place a simple weapon
