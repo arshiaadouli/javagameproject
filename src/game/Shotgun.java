@@ -7,19 +7,18 @@ public class Shotgun extends RangedWeapon {
 		super("Shotgun " + num, '=', 10, "shoots");
 	}
 	
-	public boolean hasAmmo() {
-		boolean retVal = false;
-		
-		if (ammo.size() > 0) {
-			retVal = true;
-		}
-		
-		return retVal;
+	public boolean hasAmmo() {		
+		return !super.ammo.isEmpty();
 	}
 
 	@Override
 	public void reload(Ammo ammo) {
 			
+	}
+	
+	@Override
+	public void empty() {
+		
 	}
 
 }

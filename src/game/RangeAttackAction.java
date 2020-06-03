@@ -18,7 +18,7 @@ public class RangeAttackAction extends Action {
 		
 		for (Item i : actor.getInventory()) {
 			if (i.asRangedWeapon(i) != null) {
-				weapon = i.asRangedWeapon(i);
+				weapon = i.asSniperRifle(i);
 				actor.hurt(weapon.damage());
 				weapon.empty();
 			}

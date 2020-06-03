@@ -7,14 +7,8 @@ public class SniperRifle extends RangedWeapon {
 		super("Sniper Rifle " + num, '-', 45, "shoots");
 	}
 	
-	public boolean hasAmmo() {
-		boolean retVal = false;
-		
-		if (ammo.size() > 0) {
-			retVal = true;
-		}
-		
-		return retVal;
+	public boolean hasAmmo() {		
+		return !super.ammo.isEmpty();
 	}
 
 	@Override
