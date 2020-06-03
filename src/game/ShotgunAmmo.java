@@ -1,9 +1,10 @@
 package game;
 
 public class ShotgunAmmo extends Ammo {
-
-	public ShotgunAmmo(String name, char displayChar) {
-		super(name, displayChar);
+	private static int num = 1;
+	
+	public ShotgunAmmo() {
+		super("Shotgun Ammo " + num, ']');
 	}
 
 }

@@ -1,11 +1,24 @@
 package game;
 
-import edu.monash.fit2099.engine.WeaponItem;
+public class Shotgun extends RangedWeapon {
+	private static int num = 1;
 
-public class Shotgun extends WeaponItem {
+	public Shotgun() {
+		super("Shotgun " + num, '=', 10, "shoots");
+	}
+	
+	public boolean hasAmmo() {		
+		return !super.ammo.isEmpty();
+	}
 
-	public Shotgun(String name) {
-		super(name, '=', 10, "shoots");
+	@Override
+	public void reload(Ammo ammo) {
+			
+	}
+	
+	@Override
+	public void empty() {
+		
 	}
 
 }

@@ -54,6 +54,10 @@ public interface ActorInterface {
 	public default boolean personThatEatFood() {
 		return false;
 	}
+	
+	public default boolean sheriff() {
+		return false;
+	}
 
 	public default Player asPlayer(Actor a) {
 		return a instanceof Player ? (Player) a : null;

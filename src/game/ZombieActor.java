@@ -1,11 +1,9 @@
 package game;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
-import edu.monash.fit2099.interfaces.ActorInterface;
 
 /**
  * Base class for Actors in the Zombie World
@@ -149,6 +147,71 @@ public abstract class ZombieActor extends Actor{
 		
 		return actions;
 	}
+	
+	public Actions addRangeAttackAction(GameMap map) {
+		Actions actions = new Actions();
+		ArrayList<Actor> listOfTargets = new ArrayList<>();
+		ArrayList<Ammo> listOfSniperRifleAmmo = new ArrayList<>();
+		ArrayList<Ammo> listOfShotgunAmmo = new ArrayList<>();
+		
+		for (Item i : this.getInventory()) {
+			if (i.asSniperRifleAmmo(i) != null) {
+				listOfSniperRifleAmmo.add(i.asSniperRifleAmmo(i));
+			}
+		}
+		
+		for (Item i : this.getInventory()) {
+			// code for SniperRifles
+			SniperRifle sniper = i.asSniperRifle(i);
+			if (sniper != null) {
+				// set target for sniper rifles first
+				for (int x = 0; x < 80; x++) {
+					for (int y = 0; y < 25; y++) {
+						if (map.at(x, y).getActor() != null && !map.at(x, y).getActor().equals(this)) {
+							listOfTargets.add(map.at(x, y).getActor());
+							break;
+						}
+					}
+				}
+				// if sniper has ammo, allow actor to choose to shoot or aim the sniper
+				if (sniper.hasAmmo()) {
+					for (Actor a : listOfTargets) {
+						actions.add(new RangeAttackAction(a, sniper));
+						// while sniper has less than 2 times aimed, it can be aimed again
+						if (sniper.getAim() < 2) {
+							actions.add(new AimAction(a, sniper));
+						}
+					}
+				}
+				// while actor has ammo in their inventory and there is no ammo in sniper, the actor can choose to reload
+				if (listOfSniperRifleAmmo.size() > 0 && !sniper.hasAmmo()) {
+					actions.add(new ReloadAction(sniper, listOfSniperRifleAmmo.get(0)));
+				}
+			}
+			
+			// code for Shotguns
+			if (i.asShotgun(i) != null) {
+				if (i.asShotgun(i).hasAmmo()) {
+					// set target for shotguns first
+					
+				}
+				
+				if (i.asShotgun(i).hasAmmo()) {
+					for (Actor a : listOfTargets) {
+						actions.add(new RangeAttackAction(a, i.asShotgun(i)));
+					}
+				}
+				
+				if (listOfShotgunAmmo.size() > 0 && !i.asShotgun(i).hasAmmo()) {
+					actions.add(new ReloadAction(i.asShotgun(i), listOfShotgunAmmo.get(0)));
+				}
+			}
+			
+			
+		}
+		
+		return actions;		
+	}
 
 	@Override
 	public Actions AllowableActions(GameMap map) {
@@ -164,6 +227,10 @@ public abstract class ZombieActor extends Actor{
 		
 		if (this.personThatEatFood()) {
 			actions.add(addEatFoodAction());
+		}
+		
+		if (this.sheriff()) {
+			actions.add(addRangeAttackAction(map));
 		}
 		
 		return actions;

@@ -1,29 +1,47 @@
 package game;
 
+import java.util.Random;
+
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Weapon;
 
 public class RangeAttackAction extends Action {
 	private Actor target;
+	private RangedWeapon weapon;
+	private Random rand = new Random();
 	
-	public RangeAttackAction(Actor target) {
+	public RangeAttackAction(Actor target, RangedWeapon weapon) {
 		this.target = target;
+		this.weapon = weapon;
 	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		Weapon weapon = actor.getWeapon();
+		String retVal = actor + " " + weapon.verb() + " " + target + " for " + weapon.damage() + " damage";
 		
-		target.hurt(weapon.damage());
+		if (weapon.asSniperRifle(weapon).getAim() == 0 && rand.nextDouble() <= 0.75) {
+			target.hurt(weapon.damage());
+			weapon.empty();
+		}
+		else if (weapon.asSniperRifle(weapon).getAim() == 1 && rand.nextDouble() <= 0.9) {
+			target.hurt(weapon.damage());
+			weapon.empty();
+		}
+		else if (weapon.asSniperRifle(weapon).getAim() == 2) {
+			target.hurt(weapon.damage());
+			weapon.empty();
+		}
+		else {
+			retVal = actor + " missed " + target;
+		}
 		
-		return actor + " " + weapon.verb() + " " + target + " for " + weapon.damage() + " damage";
+		return retVal;
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " attacks " + target;
+		return actor + " shoots " + target;
 	}
 
 }
