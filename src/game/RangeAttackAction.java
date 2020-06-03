@@ -3,7 +3,7 @@ package game;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Weapon;
+import edu.monash.fit2099.engine.Item;
 
 public class RangeAttackAction extends Action {
 	private Actor target;
@@ -14,16 +14,22 @@ public class RangeAttackAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		Weapon weapon = actor.getWeapon();
+		RangedWeapon weapon = null;
 		
-		actor.hurt(weapon.damage());
+		for (Item i : actor.getInventory()) {
+			if (i.asRangedWeapon(i) != null) {
+				weapon = i.asRangedWeapon(i);
+				actor.hurt(weapon.damage());
+				weapon.empty();
+			}
+		}
 		
 		return actor + " " + weapon.verb() + " " + target + " for " + weapon.damage() + " damage";
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " attacks " + target;
+		return actor + " shoots " + target;
 	}
 
 }

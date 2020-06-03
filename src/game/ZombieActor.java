@@ -150,30 +150,59 @@ public abstract class ZombieActor extends Actor{
 	
 	public Actions addRangeAttackAction(GameMap map) {
 		Actions actions = new Actions();
-		ArrayList<Actor> listOfActors = new ArrayList<>();
+		ArrayList<Actor> listOfTargets = new ArrayList<>();
+		ArrayList<Ammo> listOfSniperRifleAmmo = new ArrayList<>();
+		ArrayList<Ammo> listOfShotgunAmmo = new ArrayList<>();
 		
-		for (int x = 0; x < 80; x++) {
-			for (int y = 0; y < 25; y++) {
-				if (map.at(x, y).getActor() != null) {
-					listOfActors.add(map.at(x, y).getActor());
-					break;
-				}
+		for (Item i : this.getInventory()) {
+			if (i.asSniperRifleAmmo(i) != null) {
+				listOfSniperRifleAmmo.add(i.asSniperRifleAmmo(i));
 			}
 		}
 		
 		for (Item i : this.getInventory()) {
-			if (i.asSniperRifle(i) != null && i.asSniperRifle(i).hasAmmo()) {
-				for (Actor a : listOfActors) {
-					actions.add(new RangeAttackAction(a));
+			// code for SniperRifles
+			if (i.asSniperRifle(i) != null) {
+				// set target for sniper rifles first
+				for (int x = 0; x < 80; x++) {
+					for (int y = 0; y < 25; y++) {
+						if (map.at(x, y).getActor() != null && !map.at(x, y).getActor().equals(this)) {
+							listOfTargets.add(map.at(x, y).getActor());
+							break;
+						}
+					}
+				}
+				
+				if (i.asSniperRifle(i).hasAmmo()) {
+					for (Actor a : listOfTargets) {
+						actions.add(new RangeAttackAction(a));
+					}
+				}
+				
+				if (listOfSniperRifleAmmo.size() > 0 && !i.asSniperRifle(i).hasAmmo()) {
+					actions.add(new ReloadAction(i.asSniperRifle(i), listOfSniperRifleAmmo.get(0)));
+				}
+			}
+			
+			// code for Shotguns
+			if (i.asShotgun(i) != null) {
+				if (i.asShotgun(i).hasAmmo()) {
+					// set target for shotguns first
 					
 				}
 				
-				break;
+				if (i.asShotgun(i).hasAmmo()) {
+					for (Actor a : listOfTargets) {
+						actions.add(new RangeAttackAction(a));
+					}
+				}
+				
+				if (listOfShotgunAmmo.size() > 0 && !i.asShotgun(i).hasAmmo()) {
+					actions.add(new ReloadAction(i.asShotgun(i), listOfShotgunAmmo.get(0)));
+				}
 			}
 			
-			if (i.asShotgun(i) != null && i.asShotgun(i).hasAmmo()) {
-				
-			}
+			
 		}
 		
 		return actions;		
@@ -196,9 +225,7 @@ public abstract class ZombieActor extends Actor{
 		}
 		
 		if (this.sheriff()) {
-			for (Item i : this.getInventory()) {
-				actions.add(addRangeAttackAction(map));
-			}
+			actions.add(addRangeAttackAction(map));
 		}
 		
 		return actions;

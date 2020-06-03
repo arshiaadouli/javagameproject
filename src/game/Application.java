@@ -63,6 +63,7 @@ public class Application {
 		player.addItemToInventory(new Plank());
 		world.addPlayer(player, gameMap.at(10, 0));
 		gameMap.at(10, 0).addItem(new SniperRifle());
+		gameMap.at(10, 0).addItem(new SniperRifleAmmo());
 
 	    // Place some random humans
 		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};

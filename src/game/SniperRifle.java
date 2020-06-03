@@ -1,12 +1,10 @@
 package game;
 
-import edu.monash.fit2099.engine.WeaponItem;
-import edu.monash.fit2099.interfaces.RangedWeapon;
-
-public class SniperRifle extends WeaponItem implements RangedWeapon {
+public class SniperRifle extends RangedWeapon {
+	private static int num = 1;
 
 	public SniperRifle() {
-		super("Sniper Rifle", '-', 45, "shoots");
+		super("Sniper Rifle " + num, '-', 45, "shoots");
 	}
 	
 	public boolean hasAmmo() {
@@ -21,8 +19,13 @@ public class SniperRifle extends WeaponItem implements RangedWeapon {
 
 	@Override
 	public void reload(Ammo ammo) {
-		if (SniperRifle.ammo.size() == 0) {
-			SniperRifle.ammo.add(ammo);
+		if (super.ammo.size() == 0) {
+			super.ammo.add(ammo);
 		}
+	}
+	
+	@Override
+	public void empty() {
+		super.ammo.clear();
 	}
 }
