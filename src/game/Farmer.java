@@ -46,7 +46,7 @@ public class Farmer extends Human implements Harvester, PersonThatEatFood {
 
 	protected Farmer(String name, int hitPoints) {
 		super(name, 'F', hitPoints);
-		isAppear=true;
+
 	}
 	
 	@Override

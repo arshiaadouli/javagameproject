@@ -14,7 +14,7 @@ import edu.monash.fit2099.engine.*;
 
 public class Application {
 
-	public static GameMapDemo gameMap;
+
 	public static void main(String[] args) throws IOException {
 
 		ArrayList<GameMap> allGameMaps = new ArrayList<>();
@@ -49,7 +49,7 @@ public class Application {
 		".........................................................................++++...",
 		"..........................................................................++....",
 		"................................................................................");
-		gameMap = new GameMapDemo(groundFactory, map );
+		GameMapDemo gameMap = new GameMapDemo(groundFactory, map );
 		GameMapDemo gameMap1 = new GameMapDemo(groundFactory, map );
 		GameMapDemo gameMapTemp = new GameMapDemo(groundFactory, map);
 
@@ -57,7 +57,7 @@ public class Application {
 		world.addGameMap(gameMap1);
 
 		
-		Actor player = new Player("Player", '@', 100);
+		Actor player = new Player("Player", '@', 1000);
 //		player1 = player;
 
 		player.addItemToInventory(new Plank());
@@ -106,19 +106,16 @@ public class Application {
 		car1.addAction(new TransfterAction(gameMap1));
 		car2.addAction(new TransfterAction(gameMap));
 
-		gameMap.at(42, 14).addItem(car1);
+		gameMap.at(2, 1).addItem(car1);
 		gameMap1.at(1, 1).addItem(car2);
 
 
-		gameMap.at(1, 1).addItem(car2);
-		gameMap.at(1, 0).addItem(car2);
-		gameMap.at(0, 1).addItem(car2);
-
-		gameMap.at(1, 1).addItem(new Plank());
-		gameMap.at(1, 0).addItem(new Plank());
-		gameMap.at(0, 1).addItem(new Plank());
 
 
+
+
+
+		gameMap1.addActor(new Zombie("arshia"), gameMap1.at(10, 10));
 
 
 

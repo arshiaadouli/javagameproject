@@ -17,7 +17,7 @@ public abstract class ZombieActor extends Actor{
 
 	protected int turn = 0;
 
-	public boolean isAppear;
+
 
 	public void setDisplayChar(char displayChar) {
 		this.displayChar = displayChar;
@@ -239,10 +239,10 @@ public abstract class ZombieActor extends Actor{
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions list = super.getAllowableActions(otherActor, direction, map);
-		System.out.println("mambo appearence" + this.isAppear);
 
 
-		if ((otherActor.hasCapability(ZombieCapability.UNDEAD) != this.hasCapability(ZombieCapability.UNDEAD))&&(this.isAppear)) {
+
+		if ((otherActor.hasCapability(ZombieCapability.UNDEAD) != this.hasCapability(ZombieCapability.UNDEAD))) {
 
 
 				list.add(new AttackAction(this));

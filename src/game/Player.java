@@ -26,7 +26,7 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 	 */
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
-		isAppear=true;
+
 		turns=0;
 	}
 

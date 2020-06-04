@@ -58,7 +58,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
-        isAppear=false;
+
         turn++;
 
 
@@ -91,12 +91,6 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
             }
 
 
-        if(this.displayChar!='X'){
-            isAppear =false;
-        }
-        if(this.displayChar=='X'){
-            isAppear=true;
-        }
 
 
 

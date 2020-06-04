@@ -51,22 +51,22 @@ public class WorldSub extends World {
 
         while (stillRunning()) {
 
-            boolean isThereMamba = false;
+//            boolean isThereMamba = false;
             MamboMarie mambo = new MamboMarie("mambo");
             Random random = new Random();
             double chance = random.nextDouble();
 
 
 
-            for(Actor actor : actorLocations){
-                if(actor instanceof MamboMarie){
-                    isThereMamba=true;
-                }
-                else{
-                    isThereMamba=false;
-                }
-            }
-
+//            for(Actor actor : actorLocations){
+//                if(actor instanceof MamboMarie){
+//                    isThereMamba=true;
+//                }
+//                else{
+//                    isThereMamba=false;
+//                }
+//            }
+//
 
 
             if(isDead) {
@@ -79,7 +79,7 @@ public class WorldSub extends World {
                     int x = xChoices[random1.nextInt(2)];
                     int y = yChoices[random1.nextInt(2)];
 
-                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(0, 0));
+                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(x, y));
                     isDead=false;
                     temp=true;
 
