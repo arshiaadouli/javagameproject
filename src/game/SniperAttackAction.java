@@ -21,10 +21,7 @@ public class SniperAttackAction extends Action {
 		String retVal = actor + " " + weapon.verb() + " " + target + " for " + weapon.damage() + " damage";
 		double chance = 0.75;
 		
-		if (weapon.asSniperRifle(weapon).getAim() == 0) {
-			chance = 0.75;
-		}
-		else if (weapon.asSniperRifle(weapon).getAim() == 1) {
+		if (weapon.asSniperRifle(weapon).getAim() == 1) {
 			chance = 0.9;
 		}
 		else if (weapon.asSniperRifle(weapon).getAim() == 2) {
@@ -44,7 +41,7 @@ public class SniperAttackAction extends Action {
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " shoots " + target;
+		return "shoot someone";
 	}
 
 }

@@ -36,7 +36,6 @@ public class SniperRifle extends RangedWeapon {
 		if (this.aim < 2) {
 			this.aim++;
 		}
-		
 		if (this.aim == 1) {
 			this.setDamage(this.damage() * 2);
 		}

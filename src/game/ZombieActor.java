@@ -10,7 +10,7 @@ import edu.monash.fit2099.engine.*;
  * @author ram
  *
  */
-public abstract class ZombieActor extends Actor{
+public abstract class ZombieActor extends Actor {
 
 
 	protected ArrayList<Limb> items = new ArrayList<>();
@@ -148,70 +148,60 @@ public abstract class ZombieActor extends Actor{
 		return actions;
 	}
 	
-	public Actions addRangeAttackAction(GameMap map) {
+	public Actions addSniperAttackAction(GameMap map) {
 		Actions actions = new Actions();
-		ArrayList<Actor> listOfTargets = new ArrayList<>();
-		ArrayList<Ammo> listOfSniperRifleAmmo = new ArrayList<>();
-		ArrayList<Ammo> listOfShotgunAmmo = new ArrayList<>();
-		
-		for (Item i : this.getInventory()) {
-			if (i.asSniperRifleAmmo(i) != null) {
-				listOfSniperRifleAmmo.add(i.asSniperRifleAmmo(i));
+		SniperRifle sniper = null;
+		ArrayList<Actor> targetList = new ArrayList<>();
+		ArrayList<Ammo> ammoList = new ArrayList<>();
+		// add all targets on the map that actor can shoot/aim at
+		for (int x = 0; x < 80; x++) {
+			for (int y = 0; y < 25; y++) {
+				if (map.at(x, y).containsAnActor() && !map.at(x, y).getActor().equals(this)) {
+					targetList.add(map.at(x, y).getActor());
+				}
 			}
 		}
 		
 		for (Item i : this.getInventory()) {
-			// code for SniperRifles
-			SniperRifle sniper = i.asSniperRifle(i);
-			if (sniper != null) {
-				// set target for sniper rifles first
-				for (int x = 0; x < 80; x++) {
-					for (int y = 0; y < 25; y++) {
-						if (map.at(x, y).getActor() != null && !map.at(x, y).getActor().equals(this)) {
-							listOfTargets.add(map.at(x, y).getActor());
-							break;
-						}
-					}
-				}
-				// if sniper has ammo, allow actor to choose to shoot or aim the sniper
-				if (sniper.hasAmmo()) {
-					for (Actor a : listOfTargets) {
-						actions.add(new SniperAttackAction(a, sniper));
-						// while sniper has less than 2 times aimed, it can be aimed again
-						if (sniper.getAim() < 2) {
-							actions.add(new SniperAimAction(a, sniper));
-						}
-					}
-				}
-				// while actor has ammo in their inventory and there is no ammo in sniper, the actor can choose to reload
-				if (listOfSniperRifleAmmo.size() > 0 && !sniper.hasAmmo()) {
-					actions.add(new ReloadAction(sniper, listOfSniperRifleAmmo.get(0)));
+			// add all ammo objects in actor's inventory into ammoList
+			if (i.asSniperRifleAmmo(i) != null) {
+				ammoList.add(i.asSniperRifleAmmo(i));
+			}
+			// get sniper object in actor's inventory
+			if (i.asSniperRifle(i) != null) {
+				sniper = i.asSniperRifle(i);
+			}
+		}
+		
+		if (sniper != null) {
+			if (sniper.hasAmmo()) {
+				for (Actor a : targetList) {
+					actions.add(new SniperAttackAction(a, sniper));
+					actions.add(new SniperAimAction(a, sniper));
 				}
 			}
-			
-			// code for Shotguns
-			Shotgun shotgun = i.asShotgun(i);
-			if (shotgun != null) {
-				if (shotgun.hasAmmo()) {
-					// set target for shotguns first
-					
-				}
-				
-				if (shotgun.hasAmmo()) {
-					for (Actor a : listOfTargets) {
-						actions.add(new ShotgunAttackAction(a, shotgun));
-					}
-				}
-				
-				if (listOfShotgunAmmo.size() > 0 && !shotgun.hasAmmo()) {
-					actions.add(new ReloadAction(shotgun, listOfShotgunAmmo.get(0)));
-				}
+			else if (ammoList.size() > 0) {
+				actions.add(new ReloadAction(sniper, ammoList.get(0)));
 			}
-			
-			
 		}
 		
 		return actions;		
+	}
+	
+	public Actions addSniperAimAction(GameMap map) {
+		Actions actions = new Actions();
+		
+		
+		
+		return actions;
+	}
+	
+	public Actions addShotgunAttackAction(GameMap map) {
+		Actions actions = new Actions();
+		
+		
+		
+		return actions;
 	}
 
 	@Override
@@ -231,7 +221,17 @@ public abstract class ZombieActor extends Actor{
 		}
 		
 		if (this.sheriff()) {
-			actions.add(addRangeAttackAction(map));
+			for (Item i : this.getInventory()) {
+				if (i.asSniperRifle(i) != null) {
+					actions.add(addSniperAttackAction(map));
+					actions.add(addSniperAimAction(map));
+					break;
+				}
+				else if (i.asShotgun(i) != null) {
+					actions.add(addShotgunAttackAction(map));
+					break;
+				}
+			}
 		}
 		
 		return actions;
@@ -240,7 +240,7 @@ public abstract class ZombieActor extends Actor{
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions list = super.getAllowableActions(otherActor, direction, map);
-		System.out.println("mambo appearence" + this.isAppear);
+		System.out.println("mambo appearence: " + this.isAppear);
 
 
 		if ((otherActor.hasCapability(ZombieCapability.UNDEAD) != this.hasCapability(ZombieCapability.UNDEAD))&&(this.isAppear)) {

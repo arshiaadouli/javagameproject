@@ -18,12 +18,17 @@ public class ShotgunAttackAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		return null;
+		
+		if (rand.nextDouble() <= 0.75) {
+			return actor + weapon.verb() + target + " for " + weapon.damage() + " damage";
+		}
+		
+		return actor + " misses " + target;
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return null;
+		return actor + " " + weapon.verb() + " " + target;
 	}
 
 }
