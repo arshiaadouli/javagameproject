@@ -8,6 +8,12 @@ import java.util.Random;
 
 
 public class ChantingAction extends Action {
+    /**
+     * creates 5 zombies randomly in the current map
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * this action has been used for the mambo marie.
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         for(int i =0; i < 5 ; i++){

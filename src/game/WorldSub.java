@@ -9,33 +9,36 @@ public class WorldSub extends World {
 
     private int[] xChoices ;
     private int[] yChoices ;
-    public static boolean isDead = true;
+    public static boolean isMamboDead = true;
 
     /**
      * Constructor.
-     *
+     * this class is a subclass of World.java
      * @param display the Display that will display this World.
      */
     public WorldSub(Display display) {
         super(display);
-        boolean isThereMamba=false;
     }
-    int turn = 0;
-
-
-    private boolean temp = false;
 
 
 
-    public ArrayList<GameMap> getAllActors(){
-        return super.gameMaps;
-    }
-    boolean playerWins=false;
-    boolean playerLoses=false;
+//    private boolean temp = false;
 
 
 
+//    public ArrayList<GameMap> getAllActors(){
+//        return super.gameMaps;
+//    }
 
+    boolean playerWins=false;   //boolean for determining whether player wins
+    boolean playerLoses=false;  //boolean for determining whether player loses
+
+
+    /**
+     * this method is the same as World's run method
+     * however, in this method there is a 5 %
+     * in each turn that the mambo marie appears
+     */
     @Override
     public void run() {
 
@@ -52,25 +55,14 @@ public class WorldSub extends World {
         while (stillRunning()) {
 
 //            boolean isThereMamba = false;
-            MamboMarie mambo = new MamboMarie("mambo");
+
+            MamboMarie mambo = new MamboMarie("mambo"); //mambo marie object
             Random random = new Random();
             double chance = random.nextDouble();
 
 
-
-//            for(Actor actor : actorLocations){
-//                if(actor instanceof MamboMarie){
-//                    isThereMamba=true;
-//                }
-//                else{
-//                    isThereMamba=false;
-//                }
-//            }
-//
-
-
-            if(isDead) {
-                if (chance <= 0.05) {
+            if(isMamboDead) { // if mambo marie is not in the game
+                if (chance <= 0.05) {  // create it in 5% in a turn
 
 
                     Random random1 = new Random();
@@ -79,9 +71,9 @@ public class WorldSub extends World {
                     int x = xChoices[random1.nextInt(2)];
                     int y = yChoices[random1.nextInt(2)];
 
-                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(x, y));
-                    isDead=false;
-                    temp=true;
+                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(x, y));   // create mambo in edge of the map
+                    isMamboDead=false;  // the mambo marie is alive now
+//                    temp=true;
 
 
                 }
@@ -111,21 +103,20 @@ public class WorldSub extends World {
         display.println(endGameMessage());
     }
 
+    /**
+     * in this method further than existence of player existence of zombies, human and mambo will
+     * be explored to see whether the game should be ended.
+     * @return if all of the actors from different types were in the game continue else return end message
+     */
     @Override
     protected boolean stillRunning() {
-
-//        System.out.println(turn);
-
 
         int aliveNum = 0;
         int unDeadNum = 0;
 
-
-
-
-
-
-
+        // loop through all of the actors to find out how many undead and how
+        // many alive actors are currently in the map
+        // and increment aliveNum and undeadNum
         for(Actor actor : actorLocations) {
 
 
@@ -139,11 +130,12 @@ public class WorldSub extends World {
             }
 
         }
+        //if alivenum is one it means we have only the PLAYER in the map which is a loss
         if(aliveNum==1){
             playerLoses=true;
         }
         System.out.println(unDeadNum);
-        if(unDeadNum==0 && !MamboMarie.getIsAlive()){
+        if(unDeadNum==0 && !MamboMarie.getIsAlive()){ // if the number of the undead army is zero and mambo is dead it is a win
             playerWins=true;
         }
 
@@ -152,7 +144,10 @@ public class WorldSub extends World {
     }
 
 
-
+    /**
+     *
+     * @return this function returns the final execution (GAME OVER) statement.
+     */
     @Override
 
     protected String endGameMessage() {
@@ -161,7 +156,7 @@ public class WorldSub extends World {
         return "player loses";
         if(playerWins)
             return "player Wins";
-        if(actorLocations.contains(player))
+        if(!actorLocations.contains(player))
             return "player loses";
 
         return "";
