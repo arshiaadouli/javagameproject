@@ -13,12 +13,10 @@ import edu.monash.fit2099.engine.*;
  */
 
 public class Application {
-//
-//	public static ArrayList<Actor> actors;
-//	public static Actor player1;
-//	public static GameMapDemo getGameMap;
-//	public static ArrayList<GameMap> temp;
+
+	public static GameMapDemo gameMap;
 	public static void main(String[] args) throws IOException {
+
 		ArrayList<GameMap> allGameMaps = new ArrayList<>();
 
 		WorldSub world = new WorldSub(new Display());
@@ -51,8 +49,9 @@ public class Application {
 		".........................................................................++++...",
 		"..........................................................................++....",
 		"................................................................................");
-		GameMapDemo gameMap = new GameMapDemo(groundFactory, map );
+		gameMap = new GameMapDemo(groundFactory, map );
 		GameMapDemo gameMap1 = new GameMapDemo(groundFactory, map );
+		GameMapDemo gameMapTemp = new GameMapDemo(groundFactory, map);
 
 		world.addGameMap(gameMap);
 		world.addGameMap(gameMap1);
@@ -60,10 +59,12 @@ public class Application {
 		
 		Actor player = new Player("Player", '@', 100);
 //		player1 = player;
+
 		player.addItemToInventory(new Plank());
 		world.addPlayer(player, gameMap.at(10, 0));
 		gameMap.at(10, 0).addItem(new SniperRifle());
 		gameMap.at(10, 0).addItem(new SniperRifleAmmo());
+
 
 	    // Place some random humans
 		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
@@ -88,15 +89,15 @@ public class Application {
 //		gameMap.at(10,  4).addActor(new Zombie("Uuuurgh"));
 //		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));
 //		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
-		gameMap.at(20, 10).addActor(new Zombie("Aaargh"));
-		gameMap.at(21, 10).addActor(new Zombie("Aaargh"));
+//		gameMap.at(20, 10).addActor(new Zombie("Aaargh"));
+//		gameMap.at(21, 10).addActor(new Zombie("Aaargh"));
 
 
 //		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
 		
 		// testing code for Farmer class
 		gameMap.at(44, 15).addActor(new Farmer("Joseph", 100));
-		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
+//		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
 //		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
 
 		Car car1 = new Car("car1");
@@ -109,14 +110,17 @@ public class Application {
 		gameMap1.at(1, 1).addItem(car2);
 
 
-		gameMap.at(1, 0).addItem(car2);
 		gameMap.at(1, 1).addItem(car2);
+		gameMap.at(1, 0).addItem(car2);
 		gameMap.at(0, 1).addItem(car2);
 
-
-		gameMap.at(1, 0).addItem(new Plank());
 		gameMap.at(1, 1).addItem(new Plank());
+		gameMap.at(1, 0).addItem(new Plank());
 		gameMap.at(0, 1).addItem(new Plank());
+
+
+
+
 
 		allGameMaps.add(gameMap);
 		allGameMaps.add(gameMap1);

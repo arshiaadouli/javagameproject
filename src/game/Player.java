@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public class Player extends Human implements Crafter, Harvester, PersonThatEatFood, Sheriff {
 	private Menu menu = new Menu();
 
+	public static int turns;
+
 
 	/**
 	 * Constructor.
@@ -24,6 +26,8 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 	 */
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
+		isAppear=true;
+		turns=0;
 	}
 
 	@Override
@@ -49,8 +53,11 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
-		turn++;
+		turns+=1;
 
+		turn+=1;
+
+		System.out.println(turn);
 
 
 

@@ -16,16 +16,42 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
      */
 
 
+    private static boolean isAlive=true;
 
     private ArrayList<Behaviour> behaviours = new ArrayList<>();
-    boolean temp=true;
+
+
+
+
+    private boolean temp=true;
+    private int health = 0;
+    private boolean isDead = false;
+
 
 
     public MamboMarie(String name) {
-        super(name, '*', 50, ZombieCapability.UNDEAD);
+        super(name, 'X', 50, ZombieCapability.UNDEAD);
         behaviours.add(new WanderBehaviour());
 
 
+
+
+    }
+    public static boolean getIsAlive(){
+        return isAlive;
+    }
+
+    @Override
+    public boolean isConscious(){
+        if(hitPoints  > 0){
+            return true;
+        }
+        else{
+
+            isAlive=false;
+            return false;
+
+        }
 
     }
 
@@ -36,26 +62,15 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         turn++;
 
 
-
-        Random random = new Random();
-
-
-        if(random.nextDouble() <= 0.15){
-            this.displayChar= 'X' ;
-            temp=false;
-
-            isAppear=true;
-        }
+        if(!isAlive)
+        System.out.println("mambo is dead");
 
 
 
-
-
-
-
-        if(turn % 8 == 0){
+        if(this.turn % 10 == 0){
             behaviours.add(0, new ChantingBehaviour());
         }
+
 
         else{
             if(behaviours.size()==2){
@@ -66,13 +81,14 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
 
-        if(turn % 30 == 0){
+            if(this.turn%30==0){
+                map.removeActor(this);
+                WorldSub.isDead=true;
 
 
-            this.displayChar = '*';
 
-            isAppear = false;
-        }
+
+            }
 
 
         if(this.displayChar!='X'){
@@ -86,15 +102,6 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
         if(map.contains(this)){
-
-
-            if(temp){
-                if(map.locationOf(this).getItems().size()>0){
-
-                    this.displayChar = map.locationOf(this).getItems().get(0).getDisplayChar();
-
-                }
-            }
 
             for (Behaviour behaviour : behaviours) {
                 Action action = behaviour.getAction(this, map);

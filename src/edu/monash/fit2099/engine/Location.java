@@ -1,5 +1,4 @@
 package edu.monash.fit2099.engine;
-
 import java.util.*;
 
 
@@ -18,7 +17,7 @@ public class Location implements Printable {
 	private List<Exit> exits = new ArrayList<>();
 
 	/**
-	 * Constructor.
+	 * Constructor
 	 *
 	 * Locations know which map they are part of, and where.
 	 *
