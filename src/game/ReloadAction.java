@@ -8,11 +8,11 @@ import edu.monash.fit2099.engine.GameMap;
 
 public class ReloadAction extends Action {
 	private RangedWeapon weapon;
-	private List<Ammo> ammo;
+	private List<Ammo> ammoList;
 	
-	public ReloadAction(RangedWeapon weapon, List<Ammo> ammo) {
+	public ReloadAction(RangedWeapon weapon, List<Ammo> ammoList) {
 		this.weapon = weapon;
-		this.ammo = ammo;
+		this.ammoList = ammoList;
 	}
 	
 	public boolean compatible(RangedWeapon weapon, Ammo ammo) {
@@ -28,7 +28,7 @@ public class ReloadAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		
-		for(Ammo a : this.ammo) {
+		for(Ammo a : this.ammoList) {
 			if (compatible(weapon, a)) {
 				weapon.reload(a);
 				actor.removeItemFromInventory(a);

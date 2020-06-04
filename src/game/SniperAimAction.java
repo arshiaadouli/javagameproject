@@ -37,12 +37,7 @@ public class SniperAimAction extends Action {
 	
 	@Override
 	public Action getNextAction() {
-		Display display = new Display();
-		Actions actions = new Actions();
-		
-		actions.add(this);
-		
-		return new Menu().showMenu(actor, actions, display);
+		return null;
 	}
 
 }

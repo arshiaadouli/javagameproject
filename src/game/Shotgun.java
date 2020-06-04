@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
+import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.Item;
 
 public class Shotgun extends RangedWeapon {
 	private static int num = 1;
@@ -29,10 +31,27 @@ public class Shotgun extends RangedWeapon {
 		}
 	}
 
-	public List<Action> getAllowableActions() {
+	public List<Action> getAllowableAction(Actor actor) {
 		List<Action> actionList = new ArrayList<>();
+		List<Ammo> ammoList = new ArrayList<>();
+		ReloadAction reloadAction = new ReloadAction(this, ammoList);
 		
-		actionList.add(new ShotgunShootAction());
+		for (Item i : actor.getInventory()) {
+			if (i.asAmmo(i) != null) {
+				ammoList.add(i.asAmmo(i));
+			}
+		}
+		
+		if (this.hasAmmo()) {
+			actionList.add(new ShotgunShootAction());
+		}
+		else if (ammoList.size() > 0) {
+			for (Ammo a : ammoList) {
+				if (reloadAction.compatible(this, a)) {
+					actionList.add(reloadAction);
+				}
+			}
+		}
 		
 		return actionList;
 	}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
+import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.WeaponItem;
 
 public abstract class RangedWeapon extends WeaponItem {
@@ -20,8 +21,8 @@ public abstract class RangedWeapon extends WeaponItem {
 	
 	public abstract BulletType getBulletType();
 	
-	@Override
-	public abstract List<Action> getAllowableActions();
+	// different to super's getAllowableActions() method
+	public abstract List<Action> getAllowableAction(Actor actor);
 	
 	@Override
 	public int damage() {

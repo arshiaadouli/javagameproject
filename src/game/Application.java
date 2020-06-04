@@ -62,8 +62,8 @@ public class Application {
 
 		player.addItemToInventory(new Plank());
 		world.addPlayer(player, gameMap1.at(2, 1));
-		gameMap.at(10, 0).addItem(new SniperRifle());
-		gameMap.at(10, 0).addItem(new SniperRifleAmmo());
+		gameMap1.at(2, 1).addItem(new SniperRifle());
+		gameMap1.at(2, 1).addItem(new SniperRifleAmmo());
 
 
 	    // Place some random humans
