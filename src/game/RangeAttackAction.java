@@ -19,16 +19,19 @@ public class RangeAttackAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " " + weapon.verb() + " " + target + " for " + weapon.damage() + " damage";
+		double chance = 0.75;
 		
-		if (weapon.asSniperRifle(weapon).getAim() == 0 && rand.nextDouble() <= 0.75) {
-			target.hurt(weapon.damage());
-			weapon.empty();
+		if (weapon.asSniperRifle(weapon).getAim() == 0) {
+			chance = 0.75;
 		}
-		else if (weapon.asSniperRifle(weapon).getAim() == 1 && rand.nextDouble() <= 0.9) {
-			target.hurt(weapon.damage());
-			weapon.empty();
+		else if (weapon.asSniperRifle(weapon).getAim() == 1) {
+			chance = 0.9;
 		}
 		else if (weapon.asSniperRifle(weapon).getAim() == 2) {
+			chance = 1;
+		}
+		
+		if (rand.nextDouble() <= chance) {
 			target.hurt(weapon.damage());
 			weapon.empty();
 		}

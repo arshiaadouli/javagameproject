@@ -179,7 +179,7 @@ public abstract class ZombieActor extends Actor{
 						actions.add(new RangeAttackAction(a, sniper));
 						// while sniper has less than 2 times aimed, it can be aimed again
 						if (sniper.getAim() < 2) {
-							actions.add(new AimAction(a, sniper));
+							actions.add(new SniperAimAction(a, sniper));
 						}
 					}
 				}
@@ -190,20 +190,21 @@ public abstract class ZombieActor extends Actor{
 			}
 			
 			// code for Shotguns
-			if (i.asShotgun(i) != null) {
-				if (i.asShotgun(i).hasAmmo()) {
+			Shotgun shotgun = i.asShotgun(i);
+			if (shotgun != null) {
+				if (shotgun.hasAmmo()) {
 					// set target for shotguns first
 					
 				}
 				
-				if (i.asShotgun(i).hasAmmo()) {
+				if (shotgun.hasAmmo()) {
 					for (Actor a : listOfTargets) {
-						actions.add(new RangeAttackAction(a, i.asShotgun(i)));
+						actions.add(new RangeAttackAction(a, shotgun));
 					}
 				}
 				
-				if (listOfShotgunAmmo.size() > 0 && !i.asShotgun(i).hasAmmo()) {
-					actions.add(new ReloadAction(i.asShotgun(i), listOfShotgunAmmo.get(0)));
+				if (listOfShotgunAmmo.size() > 0 && !shotgun.hasAmmo()) {
+					actions.add(new ReloadAction(shotgun, listOfShotgunAmmo.get(0)));
 				}
 			}
 			

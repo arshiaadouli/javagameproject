@@ -4,11 +4,11 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
-public class AimAction extends Action {
+public class SniperAimAction extends Action {
 	private Actor target;
 	private SniperRifle sniper;
 	
-	public AimAction(Actor target, SniperRifle sniper) {
+	public SniperAimAction(Actor target, SniperRifle sniper) {
 		this.target = target;
 		this.sniper = sniper;
 	}
@@ -22,6 +22,11 @@ public class AimAction extends Action {
 	@Override
 	public String menuDescription(Actor actor) {
 		return actor + " aim at " + target + " (" + (sniper.getAim() + 1) + ")";
+	}
+	
+	@Override
+	public Action getNextAction() {
+		return new SniperAimAction(target, sniper);
 	}
 
 }
