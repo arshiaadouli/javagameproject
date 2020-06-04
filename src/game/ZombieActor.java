@@ -176,7 +176,7 @@ public abstract class ZombieActor extends Actor{
 				// if sniper has ammo, allow actor to choose to shoot or aim the sniper
 				if (sniper.hasAmmo()) {
 					for (Actor a : listOfTargets) {
-						actions.add(new RangeAttackAction(a, sniper));
+						actions.add(new SniperAttackAction(a, sniper));
 						// while sniper has less than 2 times aimed, it can be aimed again
 						if (sniper.getAim() < 2) {
 							actions.add(new SniperAimAction(a, sniper));
@@ -199,7 +199,7 @@ public abstract class ZombieActor extends Actor{
 				
 				if (shotgun.hasAmmo()) {
 					for (Actor a : listOfTargets) {
-						actions.add(new RangeAttackAction(a, shotgun));
+						actions.add(new ShotgunAttackAction(a, shotgun));
 					}
 				}
 				

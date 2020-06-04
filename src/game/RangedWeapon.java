@@ -32,7 +32,7 @@ public class RangedWeapon extends Item implements Weapon {
 
 	@Override
 	public int damage() {
-		return damage;
+		return this.damage;
 	}
 
 	@Override
