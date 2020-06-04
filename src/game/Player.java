@@ -4,14 +4,11 @@ import edu.monash.fit2099.engine.*;
 import edu.monash.fit2099.interfaces.Crafter;
 import edu.monash.fit2099.interfaces.Harvester;
 import edu.monash.fit2099.interfaces.PersonThatEatFood;
-import edu.monash.fit2099.interfaces.Sheriff;
-
-import java.util.ArrayList;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Human implements Crafter, Harvester, PersonThatEatFood, Sheriff {
+public class Player extends Human implements Crafter, Harvester, PersonThatEatFood {
 	private Menu menu = new Menu();
 
 	public static int turns;
@@ -52,25 +49,18 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-
 		turns+=1;
-
 		turn+=1;
-
 		System.out.println(turn);
 
-
-
-
-
 		actions.add(super.AllowableActions(map));
-
-
 		actions.add(new DieAction());
-
-
-
-
+		
+		SniperAimAction saa = lastAction.asSniperAimAction(lastAction);
+			
+		if (saa != null) {
+			saa.incAim();
+		}
 
 		if (lastAction.getNextAction() != null) {
 			return lastAction.getNextAction();

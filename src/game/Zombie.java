@@ -86,7 +86,7 @@ public class Zombie extends ZombieActor {
 			Random random1 = new Random();
 			if (random1.nextDouble() <= 0.25) {
 				Random random2 = new Random();
-				int item =  random2.nextInt(items.size());
+				int item = random2.nextInt(items.size());
 				tempLimb = items.remove(item);
 				
 				System.out.println("zombie limbs detached: ");

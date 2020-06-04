@@ -96,7 +96,7 @@ public class Application {
 //		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
 		
 		// testing code for Farmer class
-		gameMap.at(44, 15).addActor(new Farmer("Joseph", 100));
+		gameMap.at(11, 0).addActor(new Farmer("Joseph", 100));
 //		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
 //		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
 
