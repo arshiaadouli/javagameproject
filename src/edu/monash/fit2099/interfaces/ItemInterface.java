@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.Item;
 import game.Ammo;
 import game.Crop;
 import game.Food;
+import game.RangedWeapon;
 
 /**
  * This interface provides the ability to add methods to Ground, without modifying code in the engine,

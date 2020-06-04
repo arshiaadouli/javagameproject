@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.interfaces.RangedWeapon;
 
 public class Shotgun extends RangedWeapon {
 	private static int num = 1;

@@ -1,6 +1,7 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
+import edu.monash.fit2099.interfaces.Limb;
 
 /**
  * Legs are part of limbs ArrayList for every actor

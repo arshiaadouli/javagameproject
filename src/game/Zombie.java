@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import edu.monash.fit2099.engine.*;
+import edu.monash.fit2099.interfaces.Limb;
 
 /**
  * A Zombie.

@@ -1,12 +1,10 @@
-package edu.monash.fit2099.interfaces;
+package game;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.WeaponItem;
-import game.Ammo;
-import game.BulletType;
 
 public abstract class RangedWeapon extends WeaponItem {
 	protected ArrayList<Ammo> ammoList = new ArrayList<>();
