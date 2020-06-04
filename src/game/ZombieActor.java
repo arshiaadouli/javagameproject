@@ -147,62 +147,6 @@ public abstract class ZombieActor extends Actor {
 		
 		return actions;
 	}
-	
-	public Actions addSniperAttackAction(GameMap map) {
-		Actions actions = new Actions();
-		SniperRifle sniper = null;
-		ArrayList<Actor> targetList = new ArrayList<>();
-		ArrayList<Ammo> ammoList = new ArrayList<>();
-		// add all targets on the map that actor can shoot/aim at
-		for (int x = 0; x < 80; x++) {
-			for (int y = 0; y < 25; y++) {
-				if (map.at(x, y).containsAnActor() && !map.at(x, y).getActor().equals(this)) {
-					targetList.add(map.at(x, y).getActor());
-				}
-			}
-		}
-		
-		for (Item i : this.getInventory()) {
-			// add all ammo objects in actor's inventory into ammoList
-			if (i.asSniperRifleAmmo(i) != null) {
-				ammoList.add(i.asSniperRifleAmmo(i));
-			}
-			// get sniper object in actor's inventory
-			if (i.asSniperRifle(i) != null) {
-				sniper = i.asSniperRifle(i);
-			}
-		}
-		
-		if (sniper != null) {
-			if (sniper.hasAmmo()) {
-				for (Actor a : targetList) {
-					actions.add(new SniperAttackAction(a, sniper));
-					actions.add(new SniperAimAction(a, sniper));
-				}
-			}
-			else if (ammoList.size() > 0) {
-				actions.add(new ReloadAction(sniper, ammoList.get(0)));
-			}
-		}
-		
-		return actions;		
-	}
-	
-	public Actions addSniperAimAction(GameMap map) {
-		Actions actions = new Actions();
-		
-		
-		
-		return actions;
-	}
-	
-	public Actions addShotgunAttackAction(GameMap map) {
-		Actions actions = new Actions();
-		
-		
-		
-		return actions;
-	}
 
 	@Override
 	public Actions AllowableActions(GameMap map) {
@@ -218,20 +162,6 @@ public abstract class ZombieActor extends Actor {
 		
 		if (this.personThatEatFood()) {
 			actions.add(addEatFoodAction());
-		}
-		
-		if (this.sheriff()) {
-			for (Item i : this.getInventory()) {
-				if (i.asSniperRifle(i) != null) {
-					actions.add(addSniperAttackAction(map));
-					actions.add(addSniperAimAction(map));
-					break;
-				}
-				else if (i.asShotgun(i) != null) {
-					actions.add(addShotgunAttackAction(map));
-					break;
-				}
-			}
 		}
 		
 		return actions;

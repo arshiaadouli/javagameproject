@@ -1,54 +1,35 @@
 package game;
 
-import edu.monash.fit2099.engine.Location;
+import java.util.List;
+
+import edu.monash.fit2099.engine.Action;
+import edu.monash.fit2099.interfaces.RangedWeapon;
 
 public class SniperRifle extends RangedWeapon {
 	private static int num = 1;
-	private int aim = 0;
-	
 
 	public SniperRifle() {
 		super("Sniper Rifle " + num, '-', 45, "shoots");
 	}
 	
-	public boolean hasAmmo() {		
-		return !super.ammo.isEmpty();
-	}
-	
-	@Override
-	public void tick(Location location) {
-		super.tick(location);
+	public boolean hasAmmo() {
+		return !ammoList.isEmpty();
 	}
 
-	@Override
 	public void reload(Ammo ammo) {
-		if (super.ammo.size() == 0) {
-			super.ammo.add(ammo);
+		if (ammoList.size() == 0 && ammo != null) {
+			ammoList.add(ammo);
 		}
 	}
 	
-	@Override
 	public void empty() {
-		super.ammo.clear();
-	}
-	
-	public void incAim() {
-		if (this.aim < 2) {
-			this.aim++;
-		}
-		if (this.aim == 1) {
-			this.setDamage(this.damage() * 2);
-		}
-		if (this.aim == 2) {
-			this.setDamage(1000);
+		if (hasAmmo()) {
+			ammoList.clear();
 		}
 	}
 	
-	public int getAim() {
-		return this.aim;
+	public List<Action> getAllowableActions() {
+		return null;
 	}
 	
-	public void resetAim() {
-		this.aim = 0;
-	}
 }

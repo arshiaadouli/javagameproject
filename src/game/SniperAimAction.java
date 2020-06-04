@@ -15,13 +15,12 @@ public class SniperAimAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		sniper.incAim();
-		return actor + " aims at " + target;
+		return null;
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " aim at " + target;
+		return null;
 	}
 	
 	@Override

@@ -5,6 +5,7 @@ import java.util.Random;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.interfaces.RangedWeapon;
 
 public class ShotgunAttackAction extends Action {
 	private Actor target;
@@ -17,18 +18,13 @@ public class ShotgunAttackAction extends Action {
 	}
 
 	@Override
-	public String execute(Actor actor, GameMap map) {
-		
-		if (rand.nextDouble() <= 0.75) {
-			return actor + weapon.verb() + target + " for " + weapon.damage() + " damage";
-		}
-		
-		return actor + " misses " + target;
+	public String execute(Actor actor, GameMap map) {		
+		return null;
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " " + weapon.verb() + " " + target;
+		return null;
 	}
 
 }

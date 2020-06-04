@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Item;
 import game.Crop;
 import game.Food;
-import game.RangedWeapon;
 import game.Shotgun;
 import game.ShotgunAmmo;
 import game.SniperRifle;
@@ -40,14 +39,6 @@ public interface ItemInterface {
 	
 	public default ShotgunAmmo asShotgunAmmo(Item i) {
 		return i instanceof ShotgunAmmo ? (ShotgunAmmo) i : null;
-	}
-	
-	public default SniperRifle asSniperRifle(Item i) {
-		return i instanceof SniperRifle ? (SniperRifle) i : null;
-	}
-	
-	public default Shotgun asShotgun(Item i) {
-		return i instanceof Shotgun ? (Shotgun) i : null;
 	}
 	
 	public default RangedWeapon asRangedWeapon(Item i) {

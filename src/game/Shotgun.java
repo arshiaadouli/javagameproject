@@ -1,5 +1,10 @@
 package game;
 
+import java.util.List;
+
+import edu.monash.fit2099.engine.Action;
+import edu.monash.fit2099.interfaces.RangedWeapon;
+
 public class Shotgun extends RangedWeapon {
 	private static int num = 1;
 
@@ -8,17 +13,23 @@ public class Shotgun extends RangedWeapon {
 	}
 	
 	public boolean hasAmmo() {		
-		return !super.ammo.isEmpty();
+		return !ammoList.isEmpty();
 	}
 
-	@Override
 	public void reload(Ammo ammo) {
-			
+		if (ammoList.size() < 2 && ammo != null) {
+			ammoList.add(ammo);
+		}
 	}
 	
-	@Override
 	public void empty() {
-		
+		if (hasAmmo()) {
+			ammoList.remove(0);
+		}
+	}
+	
+	public List<Action> getAllowableActions() {
+		return null;
 	}
 
 }
