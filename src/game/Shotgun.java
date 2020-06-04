@@ -1,12 +1,15 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
+import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.interfaces.RangedWeapon;
 
 public class Shotgun extends RangedWeapon {
 	private static int num = 1;
+	private BulletType type = BulletType.Shotgun;
 
 	public Shotgun() {
 		super("Shotgun " + num, '=', 10, "shoots");
@@ -27,9 +30,19 @@ public class Shotgun extends RangedWeapon {
 			ammoList.remove(0);
 		}
 	}
-	
-	public List<Action> getAllowableActions() {
+
+	@Override
+	public List<Action> getAllowableActions(Actor actor) {
+		List<Action> actionList = new ArrayList<>();
+		
+		actionList.add(new ShotgunShootAction());
+		
 		return null;
+	}
+
+	@Override
+	public BulletType getBulletType() {
+		return type;
 	}
 
 }

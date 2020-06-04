@@ -7,14 +7,13 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.interfaces.RangedWeapon;
 
-public class ShotgunAttackAction extends Action {
+public class SniperShootAction extends Action {
 	private Actor target;
-	private RangedWeapon weapon;
+	private RangedWeapon sniper;
 	private Random rand = new Random();
 	
-	public ShotgunAttackAction(Actor target, RangedWeapon weapon) {
-		this.target = target;
-		this.weapon = weapon;
+	public SniperShootAction(SniperRifle sniper) {
+		this.sniper = sniper;
 	}
 
 	@Override

@@ -59,7 +59,7 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 
 		for (Item i : this.getInventory()) {
 			if (i.asRangedWeapon(i) != null) {
-				
+				actions.add(i.getAllowableActions());
 			}
 		}
 

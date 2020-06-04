@@ -8,8 +8,7 @@ public class SniperAimAction extends Action {
 	private Actor target;
 	private SniperRifle sniper;
 	
-	public SniperAimAction(Actor target, SniperRifle sniper) {
-		this.target = target;
+	public SniperAimAction(SniperRifle sniper) {
 		this.sniper = sniper;
 	}
 
