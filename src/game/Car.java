@@ -12,6 +12,7 @@ public class Car extends Item {
     public Car(String name) {
         super(name, 'M', false);
 //        this.allowableActions.add(new TransfterAction());
+
     }
 
     public void addAction(Action action) {

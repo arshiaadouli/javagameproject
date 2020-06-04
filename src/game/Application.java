@@ -61,7 +61,7 @@ public class Application {
 //		player1 = player;
 
 		player.addItemToInventory(new Plank());
-		world.addPlayer(player, gameMap.at(10, 0));
+		world.addPlayer(player, gameMap1.at(2, 1));
 		gameMap.at(10, 0).addItem(new SniperRifle());
 		gameMap.at(10, 0).addItem(new SniperRifleAmmo());
 
@@ -100,10 +100,15 @@ public class Application {
 //		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
 //		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
 
+		// car 1 is created which locates in compound map
 		Car car1 = new Car("car1");
+		// car 2 is created which locates in town map
 		Car car2 = new Car("car2");
 
+		// particularly for car 1 the transfer action added to move player from compound map to town map
 		car1.addAction(new TransfterAction(gameMap1));
+
+		// particularly for car 2 the transfer action added to move player from town map to compound map
 		car2.addAction(new TransfterAction(gameMap));
 
 		gameMap.at(2, 1).addItem(car1);

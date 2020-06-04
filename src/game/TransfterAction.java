@@ -20,6 +20,7 @@ public class TransfterAction extends Action {
         return "player has been transferred to another map";
     }
 
+
     @Override
     public String menuDescription(Actor actor) {
         return "transport to alternative map";
