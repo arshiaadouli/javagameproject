@@ -55,12 +55,6 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 
 		actions.add(super.AllowableActions(map));
 		actions.add(new DieAction());
-		
-		SniperAimAction saa = lastAction.asSniperAimAction(lastAction);
-			
-		if (saa != null) {
-			saa.incAim();
-		}
 
 		if (lastAction.getNextAction() != null) {
 			return lastAction.getNextAction();

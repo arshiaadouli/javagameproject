@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
+import edu.monash.fit2099.engine.Actions;
+import edu.monash.fit2099.engine.Display;
+import edu.monash.fit2099.engine.Menu;
 import edu.monash.fit2099.interfaces.RangedWeapon;
 
 public class SniperRifle extends RangedWeapon {

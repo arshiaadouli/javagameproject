@@ -20,9 +20,7 @@ public class SniperAimAction extends Action {
 	}
 
 	@Override
-	public String execute(Actor actor, GameMap map) {
-		this.actor = actor;
-		this.map = map;
+	public String execute(Actor actor, GameMap map) {		
 		return actor + " aimed at " + target;
 	}
 
