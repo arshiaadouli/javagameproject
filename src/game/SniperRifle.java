@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.interfaces.RangedWeapon;
 
 public class SniperRifle extends RangedWeapon {
@@ -32,20 +30,11 @@ public class SniperRifle extends RangedWeapon {
 		}
 	}
 	
-	@Override
-	public List<Action> getAllowableActions(Actor actor) {
+	public List<Action> getAllowableActions() {
 		List<Action> actionList = new ArrayList<>();
-		List<Ammo> ammoList = new ArrayList<>();
 		
-		for (Item i : actor.getInventory()) {
-			if (i.asAmmo(i) != null) {
-				ammoList.add(i.asAmmo(i));
-			}
-		}
-		
-		actionList.add(new SniperAimAction(this));
-		actionList.add(new SniperShootAction(this));
-		actionList.add(new ReloadAction(this, ammoList));
+		actionList.add(new SniperAimAction(this, 0));
+		actionList.add(new SniperShootAction(this, 0));
 		
 		return actionList;
 	}

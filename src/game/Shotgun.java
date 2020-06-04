@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.interfaces.RangedWeapon;
 
 public class Shotgun extends RangedWeapon {
@@ -31,13 +30,12 @@ public class Shotgun extends RangedWeapon {
 		}
 	}
 
-	@Override
-	public List<Action> getAllowableActions(Actor actor) {
+	public List<Action> getAllowableActions() {
 		List<Action> actionList = new ArrayList<>();
 		
 		actionList.add(new ShotgunShootAction());
 		
-		return null;
+		return actionList;
 	}
 
 	@Override

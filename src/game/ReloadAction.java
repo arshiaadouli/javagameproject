@@ -15,12 +15,22 @@ public class ReloadAction extends Action {
 		this.weapon = weapon;
 		this.ammo = ammo;
 	}
+	
+	public boolean compatible(RangedWeapon weapon, Ammo ammo) {
+		boolean retVal = false;
+		
+		if (weapon.getBulletType().compareTo(ammo.getBulletType()) == 0) {
+			retVal = true;
+		}
+		
+		return retVal;
+	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		
 		for(Ammo a : this.ammo) {
-			if (weapon.compatible(weapon, a)) {
+			if (compatible(weapon, a)) {
 				weapon.reload(a);
 				actor.removeItemFromInventory(a);
 			}

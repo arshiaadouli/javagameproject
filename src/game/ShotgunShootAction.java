@@ -18,12 +18,12 @@ public class ShotgunShootAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {		
-		return null;
+		return actor + " shotgunned " + target;
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return null;
+		return actor + " shotguns " + target;
 	}
 
 }

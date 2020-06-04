@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.WeaponItem;
 import game.Ammo;
 import game.BulletType;
@@ -23,17 +22,8 @@ public abstract class RangedWeapon extends WeaponItem {
 	
 	public abstract BulletType getBulletType();
 	
-	public abstract List<Action> getAllowableActions(Actor actor);
-	
-	public boolean compatible(RangedWeapon weapon, Ammo ammo) {
-		boolean retVal = false;
-		
-		if (weapon.getBulletType().compareTo(ammo.getBulletType()) == 0) {
-			retVal = true;
-		}
-		
-		return retVal;
-	}
+	@Override
+	public abstract List<Action> getAllowableActions();
 	
 	@Override
 	public int damage() {
