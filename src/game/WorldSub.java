@@ -54,35 +54,8 @@ public class WorldSub extends World {
 
         while (stillRunning()) {
 
-//            boolean isThereMamba = false;
 
-            MamboMarie mambo = new MamboMarie("mambo"); //mambo marie object
-            Random random = new Random();
-            double chance = random.nextDouble();
-
-
-            if(isMamboDead) { // if mambo marie is not in the game
-                if (chance <= 0.05) {  // create it in 5% in a turn
-
-
-                    Random random1 = new Random();
-                    xChoices = new int[]{gameMaps.get(0).getXRange().min(), gameMaps.get(0).getXRange().max()};
-                    yChoices = new int[]{gameMaps.get(0).getYRange().min(), gameMaps.get(0).getYRange().max()};
-                    int x = xChoices[random1.nextInt(2)];
-                    int y = yChoices[random1.nextInt(2)];
-
-                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(x, y));   // create mambo in edge of the map
-                    isMamboDead=false;  // the mambo marie is alive now
-//                    temp=true;
-
-
-                }
-            }
-
-
-
-
-
+            mambaCreation();
 
 
             GameMap playersMap = actorLocations.locationOf(player).map();
@@ -102,6 +75,34 @@ public class WorldSub extends World {
         }
         display.println(endGameMessage());
     }
+
+
+    public void mambaCreation(){
+        MamboMarie mambo = new MamboMarie("mambo"); //mambo marie object
+        Random random = new Random();
+        double chance = random.nextDouble();
+
+
+        if(isMamboDead) { // if mambo marie is not in the game
+            if (chance <= 0.05) {  // create it in 5% in a turn
+
+
+                Random random1 = new Random();
+                xChoices = new int[]{gameMaps.get(0).getXRange().min(), gameMaps.get(0).getXRange().max()};
+                yChoices = new int[]{gameMaps.get(0).getYRange().min(), gameMaps.get(0).getYRange().max()};
+                int x = xChoices[random1.nextInt(2)];
+                int y = yChoices[random1.nextInt(2)];
+
+                gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(x, y));   // create mambo in edge of the map
+                isMamboDead=false;  // the mambo marie is alive now
+
+
+            }
+        }
+
+    }
+
+
 
     /**
      * in this method further than existence of player existence of zombies, human and mambo will
