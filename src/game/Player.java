@@ -64,9 +64,6 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 				}
 			}
 		}
-		else {
-			return new Menu().showMenu(this, actions, display);
-		}
 		
 		return menu.showMenu(this, actions, display);
 	}	

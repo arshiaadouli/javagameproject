@@ -10,22 +10,21 @@ public class SniperShootAction extends Action {
 	private Actor target;
 	private SniperRifle sniper;
 	private Random rand = new Random();
-	private int aim = 0;
 	
 	public SniperShootAction(SniperRifle sniper) {
 		this.sniper = sniper;
-		this.aim = sniper.getAim();
 	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		double chance = 0.75;
+		String retVal = "";
 		
-		if (aim == 1) {
+		if (sniper.getAim() == 1) {
 			chance = 0.9;
 			sniper.setDamage(sniper.damage() * 2);
 		}
-		if (aim == 2) {
+		if (sniper.getAim() == 2) {
 			chance = 1;
 			sniper.setDamage(sniper.damage() * sniper.damage());
 		}
@@ -33,9 +32,13 @@ public class SniperShootAction extends Action {
 		if (rand.nextDouble() <= chance) {
 			sniper.empty();
 			actor.hurt(sniper.damage());
+			retVal = actor + " sniped " + target + " for " + sniper.damage() + " damage";
+		}
+		else {
+			retVal = actor + " missed " + target;
 		}
 		
-		return actor + " sniped " + target;
+		return retVal;
 	}
 
 	@Override

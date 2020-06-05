@@ -26,6 +26,11 @@ public class SniperAimAction extends Action {
 	public SniperRifle getSniper() {
 		return sniper;
 	}
+	
+	public Action getAimMenu() {
+		Action a = new SniperAimMenuAction();
+		return a;
+	}
 
 	@Override
 	public Action getNextAction() {

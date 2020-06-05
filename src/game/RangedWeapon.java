@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.WeaponItem;
 
 public abstract class RangedWeapon extends WeaponItem {
 	protected ArrayList<Ammo> ammoList = new ArrayList<>();
-	protected int damage = 0;
+	protected int damage = super.damage();
 	
 	public RangedWeapon(String name, char displayChar, int damage, String verb) {
 		super(name, displayChar, damage, verb);
