@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MamboMarie extends ZombieActor implements ActorInterface {
-    /**
+    /** this class represent mambo marie which its creation will be provided inside of WorldSub.java
      * Constructor.
      *
      * @param name        the name of the Actor
@@ -16,22 +16,13 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
      */
 
 
-    private static boolean isAlive=true;
+    private static boolean isAlive=true;  // a variable too check whether the mambo is still alive or not
 
     private ArrayList<Behaviour> behaviours = new ArrayList<>();
 
-
-
-
-    private boolean temp=true;
-    private int health = 0;
-    private boolean isDead = false;
-
-
-
     public MamboMarie(String name) {
         super(name, 'X', 50, ZombieCapability.UNDEAD);
-        behaviours.add(new WanderBehaviour());
+        behaviours.add(new WanderBehaviour()); // if she is in the map, she wanders unless she chants
 
 
 
@@ -39,8 +30,12 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
     }
     public static boolean getIsAlive(){
         return isAlive;
-    }
+    }   // return whether the mambo is still alive
 
+    /**
+     *
+     * @return she never comes back when she dies
+     */
     @Override
     public boolean isConscious(){
         if(hitPoints  > 0){
@@ -48,13 +43,21 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         }
         else{
 
-            isAlive=false;
+            isAlive=false;  // if not conscious then dies
             return false;
 
         }
 
     }
 
+    /**
+     * play turn of mambo marie which shows whether mambo can wander, chant or vanishes
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return action from the behaviour
+     */
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
@@ -67,13 +70,14 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
 
-        if(this.turn % 10 == 0){
+        if(this.turn % 10 == 0){ // in every 10 turn it chants and creates 5 zombies(chanting behaviour)
             behaviours.add(0, new ChantingBehaviour());
         }
 
 
+
         else{
-            if(behaviours.size()==2){
+            if(behaviours.size()==2){  // otherwise remove the chanting behaviour
                 behaviours.remove(0);
             }
         }
@@ -81,9 +85,9 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
 
-            if(this.turn%30==0){
+            if(this.turn%30==0){   // in 30th turn it vanishes but she will be brought away  by worldSub
                 map.removeActor(this);
-                WorldSub.isDead=true;
+                WorldSub.isMamboDead=true;
 
 
 
@@ -97,7 +101,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
         if(map.contains(this)){
 
-            for (Behaviour behaviour : behaviours) {
+            for (Behaviour behaviour : behaviours) { // execute the first behaviour from the list
                 Action action = behaviour.getAction(this, map);
                 if (action != null)
                     return action;
