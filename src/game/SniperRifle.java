@@ -58,8 +58,10 @@ public class SniperRifle extends RangedWeapon {
 		}
 		
 		if (this.hasAmmo()) {
-			actionList.add(new SniperAimAction(this));
 			actionList.add(new SniperShootAction(this));
+			if (this.aim < 2) {
+				actionList.add(new SniperAimAction(this));
+			}
 		}
 		else if (ammoList.size() > 0) {
 			for (Ammo a : ammoList) {

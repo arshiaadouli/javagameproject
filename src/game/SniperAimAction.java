@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.GameMap;
 public class SniperAimAction extends Action {
 	private Actor target;
 	private SniperRifle sniper;
-	
+
 	public SniperAimAction(SniperRifle sniper) {
 		this.sniper = sniper;
 	}
@@ -22,11 +22,11 @@ public class SniperAimAction extends Action {
 	public String menuDescription(Actor actor) {
 		return actor + " aims using " + sniper;
 	}
-	
+
 	public SniperRifle getSniper() {
 		return sniper;
 	}
-	
+
 	@Override
 	public Action getNextAction() {
 		return null;

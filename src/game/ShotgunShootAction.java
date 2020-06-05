@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.GameMap;
 
 public class ShotgunShootAction extends Action {
 	private Actor target;
-	private RangedWeapon weapon;
+	private Shotgun shotgun;
 	private Random rand = new Random();
 	
 	public ShotgunShootAction() {
@@ -16,7 +16,12 @@ public class ShotgunShootAction extends Action {
 	}
 
 	@Override
-	public String execute(Actor actor, GameMap map) {		
+	public String execute(Actor actor, GameMap map) {
+		double chance = 0.75;
+		
+		if (rand.nextDouble() <= chance) {
+			shotgun.empty();
+		}
 		return actor + " shotgunned " + target;
 	}
 

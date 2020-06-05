@@ -31,6 +31,7 @@ public class SniperShootAction extends Action {
 		}
 		
 		if (rand.nextDouble() <= chance) {
+			sniper.empty();
 			actor.hurt(sniper.damage());
 		}
 		
