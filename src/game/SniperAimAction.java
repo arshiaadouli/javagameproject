@@ -14,8 +14,8 @@ public class SniperAimAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		sniper.incAim();
-		return actor + " aimed at " + target;
+//		sniper.incAim();
+		return actor + " is aiming";
 	}
 
 	@Override
@@ -27,14 +27,9 @@ public class SniperAimAction extends Action {
 		return sniper;
 	}
 	
-	public Action getAimMenu() {
-		Action a = new SniperAimMenuAction();
+	public Action getAimMenu(Actor actor) {
+		Action a = new SniperAimMenuAction().aimMenu(actor);
 		return a;
-	}
-
-	@Override
-	public Action getNextAction() {
-		return null;
 	}
 
 }
