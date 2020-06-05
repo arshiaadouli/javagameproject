@@ -1,26 +1,20 @@
 package game;
 
 import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Menu;
 
 public class SniperAimAction extends Action {
 	private Actor target;
 	private SniperRifle sniper;
-	private int aim = 0;
-	private Actor actor;
-	private GameMap map;
 	
-	public SniperAimAction(SniperRifle sniper, int aim) {
+	public SniperAimAction(SniperRifle sniper) {
 		this.sniper = sniper;
-		this.aim = aim;
 	}
 
 	@Override
-	public String execute(Actor actor, GameMap map) {		
+	public String execute(Actor actor, GameMap map) {
+		sniper.incAim();
 		return actor + " aimed at " + target;
 	}
 
@@ -29,10 +23,8 @@ public class SniperAimAction extends Action {
 		return actor + " aims using " + sniper;
 	}
 	
-	public void incAim() {
-		if (aim < 2) {
-			aim++;
-		}
+	public SniperRifle getSniper() {
+		return sniper;
 	}
 	
 	@Override

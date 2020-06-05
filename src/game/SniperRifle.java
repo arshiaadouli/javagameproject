@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.Item;
 public class SniperRifle extends RangedWeapon {
 	private static int num = 1;
 	private BulletType type = BulletType.Sniper;
+	private int aim = 0;
 
 	public SniperRifle() {
 		super("Sniper Rifle " + num, '-', 45, "shoots");
@@ -31,6 +32,20 @@ public class SniperRifle extends RangedWeapon {
 		}
 	}
 	
+	public void incAim() {
+		if (this.aim < 2) {
+			this.aim++;
+		}
+	}
+	
+	public void resetAim() {
+		this.aim = 0;
+	}
+	
+	public int getAim() {
+		return this.aim;
+	}
+	
 	public List<Action> getAllowableAction(Actor actor) {
 		List<Action> actionList = new ArrayList<>();
 		List<Ammo> ammoList = new ArrayList<>();
@@ -43,12 +58,12 @@ public class SniperRifle extends RangedWeapon {
 		}
 		
 		if (this.hasAmmo()) {
-			actionList.add(new SniperAimAction(this, 0));
-			actionList.add(new SniperShootAction(this, 0));
+			actionList.add(new SniperAimAction(this));
+			actionList.add(new SniperShootAction(this));
 		}
 		else if (ammoList.size() > 0) {
 			for (Ammo a : ammoList) {
-				if (reloadAction.compatible(this,a)) {
+				if (reloadAction.compatible(this, a)) {
 					actionList.add(reloadAction);
 				}
 			}

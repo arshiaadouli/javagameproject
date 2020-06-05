@@ -9,12 +9,12 @@ import edu.monash.fit2099.engine.GameMap;
 public class SniperShootAction extends Action {
 	private Actor target;
 	private SniperRifle sniper;
-	private int aim = 0;
 	private Random rand = new Random();
+	private int aim = 0;
 	
-	public SniperShootAction(SniperRifle sniper, int aim) {
+	public SniperShootAction(SniperRifle sniper) {
 		this.sniper = sniper;
-		this.aim = aim;
+		this.aim = sniper.getAim();
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class SniperShootAction extends Action {
 		}
 		
 		if (rand.nextDouble() <= chance) {
-			target.hurt(sniper.damage());
+			actor.hurt(sniper.damage());
 		}
 		
 		return actor + " sniped " + target;

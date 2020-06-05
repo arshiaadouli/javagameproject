@@ -41,11 +41,6 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 	public boolean personThatEatFood() {
 		return true;
 	}
-	
-	@Override
-	public boolean sheriff() {
-		return true;
-	}
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
