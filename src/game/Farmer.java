@@ -36,6 +36,7 @@ public class Farmer extends Human implements Harvester, PersonThatEatFood {
 	
 	public Farmer(String name) {
 		super(name);
+
 	}
 	
 	/**
@@ -46,6 +47,7 @@ public class Farmer extends Human implements Harvester, PersonThatEatFood {
 
 	protected Farmer(String name, int hitPoints) {
 		super(name, 'F', hitPoints);
+		this.addCapability(ZombieCapability.ALIVE);
 
 	}
 	

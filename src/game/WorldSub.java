@@ -121,6 +121,7 @@ public class WorldSub extends World {
         for(Actor actor : actorLocations) {
 
 
+
             if(actor.hasCapability(ZombieCapability.UNDEAD)){
                 unDeadNum += 1;
 
