@@ -57,7 +57,7 @@ public class Application {
 		world.addGameMap(gameMap1);
 
 		
-		Actor player = new Player("Player", '@', 1000);
+		Actor player = new Player("Player", '@', 4000);
 //		player1 = player;
 
 		player.addItemToInventory(new Plank());
@@ -65,8 +65,8 @@ public class Application {
 
 
 	    // Place some random humans
-		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
-//		String[] humans = {"arshia"};
+//		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
+		String[] humans = {"arshia"};
 		int x, y;
 		for (String name : humans) {
 			do {
@@ -94,7 +94,9 @@ public class Application {
 //		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
 		
 		// testing code for Farmer class
-		gameMap.at(11, 0).addActor(new Farmer("Joseph", 100));
+		gameMap.at(11, 0).addActor(new Farmer("Joseph", 30));
+		gameMap.at(11, 1).addActor(new Zombie("zombie temp"));
+
 //		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
 //		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
 
@@ -118,7 +120,9 @@ public class Application {
 
 
 
+
 		gameMap1.addActor(new Zombie("arshia1"), gameMap1.at(2, 2));
+
 
 
 
