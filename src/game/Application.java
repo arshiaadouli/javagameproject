@@ -120,9 +120,7 @@ public class Application {
 
 
 
-		gameMap1.addActor(new Zombie("arshia1"), gameMap1.at(10, 10));
-		gameMap1.addActor(new Zombie("arshia2"), gameMap1.at(11, 11));
-		gameMap1.addActor(new Zombie("arshia3"), gameMap1.at(12, 12));
+		gameMap1.addActor(new Zombie("arshia1"), gameMap1.at(2, 2));
 
 
 
