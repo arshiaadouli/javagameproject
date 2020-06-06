@@ -12,7 +12,7 @@ public class Shotgun extends RangedWeapon {
 	private BulletType type = BulletType.Shotgun;
 
 	public Shotgun() {
-		super("Shotgun " + num, '=', 10, "shoots");
+		super("Shotgun " + num, '=', 20, "shoots");
 		setBarrelSize(2);
 	}
 
@@ -60,6 +60,7 @@ public class Shotgun extends RangedWeapon {
 
 	@Override
 	public int getMeleeDamage() {
+		setVerb("hits");
 		return 10;
 	}
 

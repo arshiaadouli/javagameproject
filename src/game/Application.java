@@ -60,9 +60,10 @@ public class Application {
 		Actor player = new Player("Player", '@', 4000);
 //		player1 = player;
 
-		player.addItemToInventory(new Plank());
+//		player.addItemToInventory(new Plank());
 		world.addPlayer(player, gameMap1.at(2, 1));
-
+		player.addItemToInventory(new Shotgun());
+		player.addItemToInventory(new ShotgunAmmo());
 
 	    // Place some random humans
 //		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};

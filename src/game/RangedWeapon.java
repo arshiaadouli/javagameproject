@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.WeaponItem;
 public abstract class RangedWeapon extends WeaponItem {
 	protected ArrayList<Ammo> ammoList = new ArrayList<>();
 	protected int damage = super.damage();
+	protected String verb = super.verb();
 	protected int barrelSize = 0;
 	
 	public RangedWeapon(String name, char displayChar, int damage, String verb) {
@@ -22,6 +23,8 @@ public abstract class RangedWeapon extends WeaponItem {
 	
 	public abstract BulletType getBulletType();
 	
+	public abstract int getMeleeDamage();
+	
 	// different to super's getAllowableActions() method
 	public abstract List<Action> getAllowableAction(Actor actor);
 	
@@ -30,9 +33,20 @@ public abstract class RangedWeapon extends WeaponItem {
 		return this.damage;
 	}
 	
+	@Override
+	public String verb() {
+		return this.verb;
+	}
+	
 	public void setDamage(int damage) {
 		if (damage > 0) {
 			this.damage = damage;
+		}
+	}
+	
+	public void setVerb(String verb) {
+		if (verb.length() > 0) {
+			this.verb = verb;
 		}
 	}
 	
@@ -46,6 +60,6 @@ public abstract class RangedWeapon extends WeaponItem {
 		}
 	}
 	
-	public abstract int getMeleeDamage();
+	
 	
 }

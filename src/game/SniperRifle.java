@@ -87,6 +87,7 @@ public class SniperRifle extends RangedWeapon {
 
 	@Override
 	public int getMeleeDamage() {
+		setVerb("hits");
 		return 10;
 	}
 	
