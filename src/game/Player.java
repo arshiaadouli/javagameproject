@@ -65,12 +65,6 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 			}
 		}
 		
-		for (Action a : actions) {
-			if (a.asSniperAimAction(a) != null) {
-				actions.add(new SniperAimMenuAction());
-			}
-		}
-		
 		return menu.showMenu(this, actions, display);
 	}	
 

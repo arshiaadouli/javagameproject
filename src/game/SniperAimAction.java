@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
 public class SniperAimAction extends Action {
-	private Actor target;
 	private SniperRifle sniper;
 
 	public SniperAimAction(SniperRifle sniper) {
@@ -25,11 +24,6 @@ public class SniperAimAction extends Action {
 
 	public SniperRifle getSniper() {
 		return sniper;
-	}
-	
-	public Action getAimMenu(Actor actor) {
-		Action a = new SniperAimMenuAction().aimMenu(actor);
-		return a;
 	}
 
 }
