@@ -1,12 +1,15 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Random;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
+import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Menu;
 
@@ -25,11 +28,27 @@ public class ShotgunShootAction extends Action {
 		Menu menu = new Menu();
 		Display display = new Display();
 		Actions actions = new Actions();
-		ArrayList<Actor> targetList = new ArrayList<>();
+		HashMap<String, ArrayList<Integer>> direction = new HashMap<>();
+		
+		
+		String num = "0";
+		for (Exit e : map.locationOf(actor).getExits()) {
+			ArrayList<Integer> temp = new ArrayList<>();
+			temp.add(map.locationOf(actor).x() - e.getDestination().x());
+			temp.add(map.locationOf(actor).y() - e.getDestination().y());
+			direction.put(num, temp);
+			num += "0";
+		}
+		
+		
 		
 		if (rand.nextDouble() <= chance) {
 			shotgun.empty();
-			actions.add(new ShotgunAimMenuAction(shotgun));
+			
+			for (Entry<String, ArrayList<Integer>> ai: direction.entrySet()) {
+				actions.add(new ShotgunAimMenuAction(shotgun, ai.getValue()));
+			}
+			
 			retVal = menu.showMenu(actor, actions, display).execute(actor, map);
 		}
 		else {

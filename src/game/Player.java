@@ -84,8 +84,5 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 		hitPoints -= points;
 		wasHurt = true;
 	}
-	
-	// ------------------ SHOTGUN CODE ------------------
-	
 
 }

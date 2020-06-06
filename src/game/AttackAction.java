@@ -37,8 +37,16 @@ public class AttackAction extends Action {
 		Weapon weapon = actor.getWeapon();
 		int damage = weapon.damage();
 		
+		for (Item i : actor.getInventory()) {
+			if (i.asRangedWeapon(i) != null) {
+				if (i.asRangedWeapon(i).equals(weapon)) {
+					damage = i.asRangedWeapon(i).getMeleeDamage();
+				}
+			}
+		}
+		
 		if (rand.nextBoolean()) {
-			return actor + " misses " + target + ".";
+			return actor + " misses " + target;
 		}
 
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage";
@@ -81,7 +89,7 @@ public class AttackAction extends Action {
 				corpse.setZombieCap(ZombieCapability.UNDEAD);
 			}
 			map.removeActor(target);
-			result += System.lineSeparator() + target + " is killed.";
+			result += System.lineSeparator() + target + " is killed";
 		}
 
 		return result;
