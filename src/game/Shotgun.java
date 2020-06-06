@@ -58,4 +58,9 @@ public class Shotgun extends RangedWeapon {
 		return type;
 	}
 
+	@Override
+	public int getMeleeDamage() {
+		return 10;
+	}
+
 }

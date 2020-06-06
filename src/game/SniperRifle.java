@@ -84,5 +84,10 @@ public class SniperRifle extends RangedWeapon {
 	public Actor getAimTarget() {
 		return aimTarget;
 	}
+
+	@Override
+	public int getMeleeDamage() {
+		return 10;
+	}
 	
 }

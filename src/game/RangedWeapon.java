@@ -46,4 +46,6 @@ public abstract class RangedWeapon extends WeaponItem {
 		}
 	}
 	
+	public abstract int getMeleeDamage();
+	
 }
