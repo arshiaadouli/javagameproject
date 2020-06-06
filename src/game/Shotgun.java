@@ -13,14 +13,11 @@ public class Shotgun extends RangedWeapon {
 
 	public Shotgun() {
 		super("Shotgun " + num, '=', 10, "shoots");
-	}
-	
-	public boolean hasAmmo() {		
-		return !ammoList.isEmpty();
+		setBarrelSize(2);
 	}
 
 	public void reload(Ammo ammo) {
-		if (ammoList.size() < 2 && ammo != null) {
+		if (ammoList.size() < barrelSize && ammo != null) {
 			ammoList.add(ammo);
 		}
 	}
@@ -43,7 +40,7 @@ public class Shotgun extends RangedWeapon {
 		}
 		
 		if (this.hasAmmo()) {
-			actionList.add(new ShotgunShootAction());
+			actionList.add(new ShotgunShootAction(this));
 		}
 		else if (ammoList.size() > 0) {
 			for (Ammo a : ammoList) {

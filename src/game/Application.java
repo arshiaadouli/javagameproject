@@ -51,7 +51,7 @@ public class Application {
 		"................................................................................");
 		GameMapDemo gameMap = new GameMapDemo(groundFactory, map );
 		GameMapDemo gameMap1 = new GameMapDemo(groundFactory, map );
-		GameMapDemo gameMapTemp = new GameMapDemo(groundFactory, map);
+//		GameMapDemo gameMapTemp = new GameMapDemo(groundFactory, map);
 
 		world.addGameMap(gameMap);
 		world.addGameMap(gameMap1);
@@ -122,7 +122,9 @@ public class Application {
 
 
 
-//		gameMap1.addActor(new Zombie("arshia"), gameMap1.at(10, 10));
+
+		gameMap1.addActor(new Zombie("arshia1"), gameMap1.at(2, 2));
+
 
 
 

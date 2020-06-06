@@ -10,6 +10,7 @@ import edu.monash.fit2099.interfaces.PersonThatEatFood;
  */
 public class Player extends Human implements Crafter, Harvester, PersonThatEatFood {
 	private Menu menu = new Menu();
+	private boolean wasHurt = false;
 
 	public static int turns;
 
@@ -57,7 +58,8 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 			}
 		}
 		
-		if (lastAction.asSniperAimAction(lastAction) == null) { // if lastAction is not aiming
+		// ------------------ SNIPER AIMING CODE ------------------
+		if (lastAction.asSniperAimAction(lastAction) == null) { // if lastAction IS NOT aiming
 			for (Action a : actions) {
 				if (a.asSniperAimAction(a) != null) {
 					a.asSniperAimAction(a).getSniper().resetAim();
@@ -65,7 +67,25 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 			}
 		}
 		
+		if (wasHurt) {
+			for (Action a : actions) {
+				if (a.asSniperAimAction(a) != null) {
+					a.asSniperAimAction(a).getSniper().resetAim();
+					wasHurt = false;
+				}
+			}
+		}
+		
 		return menu.showMenu(this, actions, display);
-	}	
+	}
+	
+	@Override
+	public void hurt(int points) {
+		hitPoints -= points;
+		wasHurt = true;
+	}
+	
+	// ------------------ SHOTGUN CODE ------------------
+	
 
 }
