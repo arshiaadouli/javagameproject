@@ -11,6 +11,7 @@ public class SniperRifle extends RangedWeapon {
 	private static int num = 1;
 	private BulletType type = BulletType.Sniper;
 	private int aim = 0;
+	private Actor aimTarget = null;
 
 	public SniperRifle() {
 		super("Sniper Rifle " + num, '-', 45, "shoots");
@@ -77,6 +78,14 @@ public class SniperRifle extends RangedWeapon {
 	@Override
 	public BulletType getBulletType() {
 		return type;
+	}
+	
+	public void setAimTarget(Actor target) {
+		this.aimTarget = target;
+	}
+	
+	public Actor getAimTarget() {
+		return aimTarget;
 	}
 	
 }
