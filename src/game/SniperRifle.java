@@ -15,21 +15,18 @@ public class SniperRifle extends RangedWeapon {
 
 	public SniperRifle() {
 		super("Sniper Rifle " + num, '-', 45, "shoots");
-	}
-	
-	public boolean hasAmmo() {
-		return !ammoList.isEmpty();
+		setBarrelSize(1);
 	}
 
 	public void reload(Ammo ammo) {
-		if (ammoList.size() == 0 && ammo != null) {
+		if (ammoList.size() < barrelSize && ammo != null) {
 			ammoList.add(ammo);
 		}
 	}
 	
 	public void empty() {
 		if (hasAmmo()) {
-			ammoList.clear();
+			ammoList.remove(0);
 		}
 	}
 	

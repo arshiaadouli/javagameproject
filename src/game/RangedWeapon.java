@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.WeaponItem;
 public abstract class RangedWeapon extends WeaponItem {
 	protected ArrayList<Ammo> ammoList = new ArrayList<>();
 	protected int damage = super.damage();
+	protected int barrelSize = 0;
 	
 	public RangedWeapon(String name, char displayChar, int damage, String verb) {
 		super(name, displayChar, damage, verb);
@@ -32,6 +33,16 @@ public abstract class RangedWeapon extends WeaponItem {
 	public void setDamage(int damage) {
 		if (damage > 0) {
 			this.damage = damage;
+		}
+	}
+	
+	public boolean hasAmmo() {
+		return !ammoList.isEmpty();
+	}
+	
+	public void setBarrelSize(int size) {
+		if (size > 0) {
+			barrelSize = size;
 		}
 	}
 	

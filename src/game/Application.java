@@ -51,7 +51,7 @@ public class Application {
 		"................................................................................");
 		GameMapDemo gameMap = new GameMapDemo(groundFactory, map );
 		GameMapDemo gameMap1 = new GameMapDemo(groundFactory, map );
-		GameMapDemo gameMapTemp = new GameMapDemo(groundFactory, map);
+//		GameMapDemo gameMapTemp = new GameMapDemo(groundFactory, map);
 
 		world.addGameMap(gameMap);
 		world.addGameMap(gameMap1);
