@@ -29,6 +29,7 @@ public class ShotgunShootAction extends Action {
 		
 		if (rand.nextDouble() <= chance) {
 			shotgun.empty();
+			actions.add(new ShotgunAimMenuAction(shotgun));
 			retVal = menu.showMenu(actor, actions, display).execute(actor, map);
 		}
 		else {
