@@ -59,18 +59,22 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 		}
 		
 		// ------------------ RESETTING SNIPER AIMING CODE ------------------
-		if (lastAction.asSniperAimAction(lastAction) == null) { // if lastAction IS NOT aiming
+		System.out.println("Before if");
+		if (lastAction.asSniperRifleAimAction(lastAction) == null) { // if lastAction IS NOT aiming
+			System.out.println("After if");
 			for (Action a : actions) {
-				if (a.asSniperAimAction(a) != null) {
-					a.asSniperAimAction(a).getSniper().resetAim();
+				if (a.asSniperRifleAimAction(a) != null) { // get the SniperRifleAimAction object
+					System.out.println("After if 2");
+					System.out.println("Aim before reset: " + a.asSniperRifleAimAction(a).getSniper().getAim());
+					a.asSniperRifleAimAction(a).getSniper().resetAim();
 				}
 			}
 		}
 		
-		if (wasHurt) {
+		if (wasHurt) { // if player was hurt
 			for (Action a : actions) {
-				if (a.asSniperAimAction(a) != null) {
-					a.asSniperAimAction(a).getSniper().resetAim();
+				if (a.asSniperRifleAimAction(a) != null) {
+					a.asSniperRifleAimAction(a).getSniper().resetAim();
 					wasHurt = false;
 				}
 			}
