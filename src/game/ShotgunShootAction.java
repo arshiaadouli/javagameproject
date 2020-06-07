@@ -41,10 +41,8 @@ public class ShotgunShootAction extends Action {
 		}
 		
 		
-		
-		if (rand.nextDouble() <= chance) {
-			shotgun.empty();
-			
+		shotgun.empty(); // action will consume 1 bullet even if it misses, that's why it's not included in the if statement body
+		if (rand.nextDouble() <= chance) {			
 			for (Entry<String, ArrayList<Integer>> ai: direction.entrySet()) {
 				actions.add(new ShotgunAimMenuAction(shotgun, ai.getValue()));
 			}

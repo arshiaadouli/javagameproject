@@ -8,9 +8,9 @@ import edu.monash.fit2099.engine.GameMap;
 
 public class ShotgunAimMenuAction extends Action {
 	private Shotgun shotgun;
-	private ArrayList<Integer> direction;
-	private String first = "";
-	private String second = "";
+	private ArrayList<Integer> direction; // coordinates representing one of each of the 8 directions
+	private String first = ""; // only "North" or "South"
+	private String second = ""; // only "East" or "West"
 	
 	public ShotgunAimMenuAction(Shotgun shotgun, ArrayList<Integer> direction) {
 		this.shotgun = shotgun;

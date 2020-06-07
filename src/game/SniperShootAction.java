@@ -29,8 +29,8 @@ public class SniperShootAction extends Action {
 			sniper.setDamage(sniper.damage() * sniper.damage());
 		}
 		
+		sniper.empty(); // action will consume 1 bullet even if it misses, that's why it's not included in the if statement body
 		if (rand.nextDouble() <= chance) {
-			sniper.empty();
 			actor.hurt(sniper.damage());
 			retVal = actor + " sniped " + target + " for " + sniper.damage() + " damage";
 		}
