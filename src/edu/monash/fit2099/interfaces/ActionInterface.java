@@ -8,7 +8,7 @@ import game.SniperRifleAimAction;
  * or downcasting references in the game.   
  */
 public interface ActionInterface {
-	public default SniperRifleAimAction asSniperAimAction(Action a) {
+	public default SniperRifleAimAction asSniperRifleAimAction(Action a) {
 		return a instanceof SniperRifleAimAction ? (SniperRifleAimAction) a : null;
 	}
 }

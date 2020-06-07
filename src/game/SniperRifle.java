@@ -12,6 +12,7 @@ public class SniperRifle extends RangedWeapon {
 	private BulletType type = BulletType.Sniper;
 	private int aim = 0;
 	private Actor aimTarget = null;
+	private Actor shootTarget = null;
 
 	public SniperRifle() {
 		super("Sniper Rifle " + num, '-', 45, "shoots");
@@ -31,7 +32,7 @@ public class SniperRifle extends RangedWeapon {
 	}
 	
 	public void incAim() {
-		if (this.aim < 2) {
+		if (this.aim <= 2) {
 			this.aim++;
 		}
 	}
@@ -56,7 +57,7 @@ public class SniperRifle extends RangedWeapon {
 		}
 		
 		if (this.hasAmmo()) {
-			actionList.add(new SniperShootAction(this));
+			actionList.add(new SniperRifleShootAction(this));
 			if (this.aim < 2) {
 				actionList.add(new SniperRifleAimAction(this));
 			}
@@ -83,6 +84,14 @@ public class SniperRifle extends RangedWeapon {
 	
 	public Actor getAimTarget() {
 		return aimTarget;
+	}
+	
+	public void setShootTarget(Actor target) {
+		this.shootTarget = target;
+	}
+	
+	public Actor getShootTarget() {
+		return shootTarget;
 	}
 
 	@Override
