@@ -65,6 +65,8 @@ public class Application {
 		player.addItemToInventory(new Shotgun());
 		player.addItemToInventory(new ShotgunAmmo());
 		player.addItemToInventory(new SniperRifleAmmo());
+
+
 		player.addItemToInventory(new SniperRifle());
 
 

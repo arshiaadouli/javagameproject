@@ -19,7 +19,7 @@ public class SniperShootAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 		double chance = 0.75;
 		String retVal = "";
-		
+
 		if (sniper.getAim() == 1) {
 			chance = 0.9;
 			sniper.setDamage(sniper.damage() * 2);
