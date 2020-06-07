@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.*;
 import edu.monash.fit2099.interfaces.ActorInterface;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class MamboMarie extends ZombieActor implements ActorInterface {
     /** this class represent mambo marie which its creation will be provided inside of WorldSub.java

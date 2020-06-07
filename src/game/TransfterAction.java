@@ -2,8 +2,6 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-import java.util.ArrayList;
-
 public class TransfterAction extends Action {
     GameMap newMap;
     public TransfterAction(GameMap map){
