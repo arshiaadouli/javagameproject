@@ -58,7 +58,7 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 			}
 		}
 		
-		// ------------------ SNIPER AIMING CODE ------------------
+		// ------------------ RESETTING SNIPER AIMING CODE ------------------
 		if (lastAction.asSniperAimAction(lastAction) == null) { // if lastAction IS NOT aiming
 			for (Action a : actions) {
 				if (a.asSniperAimAction(a) != null) {

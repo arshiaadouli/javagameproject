@@ -4,11 +4,11 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
-public class SniperAimMenuAction extends Action {
+public class SniperRifleAimMenuAction extends Action {
 	private Actor target;
 	private SniperRifle sniper;
 	
-	public SniperAimMenuAction(Actor target, SniperRifle sniper) {
+	public SniperRifleAimMenuAction(Actor target, SniperRifle sniper) {
 		this.target = target;
 		this.sniper = sniper;
 	}

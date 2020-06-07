@@ -9,10 +9,10 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Menu;
 
-public class SniperAimAction extends Action {
+public class SniperRifleAimAction extends Action {
 	private SniperRifle sniper;
 
-	public SniperAimAction(SniperRifle sniper) {
+	public SniperRifleAimAction(SniperRifle sniper) {
 		this.sniper = sniper;
 	}
 
@@ -35,7 +35,7 @@ public class SniperAimAction extends Action {
 		
 		// add aim options for each target
 		for (Actor a : targetList) {
-			actions.add(new SniperAimMenuAction(a, sniper));
+			actions.add(new SniperRifleAimMenuAction(a, sniper));
 		}
 		
 		return menu.showMenu(actor, actions, display).execute(actor, map);
