@@ -49,6 +49,7 @@ public class ShotgunAimMenuAction extends Action {
 						if (map.at(x, y).containsAnActor()) {
 							Actor target = map.at(x, y).getActor();
 							target.hurt(shotgun.damage());
+							new Corpse().execute(map, target);
 							retVal += "\n" + actor + " hit " + target + " for " + shotgun.damage();
 						}
 					}

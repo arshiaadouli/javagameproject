@@ -28,14 +28,14 @@ public class Zombie extends ZombieActor {
 			new ZombieExpressionBehaviour(),
 			new DropBehaviour(),
 			new AttackBehaviour(ZombieCapability.ALIVE),
-			new HuntBehaviour(Human.class, 40),
+			new HuntBehaviour(Human.class, 20),
 			new PickUpBehaviour(),
 
 			new WanderBehaviour()
 	};
 
 	public Zombie(String name) {
-		super(name, 'Z', 100, ZombieCapability.UNDEAD);
+		super(name, 'Z', 50, ZombieCapability.UNDEAD);
 
 
 	}
