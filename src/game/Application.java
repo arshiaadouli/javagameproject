@@ -64,8 +64,11 @@ public class Application {
 		world.addPlayer(player, gameMap1.at(2, 1));
 		player.addItemToInventory(new Shotgun());
 		player.addItemToInventory(new ShotgunAmmo());
+		player.addItemToInventory(new SniperRifleAmmo());
+		player.addItemToInventory(new SniperRifle());
 
-	    // Place some random humans
+
+		// Place some random humans
 //		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
 		String[] humans = {"arshia"};
 		int x, y;
@@ -95,7 +98,7 @@ public class Application {
 //		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
 		
 		// testing code for Farmer class
-		gameMap.at(11, 0).addActor(new Farmer("Joseph", 30));
+		gameMap.at(11, 0).addActor(new Farmer("Joseph", 230));
 		gameMap.at(11, 1).addActor(new Zombie("zombie temp"));
 
 //		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
