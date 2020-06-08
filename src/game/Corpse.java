@@ -5,11 +5,6 @@ import edu.monash.fit2099.engine.*;
 
 public class Corpse {
 
-    public Corpse(){
-
-
-    }
-
     public String execute(GameMap map, Actor... target) {
         String result = "";
         for (Actor actor : target) {

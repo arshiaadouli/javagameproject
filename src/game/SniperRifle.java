@@ -100,4 +100,16 @@ public class SniperRifle extends RangedWeapon {
 		return 10;
 	}
 	
+	@Override
+	public int damage() {
+		if (this.aim == 1) {
+			return 45 * 2;
+		}
+		else if (this.aim == 2) {
+			return 1000000000;
+		}
+		
+		return 45;
+	}
+	
 }

@@ -20,20 +20,29 @@ public class SniperRifleShootMenuAction extends Action {
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		double chance = 0.75;
-		String retVal = "";
+		
 		if (sniper.getAim() == 1) {
 			chance = 0.9;
-			sniper.setDamage(sniper.damage() * 2);
 		}
 		if (sniper.getAim() == 2) {
 			chance = 1;
-			sniper.setDamage(sniper.damage() * sniper.damage());
 		}
 		
 		sniper.empty(); // action will consume 1 bullet even if it misses, that's why it's not included in the if statement body
 		if (rand.nextDouble() <= chance) {
-			target.hurt(sniper.damage());
-			return actor + " shoots " + target + " for " + sniper.damage() + " damage";
+			if (sniper.getAim() == 0) {
+				target.hurt(sniper.damage());
+				return actor + " shoots " + target + " for " + sniper.damage() + " damage";
+			}
+			else if (sniper.getAimTarget().equals(target)) {
+				target.hurt(sniper.damage());
+				return actor + " shoots " + target + " for " + sniper.damage() + " damage";
+			}
+			else {
+				sniper.resetAim();
+				target.hurt(sniper.damage());
+				return actor + " shoots " + target + " for " + sniper.damage() + " damage";
+			}
 		}
 		
 		return actor + " missed " + target;

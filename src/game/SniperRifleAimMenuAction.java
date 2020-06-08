@@ -19,23 +19,11 @@ public class SniperRifleAimMenuAction extends Action {
 		
 		if (sniper.getAim() == 1) {
 			sniper.setAimTarget(target);
-			
 		}
-		
-		if (sniper.getAimTarget() != null) {
-			if (sniper.getAimTarget().equals(target)) {
-				sniper.setAimTarget(target);
-			}
-			else {
-				sniper.resetAim();
-				sniper.setAimTarget(null);
-			}
-		}
-		else {
+		else if (!target.equals(sniper.getAimTarget())) {
 			sniper.resetAim();
 		}
 		
-		System.out.println("Aim: " + sniper.getAim());
 		return actor + " aims at " + target;
 	}
 

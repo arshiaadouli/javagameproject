@@ -37,8 +37,6 @@ public class SniperRifleShootAction extends Action {
 			actions.add(new SniperRifleShootMenuAction(a, sniper));
 		}
 		
-		sniper.resetAim();
-		
 		return menu.showMenu(actor, actions, display).execute(actor, map);
 		
 	}
