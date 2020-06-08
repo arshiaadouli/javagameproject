@@ -7,8 +7,8 @@ public class Corpse {
 
     public String execute(GameMap map, Actor... target) {
         String result = "";
+        
         for (Actor actor : target) {
-
             if (!actor.isConscious()) {
                 PortableItem corpse = null;
 
@@ -40,10 +40,7 @@ public class Corpse {
                 map.removeActor(actor);
                 result += System.lineSeparator() + target + " is killed."+ "\n";
             }
-
-
         }
-
 
         return result;
     }

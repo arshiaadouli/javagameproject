@@ -32,15 +32,18 @@ public class SniperRifleShootMenuAction extends Action {
 		if (rand.nextDouble() <= chance) {
 			if (sniper.getAim() == 0) {
 				target.hurt(sniper.damage());
+				new Corpse().execute(map, target);
 				return actor + " shoots " + target + " for " + sniper.damage() + " damage";
 			}
 			else if (sniper.getAimTarget().equals(target)) {
 				target.hurt(sniper.damage());
+				new Corpse().execute(map, target);
 				return actor + " shoots " + target + " for " + sniper.damage() + " damage";
 			}
 			else {
 				sniper.resetAim();
 				target.hurt(sniper.damage());
+				new Corpse().execute(map, target);
 				return actor + " shoots " + target + " for " + sniper.damage() + " damage";
 			}
 		}
