@@ -66,8 +66,8 @@ public class Application {
 		player.addItemToInventory(new SniperRifle());
 
 		// Place some random humans
-//		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
-		String[] humans = {"arshia"};
+		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
+//		String[] humans = {"arshia"};
 		int x, y;
 		for (String name : humans) {
 			do {
