@@ -8,7 +8,7 @@ public class WorldSub extends World {
 
     private int[] xChoices ;
     private int[] yChoices ;
-    public static boolean isMamboDead = true;
+    public static boolean isMamboVanished = true;
 
     /**
      * Constructor.
@@ -82,7 +82,7 @@ public class WorldSub extends World {
         double chance = random.nextDouble();
 
 
-        if(isMamboDead) { // if mambo marie is not in the game
+        if(isMamboVanished) { // if mambo marie is not in the game
             if (chance <= 0.05) {  // create it in 5% in a turn
 
 
@@ -94,7 +94,7 @@ public class WorldSub extends World {
 
                 try{
                     gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(0, 0));   // create mambo in edge of the map
-                    isMamboDead = false;  // the mambo marie is alive now
+                    isMamboVanished = false;  // the mambo marie is alive now
                 }
                 catch(Exception e){}
 

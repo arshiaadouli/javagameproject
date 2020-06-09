@@ -80,7 +80,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
 
-        if(this.turn % 40 == 0){ // in every 10 turn it chants and creates 5 zombies(chanting behaviour)
+        if(this.turn % 10 == 0){ // in every 10 turn it chants and creates 5 zombies(chanting behaviour)
             behaviours.add(0, new ChantingBehaviour());
         }
 
@@ -98,7 +98,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
             if(this.turn%30==0){   // in 30th turn it vanishes but she will be brought away  by worldSub
 
                 map.removeActor(this);
-                WorldSub.isMamboDead=true;
+                WorldSub.isMamboVanished=true;
 
 
 
