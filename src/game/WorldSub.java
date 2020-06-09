@@ -76,6 +76,9 @@ public class WorldSub extends World {
     }
 
 
+    /**
+     * this method creates the mamba in the edge of the map (in the 5% of the turn initially)
+     */
     public void mambaCreation(){
         MamboMarie mambo = new MamboMarie("mambo"); //mambo marie object
         Random random = new Random();
@@ -93,7 +96,7 @@ public class WorldSub extends World {
                 int y = yChoices[random1.nextInt(2)];
 
                 try{
-                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(0, 0));   // create mambo in edge of the map
+                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(x, y));   // create mambo in edge of the map
                     isMamboVanished = false;  // the mambo marie is alive now
                 }
                 catch(Exception e){}

@@ -108,10 +108,10 @@ public class Application {
 		Car car2 = new Car("car2");
 
 		// particularly for car 1 the transfer action added to move player from compound map to town map
-		car1.addAction(new TransfterAction(gameMap1));
+		car1.addAction(new TransfterAction(gameMap1, 0, 0));
 
 		// particularly for car 2 the transfer action added to move player from town map to compound map
-		car2.addAction(new TransfterAction(gameMap));
+		car2.addAction(new TransfterAction(gameMap, 0, 0));
 
 		gameMap.at(2, 1).addItem(car1);
 		gameMap1.at(1, 1).addItem(car2);
