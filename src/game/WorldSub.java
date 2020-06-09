@@ -54,7 +54,7 @@ public class WorldSub extends World {
         while (stillRunning()) {
 
 
-            mambaCreation();
+            mambaCreation(); // creating the mambo here
 
 
             GameMap playersMap = actorLocations.locationOf(player).map();
