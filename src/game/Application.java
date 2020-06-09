@@ -62,6 +62,7 @@ public class Application {
 
 //		player.addItemToInventory(new Plank());
 		world.addPlayer(player, gameMap1.at(2, 1));
+		player.addItemToInventory(new Plank());
 		player.addItemToInventory(new SniperRifleAmmo());
 		player.addItemToInventory(new SniperRifle());
 
@@ -114,10 +115,10 @@ public class Application {
 
 		gameMap.at(2, 1).addItem(car1);
 		gameMap1.at(1, 1).addItem(car2);
-		gameMap1.addActor(new Zombie("arshia1"), gameMap1.at(2, 2));
+		gameMap.addActor(new Zombie("arshia1"), gameMap1.at(2, 2));
 		allGameMaps.add(gameMap);
 		allGameMaps.add(gameMap1);
-		
+
 		world.run();
 	}
 }

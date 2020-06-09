@@ -16,6 +16,8 @@ import edu.monash.fit2099.interfaces.Limb;
  */
 public class Zombie extends ZombieActor {
 
+
+
 	private double punchChance = 0.5;
 
 	private ArrayList<Limb> items = super.items;
@@ -35,6 +37,7 @@ public class Zombie extends ZombieActor {
 	};
 
 	public Zombie(String name) {
+
 		super(name, 'Z', 50, ZombieCapability.UNDEAD);
 
 
