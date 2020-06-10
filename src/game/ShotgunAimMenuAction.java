@@ -55,9 +55,9 @@ public class ShotgunAimMenuAction extends Action {
 							setShotgunDamage(shotgun, x, y, actorX, actorY);
 							Actor target = map.at(x, y).getActor();
 							target.hurt(shotgun.damage());
-							shotgun.resetDamage();
 							new Corpse().execute(map, target);
 							retVal += "\n" + actor + " hit " + target + " for " + shotgun.damage();
+							shotgun.resetDamage();
 						}
 					}
 				}
@@ -86,9 +86,9 @@ public class ShotgunAimMenuAction extends Action {
 								setShotgunDamage(shotgun, x, y, actorX, actorY);
 								Actor target = map.at(x, y).getActor();
 								target.hurt(shotgun.damage());
-								shotgun.resetDamage();
 								new Corpse().execute(map, target);
 								retVal += "\n" + actor + " hit " + target + " for " + shotgun.damage();
+								shotgun.resetDamage();
 							}
 						}
 					}
@@ -115,9 +115,9 @@ public class ShotgunAimMenuAction extends Action {
 							if (map.at(x, y).containsAnActor() && !!map.at(x, y).getActor().equals(actor)) {								
 								Actor target = map.at(x, y).getActor();
 								target.hurt(shotgun.damage());
-								shotgun.resetDamage();
 								new Corpse().execute(map, target);
 								retVal += "\n" + actor + " hit " + target + " for " + shotgun.damage();
+								shotgun.resetDamage();
 							}
 						}
 					}
