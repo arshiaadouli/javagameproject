@@ -126,7 +126,7 @@ public class Application {
 
 		gameMap.at(2, 1).addItem(car1);
 		gameMap1.at(1, 1).addItem(car2);
-		gameMap.addActor(new Zombie("arshia1"), gameMap1.at(3, 0));
+//		gameMap.addActor(new Zombie("arshia1"), gameMap1.at(3, 0));
 		allGameMaps.add(gameMap);
 		allGameMaps.add(gameMap1);
 
