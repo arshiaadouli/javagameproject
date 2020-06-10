@@ -63,14 +63,12 @@ public class Application {
 //		player.addItemToInventory(new Plank());
 		world.addPlayer(player, gameMap1.at(2, 1));
 //		player.addItemToInventory(new Plank());
-		player.addItemToInventory(new ShotgunAmmo());
-		player.addItemToInventory(new Shotgun());
 
-		gameMap1.addActor(new Zombie("zombie11"), gameMap1.at(2, 0));
-		gameMap1.addActor(new Zombie("zombie12"), gameMap1.at(4, 0));
-		gameMap1.addActor(new Zombie("zombie13"), gameMap1.at(4, 1));
-		gameMap1.addActor(new Zombie("zombie14"), gameMap1.at(4, 2));
-		gameMap1.addActor(new Zombie("zombie14"), gameMap1.at(5, 2));
+//		player.addItemToInventory(new SniperRifleAmmo());
+//		player.addItemToInventory(new SniperRifle());
+		player.addItemToInventory(new Shotgun());
+		player.addItemToInventory(new ShotgunAmmo());
+
 
 		// Place some random humans
 		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
@@ -121,7 +119,7 @@ public class Application {
 
 		gameMap.at(2, 1).addItem(car1);
 		gameMap1.at(1, 1).addItem(car2);
-		gameMap.addActor(new Zombie("arshia1"), gameMap1.at(2, 2));
+		gameMap.addActor(new Zombie("arshia1"), gameMap1.at(3, 1));
 		allGameMaps.add(gameMap);
 		allGameMaps.add(gameMap1);
 
