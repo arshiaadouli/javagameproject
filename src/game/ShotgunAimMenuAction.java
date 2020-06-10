@@ -63,6 +63,7 @@ public class ShotgunAimMenuAction extends Action {
 		}
 		// for NE, NW, SE, SW directions
 		else {
+			System.out.println("direction: (" + direction.get(0) + ", " + direction.get(1) + ")");
 			if (direction.get(0) == -1) { // NE, SE
 				int num = 4;
 				for (int row = 0; row < 4; row++) {
@@ -74,8 +75,13 @@ public class ShotgunAimMenuAction extends Action {
 							y = actorY - row;
 						}
 						
+						// testing code
+						System.out.println("x: " + x);
+						System.out.println("y: " + y);
+						System.out.println();
+						
 						if (x >= 0 && y >= 0) {
-							if (map.at(x, y).containsAnActor() && !(map.locationOf(actor).x() == x && map.locationOf(actor).y() == y)) {
+							if (map.at(x, y).containsAnActor() && !map.at(x, y).getActor().equals(actor)) {
 								Actor target = map.at(x, y).getActor();
 								target.hurt(shotgun.damage());
 								new Corpse().execute(map, target);
@@ -97,8 +103,13 @@ public class ShotgunAimMenuAction extends Action {
 							y = actorY - row;
 						}
 						
+						// testing code
+//						System.out.println("x: " + x);
+//						System.out.println("y: " + y);
+//						System.out.println();
+						
 						if (x >= 0 && y >= 0) {
-							if (map.at(x, y).containsAnActor() && !(map.locationOf(actor).x() == x && map.locationOf(actor).y() == y)) {
+							if (map.at(x, y).containsAnActor() && !!map.at(x, y).getActor().equals(actor)) {								
 								Actor target = map.at(x, y).getActor();
 								target.hurt(shotgun.damage());
 								new Corpse().execute(map, target);
