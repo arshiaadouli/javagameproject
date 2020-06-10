@@ -37,15 +37,20 @@ public class ShotgunAimMenuAction extends Action {
 				// loop through each layer from the actor towards the direction they're shooting at
 				for (int i = actorX - layerNum; i <= actorX + layerNum; i++) {
 					if (direction.get(0) == 0) { // N and S
-						x = i;
+						x = i - 1;
 						y = actorY - direction.get(1) * layerNum;
 					}
 					if (direction.get(1) == 0) { // E and W
 						x = actorX - direction.get(0) * layerNum;
-						y = i;
+						y = i - 1;
 					}
 					
 					if (x >= 0 && y >= 0) {
+						// testing code
+						System.out.println("x: " + x);
+						System.out.println("y: " + y);
+						System.out.println();
+						
 						if (map.at(x, y).containsAnActor()) {
 							Actor target = map.at(x, y).getActor();
 							target.hurt(shotgun.damage());
