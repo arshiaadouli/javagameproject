@@ -48,14 +48,14 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 		turns+=1;
 		turn+=1;
 //		System.out.println(turn);
-
-		actions.add(super.AllowableActions(map));
-
+		
 		for (Item i : this.getInventory()) {
 			if (i.asRangedWeapon(i) != null) {
 				actions.add(i.asRangedWeapon(i).getAllowableAction(this));
 			}
 		}
+		
+		actions.add(super.AllowableActions(map));
 		
 		// ------------------ RESETTING SNIPER AIMING CODE ------------------
 		if (lastAction.asSniperRifleAimAction(lastAction) == null) { // if lastAction IS NOT aiming
@@ -66,7 +66,7 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 			}
 		}
 		
-		if (wasHurt) { // if player was hurt
+		if (wasHurt) { // if player was hurt, reset aim
 			for (Action a : actions) {
 				if (a.asSniperRifleAimAction(a) != null) {
 					a.asSniperRifleAimAction(a).getSniper().resetAim();
@@ -83,5 +83,4 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 		hitPoints -= points;
 		wasHurt = true;
 	}
-
 }
