@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
@@ -11,6 +12,7 @@ import edu.monash.fit2099.engine.Menu;
 
 public class SniperRifleAimAction extends Action {
 	private SniperRifle sniper;
+	private Random rand = new Random();
 
 	public SniperRifleAimAction(SniperRifle sniper) {
 		this.sniper = sniper;
@@ -22,6 +24,14 @@ public class SniperRifleAimAction extends Action {
 		Display display = new Display();
 		Actions actions = new Actions();
 		ArrayList<Actor> targetList = new ArrayList<>();
+		double chance = 0.75;
+		
+		if (sniper.getAim() == 1) {
+			chance = 0.9;
+		}
+		if (sniper.getAim() == 2) {
+			chance = 1;
+		}
 		
 		// add all actors in current GameMap
 		for (int x = 0; x < 80; x++) {
@@ -33,11 +43,15 @@ public class SniperRifleAimAction extends Action {
 		}
 		
 		// add aim options for each target
-		for (Actor a : targetList) {
-			actions.add(new SniperRifleAimMenuAction(a, sniper));
+		if (rand.nextDouble() <= chance) {
+			for (Actor a : targetList) {
+				actions.add(new SniperRifleAimMenuAction(a, sniper));
+			}
+			
+			return menu.showMenu(actor, actions, display).execute(actor, map);
 		}
-		
-		return menu.showMenu(actor, actions, display).execute(actor, map);
+
+		return actor + " missed";
 	}
 
 	@Override

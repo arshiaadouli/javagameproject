@@ -24,8 +24,8 @@ public class ShotgunAimMenuAction extends Action {
 		int actorY = map.locationOf(actor).y();
 		int x = 0;
 		int y = 0;
-		// for N, S, E, W directions
-		if (direction.get(0) == 0 || direction.get(1) == 0) {
+		
+		if (direction.get(0) == 0 || direction.get(1) == 0) { // for N, S, E, W directions
 			for (int layerNum = 1; layerNum <= 3; layerNum++) {
 				// set damage of shotgun depending on how far away they are from the actor
 				if (layerNum == 1) {
@@ -42,7 +42,7 @@ public class ShotgunAimMenuAction extends Action {
 					}
 					if (direction.get(1) == 0) { // E and W
 						x = actorX - direction.get(0) * layerNum;
-						y = actorY + layerNum;
+						y = i;
 					}
 					
 					if (x >= 0 && y >= 0) {
