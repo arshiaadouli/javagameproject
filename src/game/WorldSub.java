@@ -141,13 +141,13 @@ public class WorldSub extends World {
         if(aliveNum==1){
             playerLoses=true;
         }
-        System.out.println(unDeadNum);
+//        System.out.println(unDeadNum);
         if(unDeadNum==0 && MamboMarie.mamboNum==0){ // if the number of the undead army is zero and mambo is dead it is a win
             playerWins=true;
         }
 
 
-        System.out.println("number of mambo : " + MamboMarie.mamboNum);
+//        System.out.println("number of mambo : " + MamboMarie.mamboNum);
         return (actorLocations.contains(player)&& aliveNum!=1 && (unDeadNum != 0 || MamboMarie.mamboNum!=0));
 
     }
