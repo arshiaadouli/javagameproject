@@ -20,7 +20,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
      */
 
 
-    private static boolean isAlive=true;  // a variable too check whether the mambo is still alive or not
+//    private static boolean isAlive=true;  // a variable too check whether the mambo is still alive or not
 
     private ArrayList<Behaviour> behaviours = new ArrayList<>();
 
@@ -36,9 +36,9 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
     }
-    public static boolean getIsAlive(){
-        return isAlive;
-    }   // return whether the mambo is still alive
+//    public static boolean getIsAlive(){
+//        return isAlive;
+//    }   // return whether the mambo is still alive
 
     /**
      *
@@ -51,7 +51,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         }
         else{
 
-            isAlive=false;  // if not conscious then dies
+//            isAlive=false;  // if not conscious then dies
 
             mamboNum-=1;
             return false;
@@ -73,11 +73,6 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
         turn++;
-
-
-        if(!isAlive)
-        System.out.println("mambo is dead");
-
 
 
         if(this.turn % 10 == 0){ // in every 10 turn it chants and creates 5 zombies(chanting behaviour)
