@@ -47,9 +47,9 @@ public class ShotgunAimMenuAction extends Action {
 					
 					if (x >= 0 && y >= 0) {
 						// testing code
-						System.out.println("x: " + x);
-						System.out.println("y: " + y);
-						System.out.println();
+//						System.out.println("x: " + x);
+//						System.out.println("y: " + y);
+//						System.out.println();
 						
 						if (map.at(x, y).containsAnActor()) {
 							Actor target = map.at(x, y).getActor();
