@@ -68,12 +68,12 @@ public class Application {
 		player.addItemToInventory(new Shotgun());
 		player.addItemToInventory(new Plank());
 
-		gameMap1.addActor(new Zombie("20"), gameMap1.at(2, 0));
-		gameMap1.addActor(new Zombie("30"), gameMap1.at(3, 0));
-		gameMap1.addActor(new Zombie("31"), gameMap1.at(3, 1));
-		gameMap1.addActor(new Zombie("41"), gameMap1.at(4, 1));
-		gameMap1.addActor(new Zombie("40"), gameMap1.at(4, 0));
-		gameMap1.addActor(new Zombie("51"), gameMap1.at(5, 1));
+		gameMap1.addActor(new Zombie("(2, 0)"), gameMap1.at(2, 0));
+		gameMap1.addActor(new Zombie("(3, 0)"), gameMap1.at(3, 0));
+		gameMap1.addActor(new Zombie("(3, 1)"), gameMap1.at(3, 1));
+		gameMap1.addActor(new Zombie("(4, 1)"), gameMap1.at(4, 1));
+		gameMap1.addActor(new Zombie("(4, 0)"), gameMap1.at(4, 0));
+		gameMap1.addActor(new Zombie("(5, 1)"), gameMap1.at(5, 1));
 
 		// Place some random humans
 		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
