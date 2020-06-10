@@ -63,5 +63,9 @@ public class Shotgun extends RangedWeapon {
 		setVerb("hits");
 		return 10;
 	}
+	
+	public void resetDamage() {
+		this.setDamage(20);
+	}
 
 }
