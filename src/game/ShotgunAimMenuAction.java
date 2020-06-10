@@ -52,6 +52,7 @@ public class ShotgunAimMenuAction extends Action {
 //						System.out.println();
 						
 						if (map.at(x, y).containsAnActor()) {
+							setShotgunDamage(shotgun, x, y, actorX, actorY);
 							Actor target = map.at(x, y).getActor();
 							target.hurt(shotgun.damage());
 							new Corpse().execute(map, target);
@@ -63,7 +64,6 @@ public class ShotgunAimMenuAction extends Action {
 		}
 		// for NE, NW, SE, SW directions
 		else {
-			System.out.println("direction: (" + direction.get(0) + ", " + direction.get(1) + ")");
 			if (direction.get(0) == -1) { // NE, SE
 				int num = 4;
 				for (int row = 0; row < 4; row++) {
@@ -76,12 +76,13 @@ public class ShotgunAimMenuAction extends Action {
 						}
 						
 						// testing code
-						System.out.println("x: " + x);
-						System.out.println("y: " + y);
-						System.out.println();
+//						System.out.println("x: " + x);
+//						System.out.println("y: " + y);
+//						System.out.println();
 						
 						if (x >= 0 && y >= 0) {
 							if (map.at(x, y).containsAnActor() && !map.at(x, y).getActor().equals(actor)) {
+								setShotgunDamage(shotgun, x, y, actorX, actorY);
 								Actor target = map.at(x, y).getActor();
 								target.hurt(shotgun.damage());
 								new Corpse().execute(map, target);
@@ -148,6 +149,18 @@ public class ShotgunAimMenuAction extends Action {
 		String retVal = actor + " shoots towards " + first + second;
 		
 		return retVal;
+	}
+	
+	private void setShotgunDamage(Shotgun shotgun, int x, int y, int aX, int aY) {
+		if ((x == aX + 1 && y == aY) ||
+		(x == aX && y == aY + 1)) {
+			shotgun.setDamage(shotgun.damage() * 4);
+		}
+		else if ((x == aX + 2 && y == aY) ||
+		(x == aX && y == aY + 2) ||
+		(x == aX + 1 && y == aY + 1)) {
+			shotgun.setDamage(shotgun.damage() * 2);
+		}
 	}
 	
 }
