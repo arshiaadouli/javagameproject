@@ -67,15 +67,14 @@ public class Application {
 //		player.addItemToInventory(new SniperRifle());
 		player.addItemToInventory(new Shotgun());
 		player.addItemToInventory(new ShotgunAmmo());
-		gameMap.addActor(new Zombie("arshia1"), gameMap1.at(2, 2));
 
-//		gameMap1.addActor(new Zombie("zombie11"), gameMap1.at(2, 0));
-//		gameMap1.addActor(new Zombie("zombie11"), gameMap1.at(3, 0));
-//		gameMap1.addActor(new Zombie("zombie12"), gameMap1.at(4, 0));
-//		gameMap1.addActor(new Zombie("zombie13"), gameMap1.at(4, 1));
-//		gameMap1.addActor(new Zombie("zombie14"), gameMap1.at(4, 2));
-//		gameMap1.addActor(new Zombie("zombie14"), gameMap1.at(5, 2));
-//		gameMap1.addActor(new Zombie("zombie14"), gameMap1.at(2, 2));
+		gameMap1.addActor(new Zombie("zombie11"), gameMap1.at(2, 0));
+		gameMap1.addActor(new Zombie("zombie11"), gameMap1.at(3, 0));
+		gameMap1.addActor(new Zombie("zombie12"), gameMap1.at(4, 0));
+		gameMap1.addActor(new Zombie("zombie13"), gameMap1.at(4, 1));
+		gameMap1.addActor(new Zombie("zombie14"), gameMap1.at(4, 2));
+		gameMap1.addActor(new Zombie("zombie14"), gameMap1.at(5, 2));
+		gameMap1.addActor(new Zombie("zombie14"), gameMap1.at(2, 2));
 
 
 		// Place some random humans

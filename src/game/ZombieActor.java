@@ -159,6 +159,7 @@ public abstract class ZombieActor extends Actor {
 		if (this.personThatEatFood()) {
 			actions.add(addEatFoodAction());
 		}
+		actions.add(new DieAction());
 		
 		return actions;
 	}
