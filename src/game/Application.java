@@ -66,7 +66,6 @@ public class Application {
 //		player.addItemToInventory(new SniperRifleAmmo());
 //		player.addItemToInventory(new SniperRifle());		
 		player.addItemToInventory(new Shotgun());
-		player.addItemToInventory(new ShotgunAmmo());
 		player.addItemToInventory(new Plank());
 
 		gameMap1.addActor(new Zombie("20"), gameMap1.at(2, 0));
