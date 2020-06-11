@@ -9,6 +9,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
 
+    public  static int mamboNum = 0;
 
 
     /** this class represent mambo marie which its creation will be provided inside of WorldSub.java
@@ -28,13 +29,12 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
         behaviours.add(new WanderBehaviour()); // if she is in the map, she wanders unless she chants
 
+        mamboNum+=1;
+
 
 
 
     }
-//    public static boolean getIsAlive(){
-//        return isAlive;
-//    }   // return whether the mambo is still alive
 
     /**
      *
@@ -47,6 +47,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         }
         else{
 
+//            mamboNum-=1;
             return false;
 
         }
@@ -68,7 +69,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         turn++;
 
 
-        if(this.turn % 10 == 0){ // in every 10 turn it chants and creates 5 zombies(chanting behaviour)
+        if(this.turn % 40 == 0){ // in every 10 turn it chants and creates 5 zombies(chanting behaviour)
             behaviours.add(0, new ChantingBehaviour());
         }
 

@@ -9,8 +9,9 @@ public class WorldSub extends World {
     private int[] xChoices ;
     private int[] yChoices ;
     public boolean isMamboVanished = true;
-    public static int mamboNum=0;
+    private boolean isDead = false;
     private boolean isThereMambo= false;
+
 
     /**
      * Constructor.
@@ -21,6 +22,7 @@ public class WorldSub extends World {
         super(display);
     }
 
+    MamboMarie mambo = new MamboMarie("mambo"); //mambo marie object
 
 
 //    private boolean temp = false;
@@ -33,6 +35,7 @@ public class WorldSub extends World {
 
     boolean playerWins=false;   //boolean for determining whether player wins
     boolean playerLoses=false;  //boolean for determining whether player loses
+
 
 
     /**
@@ -82,13 +85,14 @@ public class WorldSub extends World {
      * this method creates the mamba in the edge of the map (in the 5% of the turn initially)
      */
     public void mambaCreation(){
-        MamboMarie mambo = new MamboMarie("mambo"); //mambo marie object
+
         Random random = new Random();
         double chance = random.nextDouble();
 
 
-        if(isMamboVanished) { // if mambo marie is not in the game
+        if(isMamboVanished && !isDead) { // if mambo marie is not in the game
             if (chance <= 0.05) {  // create it in 5% in a turn
+
 
 
                 Random random1 = new Random();
@@ -98,6 +102,9 @@ public class WorldSub extends World {
                 int y = yChoices[random1.nextInt(2)];
 
                 try{
+
+//                    MamboMarie.mamboNum+=1;
+//                    System.out.println("number of mambo: " + mamboNum);
                     gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(0, 0));   // create mambo in edge of the map
                     isMamboVanished = false;  // the mambo marie is alive now
                 }
@@ -107,10 +114,12 @@ public class WorldSub extends World {
             }
         }
         else{ // else: the mambo is appeared on the map
-            if(mambo.isConscious() && !isMamboVanished){
-                mamboNum-=1;
+            if(!mambo.isConscious()&&!isDead ){
 
-
+//
+                MamboMarie.mamboNum-=1;
+                isDead=true;
+//
             }
 
 
@@ -125,7 +134,7 @@ public class WorldSub extends World {
             System.out.println("istheremambo: "+ isThereMambo);
 
             if(!isThereMambo){
-                System.out.println("is mambo in the map:" + gameMaps.get(0).contains(mambo));
+//                System.out.println("is mambo in the map:" + gameMaps.get(0).contains(mambo));
                 isMamboVanished=true;
             }
         }
@@ -168,13 +177,13 @@ public class WorldSub extends World {
             playerLoses=true;
         }
 //        System.out.println(unDeadNum);
-        if(unDeadNum==0 && mamboNum==0){ // if the number of the undead army is zero and mambo is dead it is a win
+        if(unDeadNum==0 && MamboMarie.mamboNum==0){ // if the number of the undead army is zero and mambo is dead it is a win
             playerWins=true;
         }
 
 
 //        System.out.println("number of mambo : " + MamboMarie.mamboNum);
-        return (actorLocations.contains(player)&& aliveNum!=1 && (unDeadNum != 0 || mamboNum==0));
+        return (actorLocations.contains(player)&& aliveNum!=1 && (unDeadNum != 0 || MamboMarie.mamboNum!=0));
 
     }
 
