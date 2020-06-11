@@ -104,6 +104,11 @@ public class WorldSub extends World {
 
             }
         }
+        else{
+            if(mambo.isConscious()){
+
+            }
+        }
 
     }
 
