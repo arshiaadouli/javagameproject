@@ -12,7 +12,7 @@ import edu.monash.fit2099.engine.*;
  *
  */
 
-public class Application  { 
+public class Application  {
 	public static void main(String[] args) throws IOException {
 
 		ArrayList<GameMap> allGameMaps = new ArrayList<>();
