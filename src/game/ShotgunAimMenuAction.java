@@ -27,32 +27,34 @@ public class ShotgunAimMenuAction extends Action {
 		
 		if (direction.get(0) == 0 || direction.get(1) == 0) { // for N, S, E, W directions
 			for (int layerNum = 1; layerNum <= 3; layerNum++) {
-				// set damage of shotgun depending on how far away they are from the actor
-				if (layerNum == 1) {
-					shotgun.setDamage(shotgun.damage() * 4);
-				}
-				else if (layerNum == 2) {
-					shotgun.setDamage(shotgun.damage() * 2);
-				}
 				// loop through each layer from the actor towards the direction they're shooting at
 				for (int i = actorX - layerNum; i <= actorX + layerNum; i++) {
 					if (direction.get(0) == 0) { // N and S
-						x = i - 1;
+						x = i;
 						y = actorY - direction.get(1) * layerNum;
 					}
+					
 					if (direction.get(1) == 0) { // E and W
 						x = actorX - direction.get(0) * layerNum;
 						y = i - 1;
 					}
+					// set damage of shotgun depending on how far away they are from the actor
+					if (layerNum == 1) {
+						shotgun.resetDamage();
+						shotgun.setDamage(shotgun.damage() * 4);
+					}
+					else if (layerNum == 2) {
+						shotgun.resetDamage();
+						shotgun.setDamage(shotgun.damage() * 2);
+					}
 					
 					if (x >= 0 && y >= 0) {
 						// testing code
-//						System.out.println("x: " + x);
-//						System.out.println("y: " + y);
-//						System.out.println();
+						System.out.println("x: " + x);
+						System.out.println("y: " + y);
+						System.out.println();
 						
 						if (map.at(x, y).containsAnActor()) {
-							setShotgunDamage(shotgun, x, y, actorX, actorY);
 							Actor target = map.at(x, y).getActor();
 							target.hurt(shotgun.damage());
 							new Corpse().execute(map, target);
