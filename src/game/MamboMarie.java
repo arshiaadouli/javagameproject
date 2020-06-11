@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
-    private static boolean isBorn = false;
 
 
 
@@ -21,16 +20,12 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
      */
 
 
-//    private static boolean isAlive=true;  // a variable too check whether the mambo is still alive or not
-
     private ArrayList<Behaviour> behaviours = new ArrayList<>();
 
     public MamboMarie(String name) {
 
         super(name, 'X', 50, ZombieCapability.UNDEAD);
-        if(!isBorn)
-//        mamboNum+=1;
-        isBorn=true;
+
         behaviours.add(new WanderBehaviour()); // if she is in the map, she wanders unless she chants
 
 
@@ -52,9 +47,6 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         }
         else{
 
-//            isAlive=false;  // if not conscious then dies
-
-//            mamboNum-=1;
             return false;
 
         }
@@ -76,7 +68,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         turn++;
 
 
-        if(this.turn % 40 == 0){ // in every 10 turn it chants and creates 5 zombies(chanting behaviour)
+        if(this.turn % 10 == 0){ // in every 10 turn it chants and creates 5 zombies(chanting behaviour)
             behaviours.add(0, new ChantingBehaviour());
         }
 
@@ -91,15 +83,9 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
 
 
-            if(this.turn%30==0){   // in 30th turn it vanishes but she will be brought away  by worldSub
-
+            if(this.turn==30){   // in 30th turn it vanishes but she will be brought away  by worldSub
                 map.removeActor(this);
-                WorldSub.isMamboVanished=true;
-
-
-
-
-
+//                WorldSub.mamboNum-=1;
             }
 
 

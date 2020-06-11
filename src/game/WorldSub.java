@@ -8,8 +8,9 @@ public class WorldSub extends World {
 
     private int[] xChoices ;
     private int[] yChoices ;
-    public static boolean isMamboVanished = true;
-    int mamboNum=0;
+    public boolean isMamboVanished = true;
+    public static int mamboNum=0;
+    private boolean isThereMambo= false;
 
     /**
      * Constructor.
@@ -105,11 +106,27 @@ public class WorldSub extends World {
 
             }
         }
-        else{
+        else{ // else: the mambo is appeared on the map
             if(mambo.isConscious() && !isMamboVanished){
                 mamboNum-=1;
 
 
+            }
+
+
+            isThereMambo = false;
+            for(Actor actor : actorLocations){
+                if (actor instanceof MamboMarie) {
+
+                    isThereMambo = true;
+                    break;
+                }
+            }
+            System.out.println("istheremambo: "+ isThereMambo);
+
+            if(!isThereMambo){
+                System.out.println("is mambo in the map:" + gameMaps.get(0).contains(mambo));
+                isMamboVanished=true;
             }
         }
 
@@ -131,15 +148,16 @@ public class WorldSub extends World {
         // loop through all of the actors to find out how many undead and how
         // many alive actors are currently in the map
         // and increment aliveNum and undeadNum
+
         for(Actor actor : actorLocations) {
 
 
 
-            if(actor.hasCapability(ZombieCapability.UNDEAD)){
+            if(actor.hasCapability(ZombieCapability.UNDEAD)){  // get the number of undead armies
                 unDeadNum += 1;
 
             }
-            else if(actor.hasCapability(ZombieCapability.ALIVE)){
+            else if(actor.hasCapability(ZombieCapability.ALIVE)){  // get the number of alive armies
 
                 aliveNum += 1;
             }

@@ -47,7 +47,7 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		turns+=1;
 		turn+=1;
-//		System.out.println(turn);
+		System.out.println(turn);
 		
 		for (Item i : this.getInventory()) {
 			if (i.asRangedWeapon(i) != null) {
