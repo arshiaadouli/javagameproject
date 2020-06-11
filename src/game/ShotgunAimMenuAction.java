@@ -25,18 +25,29 @@ public class ShotgunAimMenuAction extends Action {
 		int x = 0;
 		int y = 0;
 		
+		System.out.println(first + second + ": (" + direction.get(0) + ", " + direction.get(1) + ")");
+		
 		if (direction.get(0) == 0 || direction.get(1) == 0) { // for N, S, E, W directions
 			for (int layerNum = 1; layerNum <= 3; layerNum++) {
+				int direct = 0;
 				// loop through each layer from the actor towards the direction they're shooting at
-				for (int i = actorX - layerNum; i <= actorX + layerNum; i++) {
+				if (direction.get(0) == 0) { // N and S
+					direct = actorX;
+				}
+				
+				if (direction.get(1) == 0) { // E (-1, 0) and W (1, 0)
+					direct = actorY;
+				}
+				
+				for (int i = direct - layerNum; i <= direct + layerNum; i++) {
 					if (direction.get(0) == 0) { // N and S
 						x = i;
-						y = actorY - direction.get(1) * layerNum;
+						y = actorY - (direction.get(1) * layerNum);
 					}
 					
 					if (direction.get(1) == 0) { // E and W
-						x = actorX - direction.get(0) * layerNum;
-						y = i - 1;
+						x = actorX - (direction.get(0) * layerNum);
+						y = i;
 					}
 					// set damage of shotgun depending on how far away they are from the actor
 					if (layerNum == 1) {
@@ -50,9 +61,9 @@ public class ShotgunAimMenuAction extends Action {
 					
 					if (x >= 0 && y >= 0) {
 						// testing code
-						System.out.println("x: " + x);
-						System.out.println("y: " + y);
-						System.out.println();
+//						System.out.println("x: " + x);
+//						System.out.println("y: " + y);
+//						System.out.println();
 						
 						if (map.at(x, y).containsAnActor()) {
 							Actor target = map.at(x, y).getActor();
