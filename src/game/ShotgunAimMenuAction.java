@@ -79,9 +79,9 @@ public class ShotgunAimMenuAction extends Action {
 		// for NE, NW, SE, SW directions
 		else {
 			if (direction.get(0) == -1) { // NE, SE
-				int num = 4;
+				int layerNum = 4;
 				for (int row = 0; row < 4; row++) {
-					for (int col = 0; col < num; col++) {
+					for (int col = 0; col < layerNum; col++) {
 						x = actorX + col;
 						y = actorY + row;
 						
@@ -105,13 +105,13 @@ public class ShotgunAimMenuAction extends Action {
 							}
 						}
 					}
-					num--;
+					layerNum--;
 				}
 			}
 			if (direction.get(0) == 1) { // NW, SW
-				int num = 4;
+				int layerNum = 4;
 				for (int row = 0; row < 4; row++) {
-					for (int col = 0; col > -num; col--) {
+					for (int col = 0; col > -layerNum; col--) {
 						x = actorX + col;
 						y = actorY + row;
 						
@@ -134,7 +134,7 @@ public class ShotgunAimMenuAction extends Action {
 							}
 						}
 					}
-					num--;
+					layerNum--;
 				}
 			}
 		}
