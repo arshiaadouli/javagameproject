@@ -86,7 +86,8 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
             if(this.turn==30){   // in 30th turn it vanishes but she will be brought away  by worldSub
                 map.removeActor(this);
-//                WorldSub.mamboNum-=1;
+
+                turn=0;
             }
 
 
