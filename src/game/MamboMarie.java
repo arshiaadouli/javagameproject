@@ -9,6 +9,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
     static int mamboNum = 0;
     private static boolean isBorn = false;
+    public boolean vanished = true;
 
 
     /** this class represent mambo marie which its creation will be provided inside of WorldSub.java
