@@ -11,10 +11,6 @@ import game.*;
  */
 
 public interface ActorInterface {
-
-
-
-
 	/**
 	 * return a default value of getNumArm() for each actor
 	 * @return 2 as a default

@@ -14,7 +14,6 @@ public class Shotgun extends RangedWeapon {
 	public Shotgun() {
 		super("Shotgun " + num, '=', 20, "shoots");
 		setBarrelSize(2);
-		ammoList.add(new ShotgunAmmo());
 	}
 
 	public void reload(Ammo ammo) {

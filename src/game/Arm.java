@@ -7,7 +7,6 @@ import edu.monash.fit2099.interfaces.Limb;
  */
 public class
 Arm extends WeaponItem implements Limb {
-
 	private boolean hasIt = false;
 	/**
 	 * the dropped actors limbs can be used directly as weapons
