@@ -119,6 +119,7 @@ public class WorldSub extends World {
 //
                 MamboMarie.mamboNum-=1;
                 isDead=true;
+
 //
             }
 
@@ -136,6 +137,7 @@ public class WorldSub extends World {
             if(!isThereMambo){
 //                System.out.println("is mambo in the map:" + gameMaps.get(0).contains(mambo));
                 isMamboVanished=true;
+                mambo.turn=0;
             }
         }
 

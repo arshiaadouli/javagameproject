@@ -29,6 +29,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
 
         behaviours.add(new WanderBehaviour()); // if she is in the map, she wanders unless she chants
 
+
         mamboNum+=1;
 
 
@@ -47,7 +48,6 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         }
         else{
 
-//            mamboNum-=1;
             return false;
 
         }
