@@ -112,7 +112,7 @@ public class ShotgunAimMenuAction extends Action {
 //						System.out.println();
 						
 						if (x >= 0 && y >= 0) {
-							if (map.at(x, y).containsAnActor() && !!map.at(x, y).getActor().equals(actor)) {								
+							if (map.at(x, y).containsAnActor() && !map.at(x, y).getActor().equals(actor)) {								
 								Actor target = map.at(x, y).getActor();
 								target.hurt(shotgun.damage());
 								new Corpse().execute(map, target);

@@ -34,10 +34,9 @@ public class WanderBehaviour implements Behaviour {
 		if (actor.getNumLeg() == 2 || (actor.getNumLeg() == 1 && actor.getNumTurn() % 2 == 0)) {
 			for (Exit exit : map.locationOf(actor).getExits()) {
 				Location destination = exit.getDestination();
+				
 				if (destination.canActorEnter(actor)) {
 					actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
-
-
 				}
 			}
 

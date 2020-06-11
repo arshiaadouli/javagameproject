@@ -27,7 +27,6 @@ public class ReloadAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		
 		for(Ammo a : this.ammoList) {
 			if (compatible(weapon, a)) {
 				weapon.reload(a);
