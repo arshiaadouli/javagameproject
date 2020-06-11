@@ -69,7 +69,7 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
         turn++;
 
 
-        if(this.turn % 40 == 0){ // in every 10 turn it chants and creates 5 zombies(chanting behaviour)
+        if(this.turn % 10 == 0){ // in every 10 turn it chants and creates 5 zombies(chanting behaviour)
             behaviours.add(0, new ChantingBehaviour());
         }
 
