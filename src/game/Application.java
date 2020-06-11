@@ -62,16 +62,17 @@ public class Application  {
 		world.addPlayer(player, gameMap1.at(2, 1));
 //		player.addItemToInventory(new Plank());
 //		player.addItemToInventory(new SniperRifleAmmo());
-//		player.addItemToInventory(new SniperRifle());		
-		player.addItemToInventory(new Shotgun());
+//		player.addItemToInventory(new SniperRifle());
 		player.addItemToInventory(new Plank());
+		player.addItemToInventory(new Shotgun());
 
-		gameMap1.addActor(new Zombie("(2, 0)"), gameMap1.at(2, 0));
-		gameMap1.addActor(new Zombie("(3, 0)"), gameMap1.at(3, 0));
-		gameMap1.addActor(new Zombie("(3, 1)"), gameMap1.at(3, 1));
-		gameMap1.addActor(new Zombie("(4, 1)"), gameMap1.at(4, 1));
-		gameMap1.addActor(new Zombie("(4, 0)"), gameMap1.at(4, 0));
-		gameMap1.addActor(new Zombie("(5, 1)"), gameMap1.at(5, 1));
+
+//		gameMap1.addActor(new Zombie("(2, 0)"), gameMap1.at(2, 0));
+//		gameMap1.addActor(new Zombie("(3, 0)"), gameMap1.at(3, 0));
+//		gameMap1.addActor(new Zombie("(3, 1)"), gameMap1.at(3, 1));
+//		gameMap1.addActor(new Zombie("(4, 1)"), gameMap1.at(4, 1));
+//		gameMap1.addActor(new Zombie("(4, 0)"), gameMap1.at(4, 0));
+//		gameMap1.addActor(new Zombie("(5, 1)"), gameMap1.at(5, 1));
 
 		// Place some random humans
 		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
