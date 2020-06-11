@@ -30,7 +30,7 @@ public class ShotgunAimMenuAction extends Action {
 				// loop through each layer from the actor towards the direction they're shooting at
 				for (int i = actorX - layerNum; i <= actorX + layerNum; i++) {
 					if (direction.get(0) == 0) { // N and S
-						x = i - 1;
+						x = i;
 						y = actorY - direction.get(1) * layerNum;
 					}
 					
