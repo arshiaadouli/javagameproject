@@ -30,7 +30,7 @@ public class Zombie extends ZombieActor {
 			new ZombieExpressionBehaviour(),
 			new DropBehaviour(),
 			new AttackBehaviour(ZombieCapability.ALIVE),
-			new HuntBehaviour(Human.class, 20),
+			new HuntBehaviour(Human.class, 10),
 			new PickUpBehaviour(),
 
 			new WanderBehaviour()

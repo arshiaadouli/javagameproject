@@ -83,9 +83,13 @@ public class Application  {
 				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
 				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
 			}
-			while (gameMap.at(x, y).containsAnActor());
-			gameMap.at(x, y).addActor(new Human(name));
+			while (gameMap1.at(x, y).containsAnActor());
+			gameMap1.at(x, y).addActor(new Human(name));
 		}
+		gameMap.at(5, 5).addActor(new Human("ash"));
+//		gameMap.at(22, 22).addActor(new Human("ash"));
+		gameMap1.at(21, 21).addActor(new Zombie("zombie1"));
+		gameMap.at(21, 21).addActor(new Zombie("zombie2"));
 
 		// place a simple weapon
 //			gameMap.at(1, 0).addItem(new Plank());
@@ -104,8 +108,8 @@ public class Application  {
 //		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
 		
 		// testing code for Farmer class
-		gameMap.at(11, 0).addActor(new Farmer("Joseph", 230));
-		gameMap.at(11, 1).addActor(new Zombie("zombie temp"));
+//		gameMap.at(11, 0).addActor(new Farmer("Joseph", 230));
+//		gameMap.at(11, 1).addActor(new Zombie("zombie temp"));
 
 //		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
 //		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
@@ -125,6 +129,10 @@ public class Application  {
 		gameMap1.at(1, 1).addItem(car2);
 		allGameMaps.add(gameMap);
 		allGameMaps.add(gameMap1);
+
+
+
+
 
 		world.run();
 	}
