@@ -88,8 +88,8 @@ public class Application  {
 		}
 		gameMap.at(5, 5).addActor(new Human("ash"));
 //		gameMap.at(22, 22).addActor(new Human("ash"));
-		gameMap1.at(21, 21).addActor(new Zombie("zombie1"));
-		gameMap.at(21, 21).addActor(new Zombie("zombie2"));
+		gameMap.at(21, 21).addActor(new Zombie("zombie1"));
+		gameMap1.at(21, 21).addActor(new Zombie("zombie2"));
 
 		// place a simple weapon
 //			gameMap.at(1, 0).addItem(new Plank());

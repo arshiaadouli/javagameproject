@@ -102,10 +102,9 @@ public class WorldSub extends World {
                 int y = yChoices[random1.nextInt(2)];
 
                 try{
-
 //                    MamboMarie.mamboNum+=1;
 //                    System.out.println("number of mambo: " + mamboNum);
-                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(x, y));   // create mambo in edge of the map
+                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(0,0));   // create mambo in edge of the map
                     isMamboVanished = false;  // the mambo marie is alive now
                 }
                 catch(Exception e){}

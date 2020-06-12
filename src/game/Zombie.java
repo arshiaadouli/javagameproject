@@ -38,7 +38,7 @@ public class Zombie extends ZombieActor {
 
 	public Zombie(String name) {
 
-		super(name, 'Z', 50, ZombieCapability.UNDEAD);
+		super(name, 'Z', 100, ZombieCapability.UNDEAD);
 
 
 	}
