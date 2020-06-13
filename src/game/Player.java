@@ -48,8 +48,8 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 		turns+=1;
 		turn+=1;
 
-		System.out.println(turn);
-
+//		System.out.println(turn);
+//		System.out.println(MamboMarie.mamboNum);
 		System.out.println(MamboMarie.mamboNum);
 		//		System.out.println(WorldSub.mamboNum);
 		

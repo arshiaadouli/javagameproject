@@ -15,6 +15,7 @@ public abstract class ZombieActor extends Actor {
 	protected ArrayList<Limb> items = new ArrayList<>();
 	protected int turn = 0;
 
+
 	public void setDisplayChar(char displayChar) {
 		this.displayChar = displayChar;
 	}

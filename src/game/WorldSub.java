@@ -102,10 +102,9 @@ public class WorldSub extends World {
                 int y = yChoices[random1.nextInt(2)];
 
                 try{
-
 //                    MamboMarie.mamboNum+=1;
 //                    System.out.println("number of mambo: " + mamboNum);
-                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(0, 0));   // create mambo in edge of the map
+                    gameMaps.get(0).addActor(mambo, gameMaps.get(0).at(0,0));   // create mambo in edge of the map
                     isMamboVanished = false;  // the mambo marie is alive now
                 }
                 catch(Exception e){}
@@ -119,6 +118,7 @@ public class WorldSub extends World {
 //
                 MamboMarie.mamboNum-=1;
                 isDead=true;
+
 //
             }
 
@@ -136,6 +136,7 @@ public class WorldSub extends World {
             if(!isThereMambo){
 //                System.out.println("is mambo in the map:" + gameMaps.get(0).contains(mambo));
                 isMamboVanished=true;
+
             }
         }
 
@@ -162,18 +163,21 @@ public class WorldSub extends World {
 
 
 
-            if(actor.hasCapability(ZombieCapability.UNDEAD)){  // get the number of undead armies
-                unDeadNum += 1;
+            if(gameMaps.get(0).contains(actor)) {  // check the actors in the compound
+                if (actor.hasCapability(ZombieCapability.UNDEAD)) {  // get the number of undead armies
+                    unDeadNum += 1;
 
-            }
-            else if(actor.hasCapability(ZombieCapability.ALIVE)){  // get the number of alive armies
+                } else if (actor.hasCapability(ZombieCapability.ALIVE)) {  // get the number of alive armies
 
-                aliveNum += 1;
+                    if(actor!=player) {
+                        aliveNum += 1;
+                    }
+                }
             }
 
         }
         //if alivenum is one it means we have only the PLAYER in the map which is a loss
-        if(aliveNum==1){
+        if(aliveNum==0){
             playerLoses=true;
         }
 //        System.out.println(unDeadNum);
@@ -183,7 +187,7 @@ public class WorldSub extends World {
 
 
 //        System.out.println("number of mambo : " + MamboMarie.mamboNum);
-        return (actorLocations.contains(player)&& aliveNum!=1 && (unDeadNum != 0 || MamboMarie.mamboNum!=0));
+        return (actorLocations.contains(player)&& aliveNum!=0 && (unDeadNum != 0 || MamboMarie.mamboNum!=0));
 
     }
 
