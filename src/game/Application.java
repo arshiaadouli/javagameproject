@@ -47,57 +47,55 @@ public class Application  {
 		".........................................................................++++...",
 		"..........................................................................++....",
 		"................................................................................");
-		GameMapDemo gameMap = new GameMapDemo(groundFactory, map );
-		GameMapDemo gameMap1 = new GameMapDemo(groundFactory, map );
-//		GameMapDemo gameMapTemp = new GameMapDemo(groundFactory, map);
+		GameMapDemo compoundMap = new GameMapDemo(groundFactory, map );
+		GameMapDemo townMap = new GameMapDemo(groundFactory, map );
 
-		world.addGameMap(gameMap);
-		world.addGameMap(gameMap1);
-
+		world.addGameMap(compoundMap);
+		world.addGameMap(townMap);
 		
 		Actor player = new Player("Player", '@', 100);
 
-		world.addPlayer(player, gameMap.at(2, 1));
+		world.addPlayer(player, compoundMap.at(2, 1));
 
 		// Place some random humans
-		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
-//		String[] humans = {"arshia"};
+		String[] humansInCompoundMap = {"Carlton", "Andy", "Matthew", "John", "Joseph", "Arshia"};
+		String[] humansInTownMap = {"Daniel", "Homer", "Dick", "Batman", "Kiddie", "Paul"};
 		int x, y;
-		for (String name : humans) {
+		// add humans to compoundMap
+		for (String name : humansInCompoundMap) {
 			do {
 				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
 				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
 			}
-			while (gameMap.at(x, y).containsAnActor());
-			gameMap.at(x, y).addActor(new Human(name));
+			while (compoundMap.at(x, y).containsAnActor());
+			compoundMap.at(x, y).addActor(new Human(name));
 		}
-
-		for (String name : humans) {
+		// add humans to townMap
+		for (String name : humansInTownMap) {
 			do {
 				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
 				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
 			}
-			while (gameMap1.at(x, y).containsAnActor());
-			gameMap1.at(x, y).addActor(new Human(name));
+			while (townMap.at(x, y).containsAnActor());
+			townMap.at(x, y).addActor(new Human(name));
 		}
-		
-		gameMap.at(5, 5).addActor(new Human("ash"));
-		gameMap.at(21, 21).addActor(new Zombie("zombie1"));
-
-		gameMap.at(22, 22).addActor(new Zombie("zombie1"));
-		gameMap1.at(21, 21).addActor(new Zombie("zombie2"));
-
-		// place a simple weapon
-//		gameMap.at(1, 0).addItem(new Plank());
 		
 		// FIXME: Add more zombies!
-//		gameMap.at(79, 20).addActor(new Zombie("Groan"));
-//		gameMap.at(30, 18).addActor(new Zombie("Boo"));
-//		gameMap.at(10, 4).addActor(new Zombie("Uuuurgh"));
-//		gameMap.at(50, 18).addActor(new Zombie("Mortalis"));
-//		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
-//		gameMap.at(20, 10).addActor(new Zombie("Aaargh"));
-//		gameMap.at(21, 10).addActor(new Zombie("Aaargh"));
+		compoundMap.at(79, 20).addActor(new Zombie("Groan"));
+		compoundMap.at(30, 18).addActor(new Zombie("Boo"));
+		compoundMap.at(10, 4).addActor(new Zombie("Uuuurgh"));
+		compoundMap.at(50, 18).addActor(new Zombie("Mortalis"));
+		compoundMap.at(1, 10).addActor(new Zombie("Gaaaah"));
+		compoundMap.at(20, 10).addActor(new Zombie("Aaargh"));
+		compoundMap.at(32, 16).addActor(new Zombie("Eeeeeek"));
+		
+		townMap.at(79, 20).addActor(new Zombie("Yikes"));
+		townMap.at(30, 18).addActor(new Zombie("Boomer"));
+		townMap.at(10, 4).addActor(new Zombie("Zoomer"));
+		townMap.at(50, 18).addActor(new Zombie("Dinkles"));
+		townMap.at(1, 10).addActor(new Zombie("Bee"));
+		townMap.at(20, 10).addActor(new Zombie("Buerl"));
+		townMap.at(32, 16).addActor(new Zombie("Damn"));
 
 		// car 1 is created which locates in compound map
 		Car car1 = new Car("car1");
@@ -105,15 +103,15 @@ public class Application  {
 		Car car2 = new Car("car2");
 
 		// particularly for car 1 the transfer action added to move player from compound map to town map
-		car1.addAction(new TransfterAction(gameMap1, 0, 0));
+		car1.addAction(new TransfterAction(townMap, 0, 0));
 
 		// particularly for car 2 the transfer action added to move player from town map to compound map
-		car2.addAction(new TransfterAction(gameMap, 0, 0));
+		car2.addAction(new TransfterAction(compoundMap, 0, 0));
 
-		gameMap.at(2, 1).addItem(car1);
-		gameMap1.at(1, 1).addItem(car2);
-		allGameMaps.add(gameMap);
-		allGameMaps.add(gameMap1);
+		compoundMap.at(2, 1).addItem(car1);
+		townMap.at(1, 1).addItem(car2);
+		allGameMaps.add(compoundMap);
+		allGameMaps.add(townMap);
 		world.run();
 	}
 }
