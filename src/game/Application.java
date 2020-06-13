@@ -83,12 +83,27 @@ public class Application  {
 				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
 				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
 			}
+			while (gameMap.at(x, y).containsAnActor());
+			gameMap.at(x, y).addActor(new Human(name));
+		}
+
+
+		for (String name : humans) {
+			do {
+				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
+				y = (int) Math.floor(Math.random() * 7.0 + 5.0);
+			}
 			while (gameMap1.at(x, y).containsAnActor());
 			gameMap1.at(x, y).addActor(new Human(name));
 		}
+
+
+
 		gameMap.at(5, 5).addActor(new Human("ash"));
 //		gameMap.at(22, 22).addActor(new Human("ash"));
 		gameMap.at(21, 21).addActor(new Zombie("zombie1"));
+
+		gameMap.at(22, 22).addActor(new Zombie("zombie1"));
 		gameMap1.at(21, 21).addActor(new Zombie("zombie2"));
 
 		// place a simple weapon

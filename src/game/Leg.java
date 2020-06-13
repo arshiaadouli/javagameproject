@@ -8,7 +8,7 @@ import edu.monash.fit2099.interfaces.Limb;
  */
 public class Leg extends WeaponItem implements Limb {
 
-	private boolean hasIt = false;
+	private boolean hasIt = false;     // if the variable hasIt is true it means the item can be craftable. otherwise it cannot be
 
 	/**
 	 * the dropped actors limbs can be used directly as weapons
