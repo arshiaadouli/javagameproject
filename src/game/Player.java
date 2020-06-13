@@ -48,11 +48,6 @@ public class Player extends Human implements Crafter, Harvester, Consumer {
 		turns+=1;
 		turn+=1;
 
-//		System.out.println(turn);
-//		System.out.println(MamboMarie.mamboNum);
-		System.out.println(MamboMarie.mamboNum);
-//		System.out.println(WorldSub.mamboNum);
-		
 		// adding RangedWeapon actions
 		for (Item i : this.getInventory()) {
 			if (i.asRangedWeapon(i) != null) {
