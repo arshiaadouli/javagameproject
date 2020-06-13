@@ -30,14 +30,14 @@ public class ShotgunShootAction extends Action {
 		Actions actions = new Actions();
 		HashMap<String, ArrayList<Integer>> direction = new HashMap<>();
 		
-		
-		String num = "0";
+		String id = "0";
 		for (Exit e : map.locationOf(actor).getExits()) {
 			ArrayList<Integer> temp = new ArrayList<>();
+			
 			temp.add(map.locationOf(actor).x() - e.getDestination().x());
 			temp.add(map.locationOf(actor).y() - e.getDestination().y());
-			direction.put(num, temp);
-			num += "0";
+			direction.put(id, temp);
+			id += "0";
 		}
 		
 		

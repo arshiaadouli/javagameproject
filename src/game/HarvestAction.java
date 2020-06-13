@@ -16,11 +16,11 @@ public class HarvestAction extends Action {
 	/**
 	 * Container for the location of the ripe crop that is to be harvested by the human.
 	 */
-	private Location l;
+	private Location location;
 	private static int foodNum = 0;
 	
-	public HarvestAction(Location l) {
-		this.l = l;
+	public HarvestAction(Location location) {
+		this.location = location;
 	}
 	
 	
@@ -29,7 +29,7 @@ public class HarvestAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " harvested a Ripe Crop nearby";
 		
-		Crop c = actor.getRipeCrop(l.getItems());
+		Crop ripeCrop = actor.getRipeCrop(location.getItems());
 		
 		if (actor.asPlayer(actor) != null) {
 			foodNum++;
@@ -38,14 +38,14 @@ public class HarvestAction extends Action {
 			PickUpItemAction puia = new PickUpItemAction(food);
 			puia.execute(actor, map);
 			
-			if (c != null) {
-				l.removeItem(c);
+			if (ripeCrop != null) {
+				location.removeItem(ripeCrop);
 			}
 		}
 		else {
 			foodNum++;
-			l.addItem(new Food("Food " + foodNum));
-			l.removeItem(c);
+			location.addItem(new Food("Food " + foodNum));
+			location.removeItem(ripeCrop);
 		}
 		
 		return retVal;

@@ -3,12 +3,12 @@ package game;
 import edu.monash.fit2099.engine.*;
 import edu.monash.fit2099.interfaces.Crafter;
 import edu.monash.fit2099.interfaces.Harvester;
-import edu.monash.fit2099.interfaces.PersonThatEatFood;
+import edu.monash.fit2099.interfaces.Consumer;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Human implements Crafter, Harvester, PersonThatEatFood {
+public class Player extends Human implements Crafter, Harvester, Consumer {
 	private Menu menu = new Menu();
 	private boolean wasHurt = false;
 
@@ -51,7 +51,7 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 //		System.out.println(turn);
 //		System.out.println(MamboMarie.mamboNum);
 		System.out.println(MamboMarie.mamboNum);
-		//		System.out.println(WorldSub.mamboNum);
+//		System.out.println(WorldSub.mamboNum);
 		
 		// adding RangedWeapon actions
 		for (Item i : this.getInventory()) {
@@ -62,7 +62,8 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 		
 		actions.add(super.AllowableActions(map));
 		
-		// ------------------ RESETTING SNIPER AIMING CODE ------------------
+		// ---------------------- RESETTING SNIPER AIMING CODE ----------------------
+		
 		if (lastAction.asSniperRifleAimAction(lastAction) == null) { // if lastAction IS NOT aiming
 			for (Action a : actions) {
 				if (a.asSniperRifleAimAction(a) != null) { // get the SniperRifleAimAction object
@@ -79,6 +80,7 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 				}
 			}
 		}
+		// --------------------------------------------------------------------------
 		
 		return menu.showMenu(this, actions, display);
 	}

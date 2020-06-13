@@ -17,10 +17,10 @@ import edu.monash.fit2099.engine.Item;
  */
 
 public class SowBehaviour implements Behaviour {
-	private Farmer f;
+	private Farmer farmer;
 	
-	public SowBehaviour(Farmer f) {
-		this.f = f;
+	public SowBehaviour(Farmer farmer) {
+		this.farmer = farmer;
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class SowBehaviour implements Behaviour {
 	public Action getAction(Actor actor, GameMap map) {		
 		List<Exit> exits = map.locationOf(actor).getExits();
 		ArrayList<Exit> exitsAvailable = new ArrayList<Exit>();
-		Crop c = new Crop(actor.toString());
+		Crop newCrop = new Crop(actor.toString());
 		
 		for (Exit e : exits) {
 			List<Item> itemsOnLocation = e.getDestination().getItems();
@@ -43,7 +43,7 @@ public class SowBehaviour implements Behaviour {
 		
 		if (exitsAvailable.size() > 0) {
 			Collections.shuffle(exitsAvailable);
-			return new SowAction(exitsAvailable.get(0).getDestination(), f, c);
+			return new SowAction(exitsAvailable.get(0).getDestination(), farmer, newCrop);
 		}
 		return null;
 	}

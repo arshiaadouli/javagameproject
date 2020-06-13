@@ -14,10 +14,10 @@ import edu.monash.fit2099.engine.Item;
  */
 
 public class FertilizeBehaviour implements Behaviour {
-	private Farmer f;
+	private Farmer farmer;
 	
-	public FertilizeBehaviour(Farmer f) {
-		this.f = f;
+	public FertilizeBehaviour(Farmer farmer) {
+		this.farmer = farmer;
 	}
 	
 	/**
@@ -29,8 +29,8 @@ public class FertilizeBehaviour implements Behaviour {
 		// Is there an UnripeCrop on me?
 		List<Item> itemsOnActor = map.locationOf(actor).getItems();
 		
-		if (f.getUnripeCrop(itemsOnActor) != null) {
-			return new FertilizeAction(f.getUnripeCrop(itemsOnActor));
+		if (farmer.getUnripeCrop(itemsOnActor) != null) {
+			return new FertilizeAction(farmer.getUnripeCrop(itemsOnActor));
 		}
 		
 		return null;

@@ -17,21 +17,21 @@ public class SowAction extends Action {
 	/**
 	 * Container for the location of where the farmer is going to sow the crop on.
 	 */
-	private Location l;
+	private Location targetLocation;
 	/**
 	 * Container for the farmer that is sowing.
 	 */
-	private Farmer f;
+	private Farmer farmer;
 	/**
 	 * Container for the crop that will be on the GameMap.
 	 */
-	private Crop c;
+	private Crop newCrop;
 	protected Random rand = new Random();
 	
-	public SowAction(Location l, Farmer f, Crop c) {
-		this.l = l;
-		this.f = f;
-		this.c = c;
+	public SowAction(Location targetLocation, Farmer farmer, Crop crop) {
+		this.targetLocation = targetLocation;
+		this.farmer = farmer;
+		this.newCrop = crop;
 	}
 
 	@Override
@@ -39,10 +39,10 @@ public class SowAction extends Action {
 		String retVal = actor + " plants some crops on a patch of dirt";
 		
 		if (rand.nextDouble() <= 0.33) {
-			this.l.addItem(this.c);
+			this.targetLocation.addItem(this.newCrop);
 			
 			try {
-				f.addToCropLocations(this.l, this.c);
+				farmer.addToCropLocations(this.targetLocation, this.newCrop);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

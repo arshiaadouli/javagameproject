@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 import edu.monash.fit2099.interfaces.Harvester;
-import edu.monash.fit2099.interfaces.PersonThatEatFood;
+import edu.monash.fit2099.interfaces.Consumer;
 import edu.monash.fit2099.engine.DoNothingAction;
 
 /**
@@ -18,7 +18,7 @@ import edu.monash.fit2099.engine.DoNothingAction;
  *
  */
 
-public class Farmer extends Human implements Harvester, PersonThatEatFood {
+public class Farmer extends Human implements Harvester, Consumer {
 	static private ArrayList<Location> cropLocations = new ArrayList<Location>();
 	static private ArrayList<Crop> cropObjs = new ArrayList<Crop>();
 	private Behaviour[] behaviours = {
@@ -72,10 +72,10 @@ public class Farmer extends Human implements Harvester, PersonThatEatFood {
 	 * @throws Exception 
 	 */
 	
-	public void addToCropLocations(Location l, Crop c) throws Exception {
-		if (l != null && c != null) {
-			cropLocations.add(l);
-			cropObjs.add(c);
+	public void addToCropLocations(Location location, Crop crop) throws Exception {
+		if (location != null && crop != null) {
+			cropLocations.add(location);
+			cropObjs.add(crop);
 		}
 		else {
 			throw new Exception("Location object and Crop object cannot be null");

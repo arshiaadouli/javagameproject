@@ -14,17 +14,17 @@ public class FertilizeAction extends Action {
 	/**
 	 * Container for the crop object that is to be fertilized.
 	 */
-	private Crop c;
+	private Crop crop;
 	
-	public FertilizeAction(Crop c) {
-		this.c = c;
+	public FertilizeAction(Crop crop) {
+		this.crop = crop;
 	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		String retVal = actor + " fertilized an Unripe Crop";
 		
-		c.fertilizeCrop();
+		crop.fertilizeCrop();
 		
 		return retVal;
 	}

@@ -12,11 +12,11 @@ import edu.monash.fit2099.engine.Item;
  */
 
 public class EatFoodBehaviour implements Behaviour {
-	private Human h;
-	private Food f;
+	private Human human;
+	private Food food;
 	
-	public EatFoodBehaviour(Human h) {
-		this.h = h;
+	public EatFoodBehaviour(Human human) {
+		this.human = human;
 	}
 	
 	/**
@@ -26,10 +26,10 @@ public class EatFoodBehaviour implements Behaviour {
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		// Is there a Food item in my inventory?
-		for (Item i : h.getInventory()) {
+		for (Item i : human.getInventory()) {
 			if (i.asFood(i) != null) {
-				f = i.asFood(i);
-				return new EatFoodAction(f);
+				food = i.asFood(i);
+				return new EatFoodAction(food);
 			}
 		}
 		
