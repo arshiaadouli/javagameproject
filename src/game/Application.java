@@ -55,24 +55,9 @@ public class Application  {
 		world.addGameMap(gameMap1);
 
 		
-		Actor player = new Player("Player", '@', 4000);
-//		player1 = player;
+		Actor player = new Player("Player", '@', 100);
 
-//		player.addItemToInventory(new Plank());
 		world.addPlayer(player, gameMap.at(2, 1));
-//		player.addItemToInventory(new Plank());
-//		player.addItemToInventory(new SniperRifleAmmo());
-//		player.addItemToInventory(new SniperRifle());
-		player.addItemToInventory(new Plank());
-		player.addItemToInventory(new Shotgun());
-
-
-//		gameMap1.addActor(new Zombie("(2, 0)"), gameMap1.at(2, 0));
-//		gameMap1.addActor(new Zombie("(3, 0)"), gameMap1.at(3, 0));
-//		gameMap1.addActor(new Zombie("(3, 1)"), gameMap1.at(3, 1));
-//		gameMap1.addActor(new Zombie("(4, 1)"), gameMap1.at(4, 1));
-//		gameMap1.addActor(new Zombie("(4, 0)"), gameMap1.at(4, 0));
-//		gameMap1.addActor(new Zombie("(5, 1)"), gameMap1.at(5, 1));
 
 		// Place some random humans
 		String[] humans = {"Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton", "Carlton" , "Carlton", "Carlton", "Carlton", "Carlton", "Carlton"};
@@ -87,7 +72,6 @@ public class Application  {
 			gameMap.at(x, y).addActor(new Human(name));
 		}
 
-
 		for (String name : humans) {
 			do {
 				x = (int) Math.floor(Math.random() * 20.0 + 30.0);
@@ -96,19 +80,15 @@ public class Application  {
 			while (gameMap1.at(x, y).containsAnActor());
 			gameMap1.at(x, y).addActor(new Human(name));
 		}
-
-
-
+		
 		gameMap.at(5, 5).addActor(new Human("ash"));
-//		gameMap.at(22, 22).addActor(new Human("ash"));
 		gameMap.at(21, 21).addActor(new Zombie("zombie1"));
 
 		gameMap.at(22, 22).addActor(new Zombie("zombie1"));
 		gameMap1.at(21, 21).addActor(new Zombie("zombie2"));
 
 		// place a simple weapon
-//			gameMap.at(1, 0).addItem(new Plank());
-//		gameMap.at(30, 18).addItem(new Plank());
+//		gameMap.at(1, 0).addItem(new Plank());
 		
 		// FIXME: Add more zombies!
 //		gameMap.at(79, 20).addActor(new Zombie("Groan"));
@@ -118,16 +98,6 @@ public class Application  {
 //		gameMap.at(1, 10).addActor(new Zombie("Gaaaah"));
 //		gameMap.at(20, 10).addActor(new Zombie("Aaargh"));
 //		gameMap.at(21, 10).addActor(new Zombie("Aaargh"));
-
-
-//		gameMap1.at(5, 0).addActor(new Zombie("Aaargh"));
-		
-		// testing code for Farmer class
-//		gameMap.at(11, 0).addActor(new Farmer("Joseph", 230));
-//		gameMap.at(11, 1).addActor(new Zombie("zombie temp"));
-
-//		gameMap.at(0, 0).addActor(new MamboMarie("mambo"));
-//		gameMap1.at(44, 15).addActor(new Farmer("Joseph", 100));
 
 		// car 1 is created which locates in compound map
 		Car car1 = new Car("car1");
@@ -144,11 +114,6 @@ public class Application  {
 		gameMap1.at(1, 1).addItem(car2);
 		allGameMaps.add(gameMap);
 		allGameMaps.add(gameMap1);
-
-
-
-
-
 		world.run();
 	}
 }
