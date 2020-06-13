@@ -52,6 +52,8 @@ public class Player extends Human implements Crafter, Harvester, PersonThatEatFo
 
 		System.out.println(MamboMarie.mamboNum);
 		//		System.out.println(WorldSub.mamboNum);
+		
+		// adding RangedWeapon actions
 		for (Item i : this.getInventory()) {
 			if (i.asRangedWeapon(i) != null) {
 				actions.add(i.asRangedWeapon(i).getAllowableAction(this));
