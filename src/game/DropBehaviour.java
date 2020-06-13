@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.*;
 
 /**
  * this class will use the drop action for Zombies
- * @Author Arshia Adouli
  */
 public class DropBehaviour implements Behaviour {
 

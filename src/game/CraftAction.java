@@ -12,7 +12,7 @@ public class CraftAction extends Action {
 	Item item;
 	String craftedItem;
 
-	/**@Author Arshia Adouli
+	/**
 	 * @param i: item which the actor crafts
 	 **/
 

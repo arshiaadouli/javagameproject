@@ -5,6 +5,12 @@ import edu.monash.fit2099.engine.*;
 
 public class Corpse {
 
+    /**
+     *
+     * @param map the map which the target actor is in there
+     * @param target the target actor
+     * @return the statement that which actor is killed
+     */
     public String execute(GameMap map, Actor... target) {
         String result = "";
         

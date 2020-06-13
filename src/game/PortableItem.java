@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.Location;
  */
 public class PortableItem extends Item {
 	/**
-	 * @Author Arshia Adouli
 	 * this class represents the corpse of Actors.
 	 */
 	private int age = 0;

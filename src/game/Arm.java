@@ -31,7 +31,7 @@ Arm extends WeaponItem implements Limb {
 
 	/**
 	 * change the value of HasIt to true
-	 * @param hasIt
+	 * @param hasIt it means that whether the item can be crafted or not
 	 */
 
 	public void setHasIt(boolean hasIt) {
