@@ -43,7 +43,8 @@ public class Shotgun extends RangedWeapon {
 		if (this.hasAmmo()) {
 			actionList.add(new ShotgunShootAction(this));
 		}
-		else if (ammoList.size() > 0) {
+		
+		if (ammoList.size() > 0) {
 			for (Ammo a : ammoList) {
 				if (reloadAction.compatible(this, a)) {
 					actionList.add(reloadAction);
