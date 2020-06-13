@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
 /**
- * @Author Arshia Adouli
  * this class will address zombie to spend one turn to just say zombie expression(e.g. "braaaaaaaaaaaaaaains")
  */
 public class ZombieExpressionAction extends Action {

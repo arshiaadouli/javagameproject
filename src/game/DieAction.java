@@ -14,7 +14,7 @@ public class DieAction extends Action {
      * no player which the world processes it turn.
      * @param actor The actor performing the action.
      * @param map The map the actor is on.
-     * @return
+     * @return string which shows the player has been died
      */
     @Override
     public String execute(Actor actor, GameMap map) {

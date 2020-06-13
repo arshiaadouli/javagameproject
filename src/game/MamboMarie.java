@@ -12,16 +12,18 @@ public class MamboMarie extends ZombieActor implements ActorInterface {
     public  static int mamboNum = 0;
 
 
+
+
+
+    private ArrayList<Behaviour> behaviours = new ArrayList<>();
     /** this class represent mambo marie which its creation will be provided inside of WorldSub.java
      * Constructor.
      *
      * @param name        the name of the Actor
-     * @param displayChar the character that will represent the Actor in the display
-     * @param hitPoints   the Actor's starting hit points
+     *
+
+     *
      */
-
-
-    private ArrayList<Behaviour> behaviours = new ArrayList<>();
 
     public MamboMarie(String name) {
 

@@ -31,7 +31,7 @@ public class Leg extends WeaponItem implements Limb {
 
 	/**
 	 * change the value of HasIt to true
-	 * @param hasIt
+	 * @param hasIt shows that whether the item can be crafted or not
 	 */
 
 	public void setHasIt(boolean hasIt) {

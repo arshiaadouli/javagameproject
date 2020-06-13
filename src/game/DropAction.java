@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.*;
 
 /**
  * it is an action class which represents the action which a zombie does when it has one or two arms
- * @Author Arshia Adouli
  */
 public class DropAction extends Action {
 
