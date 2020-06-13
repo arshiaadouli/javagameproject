@@ -13,6 +13,11 @@ import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Menu;
 
+/**
+ * Action class that gets all the player's exit's x and y coordinates and passes them onto a ShotgunAimMenuAction object.
+ * @author Joseph Yu
+ *
+ */
 public class ShotgunShootAction extends Action {
 	private Shotgun shotgun;
 	private Random rand = new Random();

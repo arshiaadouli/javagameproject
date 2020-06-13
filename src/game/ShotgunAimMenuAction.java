@@ -6,6 +6,11 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
+/**
+ * Action class that gives the Player options to shoot their shotgun in a direction.
+ * @author Joseph Yu
+ *
+ */
 public class ShotgunAimMenuAction extends Action {
 	private Shotgun shotgun;
 	private ArrayList<Integer> direction; // coordinates representing one of each of the 8 directions

@@ -6,6 +6,11 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
+/**
+ * Action class that reloads an Ammo object into a RangedWeapon's barrel.
+ * @author Joseph Yu
+ *
+ */
 public class ReloadAction extends Action {
 	private RangedWeapon weapon;
 	private List<Ammo> ammoList;
@@ -15,6 +20,12 @@ public class ReloadAction extends Action {
 		this.ammoList = ammoList;
 	}
 	
+	/**
+	 * This method checks whether the ammo object is compatible to be loaded into a RangedWeapon.
+	 * @param weapon The RangedWeapon object to check whether it is compatible with the Ammo object.
+	 * @param ammo The Ammo object to check whether it is compatible with the RangedWeapon object.
+	 * @return true or false.
+	 */
 	public boolean compatible(RangedWeapon weapon, Ammo ammo) {
 		boolean retVal = false;
 		

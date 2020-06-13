@@ -7,28 +7,45 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Item;
 
+/**
+ * Class represent a Shotgun object in the game.
+ * @author Joseph Yu
+ *
+ */
 public class Shotgun extends RangedWeapon {
 	private static int num = 1;
 	private BulletType type = BulletType.Shotgun;
-
+	
+	/**
+	 * Initializes barrel size of a shotgun.
+	 */
 	public Shotgun() {
 		super("Shotgun " + num, '=', 20, "shoots");
 		setBarrelSize(2);
-		ammoList.add(new ShotgunAmmo());
 	}
-
+	
+	/**
+	 * Loads an ammo object into the shotgun.
+	 * @param ammo Ammo object to be loaded into the Shotgun object.
+	 */
 	public void reload(Ammo ammo) {
 		if (ammoList.size() < barrelSize && ammo != null) {
 			ammoList.add(ammo);
 		}
 	}
 	
+	/**
+	 * Removes 1 ammo object in the shotgun.
+	 */
 	public void empty() {
 		if (hasAmmo()) {
 			ammoList.remove(0);
 		}
 	}
-
+	
+	/**
+	 * Adds all the actions that a Player can perform when they have a shotgun in their inventory 
+	 */
 	public List<Action> getAllowableAction(Actor actor) {
 		List<Action> actionList = new ArrayList<>();
 		List<Ammo> ammoList = new ArrayList<>();
@@ -66,6 +83,9 @@ public class Shotgun extends RangedWeapon {
 		return 10;
 	}
 	
+	/**
+	 * Resets the damage of a shotgun hit to base damage: 20
+	 */
 	public void resetDamage() {
 		this.setDamage(20);
 	}

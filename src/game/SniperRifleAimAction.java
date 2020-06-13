@@ -10,6 +10,11 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Menu;
 
+/**
+ * Action class that gets all the actors x and y coordinates on the GameMap and passes them onto a SniperRifleAimMenuAction object.
+ * @author Joseph Yu
+ *
+ */
 public class SniperRifleAimAction extends Action {
 	private SniperRifle sniper;
 	private Random rand = new Random();
@@ -59,6 +64,9 @@ public class SniperRifleAimAction extends Action {
 		return actor + " aims using " + sniper;
 	}
 	
+	/**
+	 * @return Sniper object that is currently aiming.
+	 */
 	public SniperRifle getSniper() {
 		return sniper;
 	}

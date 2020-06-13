@@ -17,7 +17,6 @@ import edu.monash.fit2099.engine.DoNothingAction;
  * @author Joseph Yu
  *
  */
-
 public class Farmer extends Human implements Harvester, Consumer {
 	static private ArrayList<Location> cropLocations = new ArrayList<Location>();
 	static private ArrayList<Crop> cropObjs = new ArrayList<Crop>();
@@ -33,7 +32,6 @@ public class Farmer extends Human implements Harvester, Consumer {
 	 * Default constructor to create default farmers.
 	 * @param name the farmer's display name.
 	 */
-	
 	public Farmer(String name) {
 		super(name);
 
@@ -67,9 +65,9 @@ public class Farmer extends Human implements Harvester, Consumer {
 	
 	/**
 	 * Adds to 2 ArrayLists one containing location and another crop objects.
-	 * @param l location object to add.
-	 * @param c crop object to add.
-	 * @throws Exception 
+	 * @param location location object to add.
+	 * @param crop crop object to add.
+	 * @throws Exception In case location or crop objects passed in are null.
 	 */
 	
 	public void addToCropLocations(Location location, Crop crop) throws Exception {
